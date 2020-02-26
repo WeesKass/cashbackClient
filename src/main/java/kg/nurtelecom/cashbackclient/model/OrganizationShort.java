@@ -6,19 +6,21 @@ public class OrganizationShort {
     private String name;
     private String description;
     private String imageUrl;
+    private Double amountOfBonus;
 
     public OrganizationShort() {
     }
 
-    public OrganizationShort(OrganizationShort organizationShort) {
-        this(organizationShort.id, organizationShort.name, organizationShort.description, organizationShort.imageUrl);
+    public OrganizationShort (OrganizationShort organizationShort, Double amountOfBonus) {
+        this(organizationShort.id, organizationShort.name, organizationShort.description, organizationShort.imageUrl, amountOfBonus);
     }
 
-    public OrganizationShort(Long id, String name, String description, String imageUrl) {
+    public OrganizationShort(Long id, String name, String description, String imageUrl, Double amountOfBonus) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.imageUrl = imageUrl;
+        this.amountOfBonus = amountOfBonus;
     }
 
     public Long getId() {
@@ -51,5 +53,13 @@ public class OrganizationShort {
 
     public void setImage(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Double getAmountOfBonus() {
+        return amountOfBonus;
+    }
+
+    public void setAmountOfBonus(Double amountOfBonus) {
+        this.amountOfBonus = amountOfBonus;
     }
 }

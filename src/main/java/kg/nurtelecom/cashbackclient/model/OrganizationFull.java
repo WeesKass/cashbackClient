@@ -14,15 +14,15 @@ public class OrganizationFull extends OrganizationShort {
     public OrganizationFull() {
     }
 
-    public OrganizationFull(OrganizationShort organizationShort, List<FilialShort> filials, List<EventShort> events, List<BonusShort> bonuses) {
-        super(organizationShort);
+    public OrganizationFull(OrganizationShort organizationShort, List<FilialShort> filials, List<EventShort> events, List<BonusShort> bonuses, Double amountOfBonus) {
+        super(organizationShort, amountOfBonus);
         this.filials = filials;
         this.events = events;
         this.bonuses = bonuses;
     }
 
-    public OrganizationFull(Long id, String name, String description, String imageUrl, List<FilialShort> filials, List<EventShort> events, List<BonusShort> bonuses) {
-        super(id, name, description, imageUrl);
+    public OrganizationFull(Long id, String name, String description, String imageUrl, List<FilialShort> filials, List<EventShort> events, List<BonusShort> bonuses, Double amountOfBonus   ) {
+        super(id, name, description, imageUrl, amountOfBonus);
         this.filials = filials;
         this.events = events;
         this.bonuses = bonuses;
