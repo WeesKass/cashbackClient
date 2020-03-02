@@ -7,8 +7,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "/layout")
     public String main(Model model){
         return "layout";
     }
+
+    @GetMapping(value = "/")
+    public String authorization(Model model){
+        return "authorization/authorization";
+    }
+
+    @GetMapping(value = "/forgotPassword")
+    public String forgotPassword(Model model){
+        return "authorization/forgotPassword";
+    }
+
 }
