@@ -22,4 +22,10 @@ public class MainController {
         return "authorization/forgotPassword";
     }
 
+    @GetMapping(value = "/settings")
+    public String setting(Model model){
+        return "settingsPage";
+    }
+
 }
+
