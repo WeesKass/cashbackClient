@@ -24,7 +24,7 @@ public class MainController {
 
     @GetMapping(value = "/settings")
     public String setting(Model model){
-        return "settingsPage";
+        return "settings";
     }
 
 }

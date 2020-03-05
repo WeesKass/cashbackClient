@@ -99,10 +99,3 @@ input:checked + .slider:before {
 }
 
 
-.blog-content{
-    background-color: #f7e8ff;
-
-    position: absolute;
-    left: 10%;
-
-}
