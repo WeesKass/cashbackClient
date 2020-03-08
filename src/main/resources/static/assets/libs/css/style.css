@@ -9,6 +9,21 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+.row {
+
+    display: flex;
+    padding: 10px 5px 20px 0px;
+    border-radius: 10px;
+    background-color: #cccdd7;
+    margin: 10px 10px 10px 10px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+}
+
 h1, h2, h3, h4, h5, h6 {
     color: #262626;
     margin: 0px 0px 15px 0px;
@@ -74,6 +89,13 @@ ol li, ul li {
     font-size: 1.25rem;
     font-weight: 300;
     color: #3d3f5d;
+}
+
+.lead-3 {
+    font-size: 3.25rem;
+    font-weight: 300;
+    color: #3d3f5d;
+    text-align: center;
 }
 
 /*--------------------  Form ---------------------*/
@@ -5686,7 +5708,8 @@ tr.group, tr.group:hover {
     height: calc(100vh - 105px);
 }
 
-.dashboard-main-wrapper .content-container > .chat-module { /*height: 100%;*/
+.dashboard-main-wrapper .content-container > .chat-module {
+    height: 100%;
 }
 
 .dashboard-main-wrapper .content-container > .chat-module {
@@ -5808,7 +5831,7 @@ tr.group, tr.group:hover {
 
 .dashboard-main-wrapper .content-container {
     display: flex;
-    height: calc(100vh - 3.5625rem);
+    /*height: calc(100vh - 3.5625rem);*/
 }
 
 .dashboard-main-wrapper .content-container > .chat-module .chat-item .media-body {
