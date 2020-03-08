@@ -1,0 +1,211 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en"><head>
+    <title>Organizations Info</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--    <link th:href="@{assets/vendor/fonts/circular-std/style.css}">-->
+
+    <link rel="stylesheet" href="/assets/libs/css/style.css">
+    <link rel="stylesheet" href="/assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+</head>
+
+<body>
+
+<div class="dashboard-main-wrapper">
+    <div class="dashboard-header">
+    <nav class="navbar navbar-expand-lg bg-dark fixed-top">
+        <a class="navbar-brand" href="/">O! CashBack Client</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto navbar-right-top">
+
+                <li class="nav-item">
+                    <div id="custom-search" class="top-search-bar">
+                        <input class="form-control" type="text" placeholder="Search..">
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</div>
+    <div class="nav-left-sidebar sidebar-dark">
+    <div class="menu-list">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav flex-column">
+                    <li class="nav-divider">
+                        Menu
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/">Code</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="">Search</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/subscribes">Subscribes</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="">History</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="">Notifications</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="">Settings</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="">About</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+    <div class="dashboard-wrapper">
+        <br>
+        <div class="shadow-lg p-3 mb-5 bg-white rounded">
+    <div class="container">
+        <h1 class="lead-3">ToyCenter</h1>
+        <div class="row">
+            <div class="col-8">
+                <img src="/assets/img/organizationDefault.png" alt="Organization Image" class="img-thumbnail" width="256" height="256">
+                <!--th:src="${org.imageUrl}">-->
+            </div>
+            <div class="col-sm">
+                <div class="col-md-auto">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <p class="mb-1">Name1</p>
+                            <span class="badge badge-primary badge-pill">1.2</span>
+                            <p class="mb-1">Street: 1</p>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <p class="mb-1">Name2</p>
+                            <span class="badge badge-primary badge-pill">3.4</span>
+                            <p class="mb-1">Street: 2</p>
+                        </li>
+                    </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <p class="mb-1">Name3</p>
+                            <span class="badge badge-primary badge-pill">0.3</span>
+                            <p class="mb-1">Street: 3</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <p class="lead">Short Description about company</p>
+        </div>
+        <div class="content-container">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h5 class="card-header">Bonuses</h5>
+                        <div>
+                            <div class="card-body">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">CashBack</h5>
+                                        <p class="card-text">Sun Mar 08 21:26:57 OMST 2020 - Sun Mar 08 21:26:57 OMST 2020</p>
+                                        <p class="card-text">Remained: 100</p>
+                                        <a href="/bonusInfo/1" class="btn btn-primary">Info</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="card-body">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Welcome</h5>
+                                        <p class="card-text">Sun Mar 08 21:26:57 OMST 2020 - Sun Mar 08 21:26:57 OMST 2020</p>
+                                        <p class="card-text">Remained: 10</p>
+                                        <a href="/bonusInfo/2" class="btn btn-primary">Info</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="card-body">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">FriendBonus</h5>
+                                        <p class="card-text">Sun Mar 08 21:26:57 OMST 2020 - Sun Mar 08 21:26:57 OMST 2020</p>
+                                        <p class="card-text">Remained: 40</p>
+                                        <a href="/bonusInfo/3" class="btn btn-primary">Info</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <h5 class="card-header">Events</h5>
+                        <div>
+                            <div class="card-body">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">About 1 Event</h5>
+                                        <p class="card-text">Sun Mar 08 21:26:57 OMST 2020 - Sun Mar 08 21:26:57 OMST 2020</p>
+                                        <a href="/eventInfo/1" class="btn btn-primary">Info</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="card-body">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">About 2 Event</h5>
+                                        <p class="card-text">Sun Mar 08 21:26:57 OMST 2020 - Sun Mar 08 21:26:57 OMST 2020</p>
+                                        <a href="/eventInfo/2" class="btn btn-primary">Info</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="card-body">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">About 3 Event</h5>
+                                        <p class="card-text">Sun Mar 08 21:26:57 OMST 2020 - Sun Mar 08 21:26:57 OMST 2020</p>
+                                        <a href="/eventInfo/3" class="btn btn-primary">Info</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="/assets/libs/js/main-js.js"></script>
+
+
+
+</body></html>
