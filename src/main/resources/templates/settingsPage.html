@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.fil/1999/xhtml" xmlns:th="http://www.w3.fil/1999/xhtml"
+          layout:decorate="~{layout}">
+    <head>
+        <title>Settings page</title>
+        <link rel="stylesheet" href="/assets/libs/css/settingsStyle.css">
+
+    </head>
+<body>
+
+<div layout:fragment="content">
+    <div class=" blog-content">
+        <div class="language">
+            <h2>язык</h2>
+            <span class="language-label">Выбор языка :</span>
+            <ul class="language-list">
+                <li class="language-list-item">
+                    <a href="#" class="language-list-item-icon language-list-item-icon--en ">Rus</a>
+                </li>
+                <li class="language-list-item">
+                    <a href="#" class="language-list-item-icon language-list-item-icon--kg ">Kg</a>
+                </li>
+            </ul>
+        </div>
+        <hr align="left" width="300" size="10" color="#aaa" />
+        <br>
+        <div>
+            <h2>Notification</h2>
+            <br>
+            <a> Начисление/Списание баллов</a>
+            <label class="switch" >
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <br>
+            <!-- Trigger/Open The Modal -->
+            <button id="myBtn">Уведоамление от компании</button>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Some text in the Modal..</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+</html>

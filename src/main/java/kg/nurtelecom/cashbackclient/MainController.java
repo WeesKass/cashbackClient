@@ -24,8 +24,17 @@ public class MainController {
 
     @GetMapping(value = "/settings")
     public String setting(Model model){
-        return "settings";
+        return "settingsPage";
     }
 
+    @GetMapping(value = "/history")
+    public String history(Model model){
+        return "history";
+    }
+
+    @GetMapping(value = "/search")
+    public String search(Model model){
+        return "search";
+    }
 }
 
