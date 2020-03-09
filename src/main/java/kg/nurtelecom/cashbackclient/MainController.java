@@ -36,5 +36,18 @@ public class MainController {
     public String search(Model model){
         return "search";
     }
+
+    @GetMapping(value = "/clientPromoCodePage")
+    public String clientPromoCodePage(Model model)
+    {
+        return "clientPromoCodePage";
+    }
+
+    @GetMapping(value = "/codePage")
+    public String codePage(Model model) {return "codePage";}
+
+    @GetMapping(value = "/notificationPage")
+    public String notificationPage(Model model) {return "notificationPage";}
+
 }
 

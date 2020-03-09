@@ -1,0 +1,28 @@
+<!doctype html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<head>
+    <title>Code</title>
+</head>
+
+<body style="background-position: bottom;">
+
+<div layout:fragment="content">
+
+    <div>
+        <h1 class="text-center" style="margin-top: 42px;height: 65px;"><strong>Client Code</strong></h1>
+        <img class="d-sm-flex d-md-flex d-lg-flex d-xl-flex mx-auto justify-content-sm-center justify-content-md-center justify-content-lg-center align-items-xl-end"
+             src="/assets/img/qr.jpg" th:src="@{/assets/img/qr.jpg}" />
+        <h1 class="text-center" style="margin-top: 22px;">867 051</h1>
+        <button class="btn btn-primary d-flex d-sm-flex d-md-flex justify-content-center mx-auto justify-content-sm-center mx-sm-auto justify-content-md-center mx-md-auto mx-lg-auto mx-xl-auto"
+                type="button"
+                style="width: 207px;margin-top: 18px;">
+            <a class="nav-link" href="#" th:href="@{/clientPromoCodePage}">Ввести промокод</a>
+        </button>
+        <small class="text-center d-flex d-sm-flex d-lg-flex justify-content-center mx-auto justify-content-sm-center justify-content-lg-center" style="margin-top: 87px;padding-top: 4px;">Действует во всех заведениях - партнерах CASHBACK</small>
+    </div>
+</div>
+</body>
+
+</html>
+
