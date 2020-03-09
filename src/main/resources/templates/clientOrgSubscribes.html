@@ -1,0 +1,196 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en"><head>
+    <title>Organizations category list</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--    <link th:href="@{assets/vendor/fonts/circular-std/style.css}">-->
+
+    <link rel="stylesheet" href="/assets/libs/css/style.css">
+    <link rel="stylesheet" href="/assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+</head>
+
+<body>
+<div class="dashboard-main-wrapper">
+    <div class="dashboard-header">
+    <nav class="navbar navbar-expand-lg bg-dark fixed-top">
+        <a class="navbar-brand" href="/">O! CashBack Client</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto navbar-right-top">
+
+                <li class="nav-item">
+                    <div id="custom-search" class="top-search-bar">
+                        <input class="form-control" type="text" placeholder="Search..">
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</div>
+    <div class="nav-left-sidebar sidebar-dark">
+    <div class="menu-list">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav flex-column">
+                    <li class="nav-divider">
+                        Menu
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/">Code</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="">Search</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/subscribes">Subscribes</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="">History</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="">Notifications</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="">Settings</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="">About</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+    <div class="dashboard-wrapper">
+        <br>
+        <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">Food</h6>
+    <div class="grid-container">
+        <div class="row">
+            <div class="col-md-auto">
+                <img src="assets/img/organizationDefault.png" alt="organizationDefault" width="64" height="64">
+                <!--                     th:src="${org.getImageUrl()}">-->
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <strong class="text-gray-dark">ChickenNuggets</strong>
+                </div>
+                <p class="d-block">descriptionCN</p>
+                <span class="d-block">9.4</span>
+            </div>
+            <div class="col-md-auto">
+                <a href="/orgInfo/1">Info</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-auto">
+                <img src="assets/img/organizationDefault.png" alt="organizationDefault" width="64" height="64">
+                <!--                     th:src="${org.getImageUrl()}">-->
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <strong class="text-gray-dark">BeefNuggets</strong>
+                </div>
+                <p class="d-block">descriptionBN</p>
+                <span class="d-block">1.5</span>
+            </div>
+            <div class="col-md-auto">
+                <a href="/orgInfo/2">Info</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-auto">
+                <img src="assets/img/organizationDefault.png" alt="organizationDefault" width="64" height="64">
+                <!--                     th:src="${org.getImageUrl()}">-->
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <strong class="text-gray-dark">BeefNuggets1</strong>
+                </div>
+                <p class="d-block">descriptionBN6</p>
+                <span class="d-block">2.4</span>
+            </div>
+            <div class="col-md-auto">
+                <a href="/orgInfo/3">Info</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-auto">
+                <img src="assets/img/organizationDefault.png" alt="organizationDefault" width="64" height="64">
+                <!--                     th:src="${org.getImageUrl()}">-->
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <strong class="text-gray-dark">BeefNuggets2</strong>
+                </div>
+                <p class="d-block">descriptionBN6</p>
+                <span class="d-block">5.4</span>
+            </div>
+            <div class="col-md-auto">
+                <a href="/orgInfo/4">Info</a>
+            </div>
+        </div>
+    </div>
+    <small class="d-block text-right mt-3">
+        <a href="/organizationByCategoryId/1">All suggestions</a>
+    </small>
+</div><div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">Game</h6>
+    <div class="grid-container">
+        <div class="row">
+            <div class="col-md-auto">
+                <img src="assets/img/organizationDefault.png" alt="organizationDefault" width="64" height="64">
+                <!--                     th:src="${org.getImageUrl()}">-->
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <strong class="text-gray-dark">CS:GO</strong>
+                </div>
+                <p class="d-block">descriptionGO</p>
+                <span class="d-block">12.4</span>
+            </div>
+            <div class="col-md-auto">
+                <a href="/orgInfo/8">Info</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-auto">
+                <img src="assets/img/organizationDefault.png" alt="organizationDefault" width="64" height="64">
+                <!--                     th:src="${org.getImageUrl()}">-->
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <strong class="text-gray-dark">FORT ROYAL</strong>
+                </div>
+                <p class="d-block">descriptionFORT</p>
+                <span class="d-block">0.4</span>
+            </div>
+            <div class="col-md-auto">
+                <a href="/orgInfo/9">Info</a>
+            </div>
+        </div>
+    </div>
+    <small class="d-block text-right mt-3">
+        <a href="/organizationByCategoryId/2">All suggestions</a>
+    </small>
+</div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="/assets/libs/js/main-js.js"></script>
+
+
+
+</body></html>
