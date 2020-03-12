@@ -1,4 +1,4 @@
-package kg.nurtelecom.cashbackclient;
+package kg.nurtelecom.cashbackclient.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
