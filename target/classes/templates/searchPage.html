@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.fil/1999/xhtml" xmlns:th="http://www.w3.fil/1999/xhtml"
+      layout:decorate="~{layout}">
+<head>
+    <title>Search page</title>
+    <link rel="stylesheet" href="/assets/libs/css/settingsStyle.css">
+
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div class=" blog-content">
+        <br><h2>Searching results</h2>
+        <div th:value="${search}"></div>
+
+    </div>
+</div>
+</body>
+
+</html>
