@@ -8,34 +8,32 @@
     </head>
 
 <body>
-    <div layout:fragment="content">
-        <div class=" blog-content">
-            <br><h2>History</h2>
-            <div class="table-responsive">
-                <table class="table table-hover table-dark">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>Name organization</th>
-                            <th>bonus amount</th>
-                            <th>date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td scope="row">Adidas</td>
-                            <td scope="row">4777777777777777777777777777777777777777777777777777777777777777</td>
-                            <td scope="row">01.01.1986</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">Pumaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>
-                            <td scope="row">125612</td>
-                            <td scope="row">01.01.1986</td>
-                        </tr>
+<div layout:fragment="content" class="shadow-lg p-3 mb-5 bg-white rounded">
+    <div class="container">
+        <h1 class="lead-3">Balance History</h1>
+        <table class="table" >
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">DATE</th>
+                <th scope="col">ORG NAME</th>
+                <th scope="col">BONUS</th>
+                <th scope="col">OPERATION</th>
+                <th scope="col">AMOUNT</th>
+                <th scope="col">TOTAL</th>
+            </tr>
+            </thead>
+            <tbody th:each = "history : ${historyList}">
+            <tr>
+                <th scope="row" th:text = "${history.getCreatedDate()}">12.12.12</th>
+                <td th:text = "${history.getOrganizationName()}">org name</td>
+                <td th:text = "${history.getBonusType()}">type</td>
+                <td th:text = "${history.getOperationType()}">operation</td>
+                <td th:text = "${history.getAmount()}">0.0</td>
+                <td th:text = "${history.getTotal()}">0.0</td>
+            </tr>
+            </tbody>
+        </table>
 
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </div>
 </body>
 
