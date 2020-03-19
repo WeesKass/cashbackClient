@@ -18,13 +18,15 @@
             </div>
             <div class="col-sm">
                 <div class="col-md-auto">
-                    <ul class="list-group list-group-flush" th:each="filial : ${organizationInfo.getFilialShortModels()}">
-                        <li class="list-group-item">
-                            <p class="mb-1" th:text="${filial.getName()}">Default name</p>
-                            <span class="badge badge-primary badge-pill" th:text="${filial.getAverageRate()}">0</span>
-                            <p class="mb-1" th:text="${filial.getAddress()}">Default address</p>
-                        </li>
-                    </ul>
+                    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                        <ul class="list-group list-group-flush" th:each="filial : ${organizationInfo.getFilialShortModels()}">
+                            <li class="list-group-item">
+                                <p class="mb-1" th:text="${filial.getName()}">Default name</p>
+                                <span class="badge badge-primary badge-pill" th:text="${filial.getAverageRate()}">0</span>
+                                <p class="mb-1" th:text="${filial.getAddress()}">Default address</p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -44,7 +46,7 @@
                                         <p class="card-text"
                                            th:text="|${bonus.getValidFrom()} - ${bonus.getValidTo()}|"></p>
                                         <p class="card-text" th:text="|Remained: ${bonus.getValidity()}|"></p>
-                                        <a th:href="@{'/bonusInfo/'+${bonus.getId()}}" class="btn btn-primary">Info</a>
+<!--                                        <a th:href="@{'/bonusInfo/'+${bonus.getId()}}" class="btn btn-primary">Info</a>-->
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +63,7 @@
                                         <h5 class="card-title" th:text="${event.getDescription()}">Bonus Type</h5>
                                         <p class="card-text"
                                            th:text="|${event.getDateFrom()} - ${event.getDateTo()}|"></p>
-                                        <a th:href="@{'/eventInfo/'+${event.getId()}}" class="btn btn-primary">Info</a>
+<!--                                        <a th:href="@{'/eventInfo/'+${event.getId()}}" class="btn btn-primary">Info</a>-->
                                     </div>
                                 </div>
                             </div>
