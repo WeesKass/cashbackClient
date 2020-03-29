@@ -6,36 +6,64 @@
       xmlns:layout="http://www.w3.org/1999/xhtml">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!--    <link th:href="@{assets/vendor/fonts/circular-std/style.css}">-->
+    <!--meta name="description" content="EndGam Gaming Magazine Template">
+    <meta name="keywords" content="endGam,gGaming, magazine, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"-->
+    <!-- Favicon -->
+    <link href="./assets/img/favicon.ico" rel="shortcut icon"/>
 
-    <link rel="stylesheet" href="/assets/libs/css/style.css">
-    <link rel="stylesheet" href="/assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/assets/libs/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/assets/libs/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/assets/libs/css/slicknav.min.css"/>
+    <link rel="stylesheet" href="/assets/libs/css/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="/assets/libs/css/magnific-popup.css"/>
+    <link rel="stylesheet" href="/assets/libs/css/animate.css"/>
+
+    <!-- Main Stylesheets -->
+    <link rel="stylesheet" href="/assets/libs/css/style.css"/>
 
     <title>O! CashBack Client</title>
+
+
+    <style>
+        body{background-image:url("./assets/img/slider-bg-1.jpg");}
+    </style>
+
+    <!-- Header section end -->
 </head>
 
 <body>
+<div id="preloder">
+    <div class="loader"></div>
+</div >
+
 <!-- ============================================================== -->
 <!-- main wrapper -->
 <!-- ============================================================== -->
 <div class="dashboard-main-wrapper">
+
     <!-- ============================================================== -->
     <!-- header -->
     <!-- ============================================================== -->
     <div th:replace="fragments/header :: header"></div>
+    <!--div class="hero-slider owl-carousel">
+        <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="./assets/img/slider-bg-1.jpg"></div>
+    </div-->
     <!-- ============================================================== -->
     <!-- end header -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
     <!-- left sidebar -->
     <!-- ============================================================== -->
-    <div th:replace="fragments/menuBar :: menuBar"></div>
+    <!--div th:replace="fragments/menuBar :: menuBar"></div-->
     <!-- ============================================================== -->
     <!-- end left sidebar -->
     <!-- ============================================================== -->
@@ -43,26 +71,25 @@
     <!-- wrapper  -->
     <!-- ============================================================== -->
     <div class="dashboard-wrapper">
-        <br>
         <!-- ============================================================== -->
         <!-- content -->
         <!-- ============================================================== -->
         <div layout:fragment="content">
+
             <!-- ============================================================================ -->
             <!--            PUT ALL CONTENT PART INTO THIS LAYOUT:FRAGMENT                    -->
             <!-- ============================================================================ -->
-
         </div>
         <!-- ============================================================== -->
         <!-- end content -->
+        <!-- ============================================================== -->
         <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
     <!-- end wrapper  -->
     <!-- ============================================================== -->
 </div>
-<!-- ============================================================== -->
-<!-- end main wrapper  -->
+
 <!-- ============================================================== -->
 <!-- Optional JavaScript -->
 <!-- jquery 3.4.1 -->
@@ -72,6 +99,16 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="/assets/libs/js/main-js.js"></script>
 <script src="/assets/libs/js/settings.js"></script>
+
+
+
+<script src="/assets/libs/js/jquery-3.2.1.min.js"></script>
+<script src="/assets/libs/js/bootstrap.min.js"></script>
+<script src="/assets/libs/js/jquery.slicknav.min.js"></script>
+<script src="/assets/libs/js/owl.carousel.min.js"></script>
+<script src="/assets/libs/js/jquery.sticky-sidebar.min.js"></script>
+<script src="/assets/libs/js/jquery.magnific-popup.min.js"></script>
+<script src="/assets/libs/js/main.js"></script>
 </body>
 
 </html>

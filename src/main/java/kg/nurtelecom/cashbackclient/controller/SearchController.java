@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class SearchController {
     @GetMapping(value = "/searchPage")
-    public String searchPage(Model model){
+    public String searchPage(Model model, String search){
+        model.addAttribute("searchResult", search);
         return "searchPage";
     }
 

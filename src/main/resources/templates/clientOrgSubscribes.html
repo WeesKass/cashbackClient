@@ -4,7 +4,7 @@
     <title>Organizations category list</title>
 </head>
 <body>
-<div layout:fragment="content" class="my-3 p-3 bg-white rounded shadow-sm" th:each="key : ${categoryOrganizationList.keySet()}">
+<section layout:fragment="content" class="my-3 p-3 bg-white rounded shadow-sm" th:each="key : ${categoryOrganizationList.keySet()}">
     <h6 class="border-bottom border-gray pb-2 mb-0" th:text="${key}">CategoryName</h6>
     <div class="grid-container">
         <div class="row" th:each="org : ${categoryOrganizationList.get(key)}">
@@ -27,7 +27,7 @@
     <small class="d-block text-right mt-3">
 <!--        <a th:href="@{'/organizationByCategoryId/'+${categoryOrganizationList.get(0).getCategoryId()}}">All suggestions</a>-->
     </small>
-</div>
+</section>
 </body>
 </html>
 
