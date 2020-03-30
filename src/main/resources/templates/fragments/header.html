@@ -2,12 +2,12 @@
         lang="en"
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:th="http://www.thymeleaf.org"
-        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <!-- ============================================================== -->
     <!-- header -->
     <!-- ============================================================== -->
     <div th:fragment="header">
+
         <div class="dashboard-header">
             <div class="header-warp">
                 <div class="header-bar-warp d-flex">
@@ -21,19 +21,25 @@
                         <!-- </div> -->
                         <!-- Menu -->
                         <ul class="main-menu primary-menu">
-                            <li><a href="#" th:href="@{/codePage}">Code</a></li>
-                            <li><a th:href="@{/subscribes}">Subscribes</a></li>
-                            <li><a th:href="@{/historyPage}">History</a></li>
-                            <li><a href="#" th:href="@{/notificationPage}">Notification</a></li>
-                            <li><a th:href="@{/settings}">Settings</a></li>
+                            <li> <a href="#"  th:href="@{/codePage}" data-th-text="#{label.Code}"></a></li>
+                            <li><a th:href="@{/subscribes}" data-th-text="#{label.Subscribes}"></a></li>
+                            <li><a th:href="@{/historyPage}" data-th-text="#{label.History}" ></a></li>
+                            <li><a href="#" th:href="@{/notificationPage}" data-th-text="#{label.Notification}"></a></li>
+                            <li><a th:href="@{/settings}" data-th-text="#{label.settings}"></a></li>
                             <li class="nav-item">
                                 <div id="custom-search" class="top-search-bar">
                                     <form  th:action="@{/searchPage}"  method="get" class="form-inline my-2 my-lg-0">
-                                        <input class="form-control" type="text" name="search" required placeholder="Search.."/>
-                                        <button class="btn btn-outline-danger my-2 my-sm-0">Search</button>
+                                        <input class="form-control" type="text" name="search" data-th-text="#{label.Search1}" required placeholder="Search.."/>
+                                        <button class="btn btn-outline-danger my-2 my-sm-0" data-th-text="#{label.Search}" ></button>
                                     </form>
+
                                 </div>
+
                             </li>
+
+                            <a href="?lang=en" data-th-text="#{label.lang.en}"></a>
+                            <a href="?lang=ru" data-th-text="#{label.lang.ru}"></a>
+
                         </ul>
                     </nav>
                 </div>

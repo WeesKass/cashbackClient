@@ -1,12 +1,16 @@
 <!doctype html>
-<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml" layout:decorate="~{layout}">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout}"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Organizations category list</title>
+    <title data-th-text="#{label.OrganizationsCategoryList}"></title>
 </head>
 <body>
 <section layout:fragment="content" class="my-3 p-3 rounded shadow-sm" th:each="key : ${categoryOrganizationList.keySet()}">
     <div class="section-title text-white">
-    <h6 class="pb-2 mb-0" th:text="${key}">CategoryName</h6>
+    <h6 class="pb-2 mb-0" th:text="${key}" ></h6>
     <div class="card-body">
         <div class="row" th:each="org : ${categoryOrganizationList.get(key)}">
             <div class="col-md-auto">
@@ -15,13 +19,13 @@
             </div>
             <div class="col-md-auto">
                 <div class="d-flex justify-content-between align-items-center w-100">
-                    <strong class="text-gray-dark" th:text="${org.getName()}">OrganizationName</strong>
+                    <strong class="text-gray-dark" th:text="${org.getName()}" ></strong>
                 </div>
-                <p class="d-block" th:text="${org.getDescription()}">description</p>
+                <p class="d-block" th:text="${org.getDescription()}"  ></p>
 <!--                <span class="d-block" th:text="${org.getAmountOfBonus()}">amount of bonus</span>-->
             </div>
             <div class="col-md-auto">
-                <a href="#" th:href="@{'/orgInfo/'+${org.getId()}}">Info</a>
+                <a href="#" th:href="@{'/orgInfo/'+${org.getId()}}" data-th-text="#{label.Info}"></a>
             </div>
         </div>
     </div>

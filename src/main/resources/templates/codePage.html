@@ -1,8 +1,11 @@
 <!doctype html>
-<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
-      layout:decorate="~{layout}">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout}"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Code</title>
+    <title data-th-text="#{label.Code}" ></title>
 </head>
 
 <body style="background-position: bottom;">
@@ -10,7 +13,7 @@
 <section layout:fragment="content">
 
     <div>
-        <h1 class="text-center" style="margin-top: 42px;height: 65px;"><strong>Client Code</strong></h1>
+        <h1 class="text-center" style="margin-top: 42px;height: 65px;" ><strong data-th-text="#{label.ClientCode}"></strong></h1>
         <br>
         <div class="container" style="left: 50%; margin-right: -25%;">
             <img th:src="@{'https://api.qrserver.com/v1/create-qr-code/?size=350x350&data=' + ${code.getPersonalCode()}}" alt="QR Code" width="300" height="300" style="justify-content: center;">
@@ -19,7 +22,7 @@
         <button class="btn btn-primary d-flex d-sm-flex d-md-flex justify-content-center mx-auto justify-content-sm-center mx-sm-auto justify-content-md-center mx-md-auto mx-lg-auto mx-xl-auto bg-danger"
                 type="button"
                 style="width: 207px;margin-top: 18px;">
-            <a class="nav-link" href="#" th:href="@{/clientPromoCodePage}">Ввести промокод</a>
+            <a class="nav-link" href="#" th:href="@{/clientPromoCodePage}" data-th-text="#{label.inputPromoCode}"></a>
         </button>
     </div>
 </section>
