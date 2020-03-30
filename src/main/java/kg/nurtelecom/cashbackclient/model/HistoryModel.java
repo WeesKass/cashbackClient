@@ -12,6 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HistoryModel {
+    private Long id;
     private Long clientId;
     private Date createdDate;
     private String operationType;
