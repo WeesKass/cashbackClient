@@ -19,7 +19,7 @@ public class BalanceHistoryService {
     }
 
     public List<HistoryModel> getAllHistory(Long id){
-        String url = "http://localhost:8080/api/balanceHistory/client/{id}";
+        String url = "http://157.245.219.46:4445/api/balanceHistory/client/{id}";
 
         ObjectMapper mapper = new ObjectMapper();
         String json =  restTemplate.getForObject(url, String.class, 1);

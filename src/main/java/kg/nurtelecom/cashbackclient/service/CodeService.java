@@ -23,7 +23,7 @@ public class CodeService {
     }
 
     public ClientPersonalCodeModel getCodeByClientId(Long clientId) {
-        String url = "http://localhost:8080//api/client/code/{id}";
+        String url = "http://157.245.219.46:4445/api/client/code/{id}";
         ClientPersonalCodeModel result = new ClientPersonalCodeModel();
 
 
