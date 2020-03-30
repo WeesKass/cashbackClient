@@ -20,7 +20,7 @@ public class ClientOrgSubscribesService {
     }
 
     public Map<String, List<OrganizationModel>> getAllSubscribes(Long id){
-        String url = "http://localhost:8080/api/organization/list/{id}";
+        String url = "http://157.245.219.46:4445/api/organization/list/{id}";
 
         ObjectMapper mapper = new ObjectMapper();
         String json =  restTemplate.getForObject(url, String.class, 1);
@@ -30,7 +30,6 @@ public class ClientOrgSubscribesService {
         try {
 
             List<OrganizationModel> list2 = Arrays.asList(mapper.readValue(json, OrganizationModel[].class));
-
 
             for (OrganizationModel org : list2 ){
                 if (!result.containsKey(org.getCategoryName())) {

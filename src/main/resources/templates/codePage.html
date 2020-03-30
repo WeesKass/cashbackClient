@@ -11,15 +11,16 @@
 
     <div>
         <h1 class="text-center" style="margin-top: 42px;height: 65px;"><strong>Client Code</strong></h1>
-        <img class="d-sm-flex d-md-flex d-lg-flex d-xl-flex mx-auto justify-content-sm-center justify-content-md-center justify-content-lg-center align-items-xl-end"
-             src="/assets/img/qr.png" th:src="@{${code.getImageUrl()}}" />
-        <h1 class="text-center" style="margin-top: 22px;" th:text = "${code.personalCode}">000 000</h1>
-        <button class="btn btn-primary d-flex d-sm-flex d-md-flex justify-content-center mx-auto justify-content-sm-center mx-sm-auto justify-content-md-center mx-md-auto mx-lg-auto mx-xl-auto"
+        <br>
+        <div class="container" style="left: 50%; margin-right: -25%;">
+            <img th:src="@{'https://api.qrserver.com/v1/create-qr-code/?size=350x350&data=' + ${code.getPersonalCode()}}" alt="QR Code" width="300" height="300" style="justify-content: center;">
+            <h5 class="card-title" style="color:white; left: 50%; margin-right: -25%; " th:text = "${code.getPersonalCode()}">000 000</h5>
+        </div>
+        <button class="btn btn-primary d-flex d-sm-flex d-md-flex justify-content-center mx-auto justify-content-sm-center mx-sm-auto justify-content-md-center mx-md-auto mx-lg-auto mx-xl-auto bg-danger"
                 type="button"
                 style="width: 207px;margin-top: 18px;">
             <a class="nav-link" href="#" th:href="@{/clientPromoCodePage}">Ввести промокод</a>
         </button>
-        <small class="text-center d-flex d-sm-flex d-lg-flex justify-content-center mx-auto justify-content-sm-center justify-content-lg-center" style="margin-top: 87px;padding-top: 4px;">Действует во всех заведениях - партнерах CASHBACK</small>
     </div>
 </section>
 </body>

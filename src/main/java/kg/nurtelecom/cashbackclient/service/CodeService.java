@@ -23,25 +23,21 @@ public class CodeService {
     }
 
     public ClientPersonalCodeModel getCodeByClientId(Long clientId) {
-        String url = "http://localhost:8080/api/client/code/{id}";
-
+        String url = "http://157.245.219.46:4445/api/client/code/{id}";
         ClientPersonalCodeModel result = new ClientPersonalCodeModel();
 
-        ObjectMapper mapper = new ObjectMapper();
-        String json = restTemplate.getForObject(url, String.class, clientId);
-        System.out.println(json);
+
         try {
-
+            ObjectMapper mapper = new ObjectMapper();
+            String json = restTemplate.getForObject(url, String.class, clientId);
             result = mapper.readValue(json, ClientPersonalCodeModel.class);
-            GenerateQRCode.generateQRCodeImage(result.getPersonalCode());
-            result.setImageUrl("/assets/img/qr.png");
+//            GenerateQRCode.generateQRCodeImage(result.getPersonalCode());
+//            result.setImageUrl("/assets/img/qr.png");
 
-
-        } catch (WriterException e) {
-            System.out.println("Could not generate QR Code, WriterException :: " + e.getMessage());
         } catch (IOException e) {
-            System.out.println("Could not generate QR Code, IOException :: " + e.getMessage());
+            e.printStackTrace();
         }
+
         return result;
     }
 }
