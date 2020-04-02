@@ -2,14 +2,11 @@ package kg.nurtelecom.cashbackclient.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kg.nurtelecom.cashbackclient.model.OrganizationFullModel;
-import kg.nurtelecom.cashbackclient.model.OrganizationModel;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 
 @Service
 public class OrganizationInfoService {
