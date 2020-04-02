@@ -14,35 +14,35 @@
 <section layout:fragment="content">
 
     <div>
-        <h1 class="text-center" style="margin-top: 42px;" data-th-text="#{label.ClientBonus}"></h1>
+        <h3 class="text-center" style="margin-top: 42px;" data-th-text="#{label.ClientBonus}"></h3>
     </div>
     <div>
-        <div class="card-group">
-            <div class="card bg-danger" style="margin: 10px;border-radius: 40px 10px;">
+        <div class="card-group d-xl-flex flex-sm-column justify-content-xl-start">
+
+
+
+        <div class="card" style="margin: 100px; margin-bottom: 50px;margin-top: 50px;border-radius: 10px 10px;">
                 <div class="card-body">
-                    <h4 class="card-title" data-th-text="#{label.OrganizationName}"></h4>
-                    <h4 class="card-title" data-th-text="#{label.BonusSize}"></h4>
-                    <h4 class="card-title" data-th-text="#{label.BonusCode}"></h4>
-                    <h4 class="card-title" data-th-text="#{label.From}"></h4>
-                    <h4 class="card-title" data-th-text="#{label.To}"></h4><button class="btn btn-primary text-center" type="button">OK</button></div>
-            </div>
-            <div class="card bg-secondary" style="margin: 10px; border-radius: 40px 10px;">
-                <div class="card-body">
-                    <h4 class="card-title" data-th-text="#{label.OrganizationName}"></h4>
-                    <h4 class="card-title" data-th-text="#{label.BonusSize}"></h4>
-                    <h4 class="card-title" data-th-text="#{label.BonusCode}"></h4>
-                    <h4 class="card-title" data-th-text="#{label.From}"></h4>
-                    <h4 class="card-title" data-th-text="#{label.To}"></h4><button class="btn btn-primary text-center" type="button">OK</button></div>
-            </div>
-            <div class="card bg-warning" style="margin: 10px; border-radius: 40px 10px;">
-                <div class="card-body">
-                    <h4 class="card-title" data-th-text="#{label.OrganizationName}"></h4>
-                    <h4 class="card-title" data-th-text="#{label.BonusSize}"></h4>
-                    <h4 class="card-title" data-th-text="#{label.BonusCode}"></h4>
-                    <h4 class="card-title" data-th-text="#{label.From}"></h4>
-                    <h4 class="card-title" data-th-text="#{label.To}"></h4><button class="btn btn-primary text-center" type="button">OK</button></div>
+                <h5 class="card-title" data-th-text="#{label.OrganizationName}"></h5>
+                <p class="card-text" data-th-text="#{label.BonusSize}"></p>
+                <p class="card-text" data-th-text="#{label.BonusCode}"></p>
+                <p class="card-text" data-th-text="#{label.From}"></p>
+                <p class="card-text" data-th-text="#{label.To}"></p>
+                <a href="#" class="btn btn-primary">Ok</a>
             </div>
         </div>
+
+            <div class="card" style="margin: 100px; margin-bottom: 50px;margin-top: 50px;border-radius: 10px 10px;">
+                <div class="card-body">
+                    <h5 class="card-title" data-th-text="#{label.OrganizationName}"></h5>
+                    <p class="card-text" data-th-text="#{label.BonusSize}"></p>
+                    <p class="card-text" data-th-text="#{label.BonusCode}"></p>
+                    <p class="card-text" data-th-text="#{label.From}"></p>
+                    <p class="card-text" data-th-text="#{label.To}"></p>
+                    <a href="#" class="btn btn-primary">Ok</a>
+                </div>
+            </div>
+
     </div>
     </div>
 </section>
