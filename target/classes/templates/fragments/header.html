@@ -26,10 +26,11 @@
                             <li><a th:href="@{/historyPage}" data-th-text="#{label.History}" ></a></li>
                             <li><a href="#" th:href="@{/notificationPage}" data-th-text="#{label.Notification}"></a></li>
                             <li><a th:href="@{/settings}" data-th-text="#{label.settings}"></a></li>
+                            <li><a th:href="@{/cabinet}" data-th-text="#{label.Cabinet}"></a></li>
                             <li class="nav-item">
                                 <div id="custom-search" class="top-search-bar">
                                     <form  th:action="@{/searchPage}"  method="get" class="form-inline my-2 my-lg-0">
-                                        <input class="form-control" type="text" name="search" data-th-text="#{label.Search1}" required placeholder="Search.."/>
+                                        <input class="form-control" type="text" name="search" required placeholder="Search.."/>
                                         <button class="btn btn-outline-danger my-2 my-sm-0" data-th-text="#{label.Search}" ></button>
                                     </form>
 
