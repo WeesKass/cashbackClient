@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html
+
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        layout:decorate="~{layout}"
+        xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/assets/libs/css/notificationStyle.css">
+    <title data-th-text="#{label.searchPage}" ></title>
+
+</head>
+<body>
+<section layout:fragment="content">
+    <div class=" blog-content">
+        <h3 class="text-center" style="margin-top: 42px;height: 65px; color: white" ><strong data-th-text="#{label.searchingResults}"></strong></h3>
+        <div th:value="${search}"></div>
+
+    </div>
+</section>
+</body>
+
+</html>
