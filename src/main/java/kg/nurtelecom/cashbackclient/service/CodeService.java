@@ -21,7 +21,6 @@ public class CodeService {
         String url = "http://157.245.219.46:4445/api/client/code/{id}";
         ClientPersonalCodeModel result = new ClientPersonalCodeModel();
 
-
         try {
             ObjectMapper mapper = new ObjectMapper();
             String json = restTemplate.getForObject(url, String.class, clientId);
