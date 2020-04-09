@@ -12,8 +12,8 @@
             <div class="header-warp">
                 <div class="header-bar-warp d-flex">
                     <!-- site logo -->
-                    <a href="https://o.kg/ru/o-kompanii/job/professional/java-developer/" class="site-logo">
-                        <img src="./assets/img/logo.png" alt="">
+                    <a  th:href="@{/}" class="site-logo">
+                        <img src="/assets/img/logo.png" alt="">
                     </a>
                     <nav class="top-nav-area w-100">
                         <!-- <div class="user-panel"> -->
@@ -26,7 +26,12 @@
                             <li><a th:href="@{/historyPage}" data-th-text="#{label.History}" ></a></li>
                             <li><a href="#" th:href="@{/notificationPage}" data-th-text="#{label.Notification}"></a></li>
 <!--                            <li><a th:href="@{/settings}" data-th-text="#{label.settings}"></a></li>-->
-                            <li><a th:href="@{/cabinet}" data-th-text="#{label.Cabinet}"></a></li>
+                            <li><a href="#" data-th-text="#{label.Cabinet}"></a>
+                                <ul class="sub-menu" style="background-color:transparent;">
+                                    <li><a href="#" class="btn btn-primary" th:href="@{/changePassword}"><strong data-th-text="#{label.ChangePassword}"></strong></a></li>
+                                    <li><a href="#" class="btn btn-primary text-center d-sm-flex justify-content-sm-center" style="margin-top: 10px" th:href="@{/settings}"><strong data-th-text="#{label.settings}"></strong></a></li>
+                                </ul>
+                            </li>
                             <li class="nav-item">
                                 <div id="custom-search" class="top-search-bar">
                                     <form  th:action="@{/searchPage}"  method="get" class="form-inline my-2 my-lg-0">

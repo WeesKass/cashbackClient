@@ -13,8 +13,8 @@
 <body>
 <section layout:fragment="content" class="shadow-lg p-3 mb-5">
     <div class="container">
-        <h1 class="lead-3" data-th-text="#{label.BalanceHistory}" ></h1>
-        <table class="table" >
+        <h1 class="lead-3" data-th-text="#{label.BalanceHistory}" style="color:white;"></h1>
+        <table class="table">
             <div class="section-title text-white">
             <thead class="thead-dark">
             <tr>
@@ -31,7 +31,7 @@
                 <th scope="row" th:text = "${history.getCreatedDate()}">12.12.12</th>
                 <td th:text = "${history.getOrganizationName()}">org name</td>
                 <td th:text = "${history.getBonusType()}">type</td>
-                <td th:text = "${history.getAmount()}">0.0</td>
+                <td th:text="${history.getOperationType() == 'DEBIT' ? '+' + history.getAmount() : '-' + history.getAmount()}">0.0</td>
             </tr>
             </tbody>
             </div>
