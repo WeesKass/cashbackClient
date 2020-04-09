@@ -1,20 +1,23 @@
 package kg.nurtelecom.cashbackclient.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.zxing.WriterException;
 import kg.nurtelecom.cashbackclient.model.ClientPersonalCodeModel;
-import kg.nurtelecom.cashbackclient.model.OrganizationModel;
-import kg.nurtelecom.cashbackclient.utils.GenerateQRCode;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.stereotype.Repository;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
-import java.util.*;
 
 @Service
 public class CodeService {
+
+    @Autowired
+    RequestTemplate requestTemplate;
+
 
     private final RestTemplate restTemplate;
 
@@ -23,25 +26,21 @@ public class CodeService {
     }
 
     public ClientPersonalCodeModel getCodeByClientId(Long clientId) {
-        String url = "http://localhost:8080/api/client/code/{id}";
-
+        String url = "http://localhost:4445/api/client/code/{id}";
         ClientPersonalCodeModel result = new ClientPersonalCodeModel();
-
-        ObjectMapper mapper = new ObjectMapper();
-        String json = restTemplate.getForObject(url, String.class, clientId);
-        System.out.println(json);
+        System.out.println(requestTemplate.getHeaders().toString());
+        HttpEntity<Object> entity = new HttpEntity<>(requestTemplate.getHeaders());
         try {
+            ObjectMapper mapper = new ObjectMapper();
+            ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, entity, String.class , requestTemplate.getClientId());
+            result = mapper.readValue(response.getBody(), ClientPersonalCodeModel.class);
+//            GenerateQRCode.generateQRCodeImage(result.getPersonalCode());
+//            result.setImageUrl("/assets/img/qr.png");
 
-            result = mapper.readValue(json, ClientPersonalCodeModel.class);
-            GenerateQRCode.generateQRCodeImage(result.getPersonalCode());
-            result.setImageUrl("/assets/img/qr.png");
-
-
-        } catch (WriterException e) {
-            System.out.println("Could not generate QR Code, WriterException :: " + e.getMessage());
         } catch (IOException e) {
-            System.out.println("Could not generate QR Code, IOException :: " + e.getMessage());
+            e.printStackTrace();
         }
+
         return result;
     }
 }

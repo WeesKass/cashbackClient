@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class HistoryController {
+
     @Autowired
     BalanceHistoryService balanceHistoryService;
 

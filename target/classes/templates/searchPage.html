@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.w3.fil/1999/xhtml" xmlns:th="http://www.w3.fil/1999/xhtml"
-      layout:decorate="~{layout}">
+<html
+
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        layout:decorate="~{layout}"
+        xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Search page</title>
-    <link rel="stylesheet" href="/assets/libs/css/settingsStyle.css">
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/assets/libs/css/notificationStyle.css">
+    <title data-th-text="#{label.searchPage}" ></title>
 
 </head>
-
 <body>
 <section layout:fragment="content">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-9 col-lg-8 col-md-7">
-                <div class="section-title text-white">
-                    <br><h2>Searching results</h2>
-                    <div class="align-items-center" th:if="${isEmpty}">
-                        <h3 th:text="${searchResult  + ' Not Found' }" class="m-l-10 text-danger text-bold">Not Found</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class=" blog-content">
+        <h3 class="text-center" style="margin-top: 42px;height: 65px; color: white" ><strong data-th-text="#{label.searchingResults}"></strong></h3>
+        <div th:value="${search}"></div>
+
     </div>
 </section>
 </body>
+
 </html>

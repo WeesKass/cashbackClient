@@ -16,10 +16,12 @@ import java.io.Serializable;
 public class OrganizationModel {
 
     private Long id;
-    private String imageUrl;
+    private String image;
     private Boolean status;
     private String name;
     private Long categoryId;
     private String categoryName;
     private String description;
+
+
 }

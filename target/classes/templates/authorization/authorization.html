@@ -22,26 +22,32 @@
 
             </div>
             <div class="blmd-continer">
-                <form action="post" class="clearfix" id="login-form">
+                <div th:if="${param.error}" class="font-bold text-danger">
+                    Неправильный логин или пароль
+                </div>
+                <div th:if="${param.logout}">
+                    Вы вышли из системы
+                </div>
+                <form th:action="@{/login/}" th:object="${user}" modelAttribute="customer" method="post" class="clearfix" >
                     <h1>Login Page</h1>
                     <div class="col-md-12">
 
                         <div class="input-group blmd-form">
                             <div class="blmd-line">
-                                <input type="text" name="username" autocomplete="off" id="username" class="form-control">
+                                <input type="text" th:field="*{username}" class="form-control">
                                 <label class="blmd-label">Email or Username</label>
                             </div>
                         </div>
                         <div class="input-group blmd-form">
                             <div class="blmd-line">
-                                <input type="password" name="password" autocomplete="off" id="password" class="form-control">
+                                <input type="password" th:field="*{password}" autocomplete="off" class="form-control">
                                 <label class="blmd-label">Password</label>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-12 text-center">
-                        <a type="button" class="btn btn-blmd ripple-effect btn-success btn-lg btn-block" th:href="@{layout}">Login</a>
-
+<!--                        <a type="button" class="btn btn-blmd ripple-effect btn-success btn-lg btn-block" th:href="@{layout}">Login</a>-->
+                        <button type="submit" class="btn btn-blmd ripple-effect btn-success btn-lg btn-block">Save</button>
                     </div>
 
                     <div class="col-sm-12 text-right pt-2" style='padding-top: 20px'>

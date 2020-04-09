@@ -12,7 +12,6 @@ import lombok.Setter;
 public class ClientPersonalCodeModel {
 
     private Long id;
-    private String imageUrl;
     private String personalCode;
 
 }

@@ -2,7 +2,11 @@ package kg.nurtelecom.cashbackclient.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kg.nurtelecom.cashbackclient.model.OrganizationModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -12,6 +16,8 @@ import java.util.*;
 @Service
 public class ClientOrgSubscribesService {
 
+    @Autowired
+    private RequestTemplate requestTemplate;
 
     private final RestTemplate restTemplate;
 
@@ -20,17 +26,16 @@ public class ClientOrgSubscribesService {
     }
 
     public Map<String, List<OrganizationModel>> getAllSubscribes(Long id){
-        String url = "http://localhost:8080/api/organization/list/{id}";
+        String url = "http://localhost:4445/api/organization/list/{id}";
 
         ObjectMapper mapper = new ObjectMapper();
-        String json =  restTemplate.getForObject(url, String.class, 1);
-        System.out.println(json);
+        ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(requestTemplate.getHeaders()), String.class , requestTemplate.getClientId());
+        System.out.println(response);
         Map<String,List<OrganizationModel>> result = new HashMap<>();
 
         try {
 
-            List<OrganizationModel> list2 = Arrays.asList(mapper.readValue(json, OrganizationModel[].class));
-
+            OrganizationModel[] list2 = mapper.readValue(response.getBody(), OrganizationModel[].class);
 
             for (OrganizationModel org : list2 ){
                 if (!result.containsKey(org.getCategoryName())) {

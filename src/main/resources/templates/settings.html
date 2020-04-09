@@ -1,50 +1,58 @@
 <!DOCTYPE html>
-<html html xmlns:layout="http://www.w3.fil/1999/xhtml" xmlns:th="http://www.w3.fil/1999/xhtml"
-      layout:decorate="~{layout}">
+<html
+
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        layout:decorate="~{layout}"
+        xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
 
     <meta charset="UTF-8">
-    <title>Settings Page</title>
+    <title data-th-text="#{label.SettingsPage}" ></title>
     <link rel="stylesheet" href="/assets/libs/css/settingsStyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 
         <section layout:fragment="content">
+            <div class="card-group flex-column align-items-center">
 
-            <!--div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12"-->
-                <div class="card-body">
+                <div class="card-body text-center" style="width:300px;">
                     <!--  Table header and 'Create' Button  -->
-                    <div class="card-header">
+                    <div class="card-header bg-danger" style="border-radius: 5px">
                         <div class="row">
                             <div class="col-md-10">
-                                <div class="col-xl-9 col-lg-8 col-md-7">
-                                <div class="section-title text-white">
-                                <h2 class="w-75 p-3">Settings</h2>
 
+                                <div class="section-title text-magenta">
+                                <h2 class="w-75 p-3"data-th-text="#{label.settings}"></h2>
 
                                 <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Languages
+                                    <button  data-th-text="#{label.Languages}" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Rus</a>
-                                        <a class="dropdown-item" href="#">Kg</a>
+                                        <a class="dropdown-item" href="?lang=en" data-th-text="#{label.lang.en}"></a>
+                                        <a class="dropdown-item" href="?lang=ru" data-th-text="#{label.lang.ru}"></a>
                                     </div>
                                 </div>
+
                                 <hr class="style1"></hr>
-                                <h4 class="w-75 p-3">Notification</h4>
+                                <h4 class="w-75 p-3" data-th-text="#{label.Notification}"></h4>
 
                                 <!-- Default switch -->
 
                                 <div class="content">
-                                    <div> Начисление/Списание баллов</div>
+                                    <div data-th-text="#{label.AccrualDeductionOfPoints}"> Начисление/Списание баллов</div>
                                     <label class="switch" >
                                         <input type="checkbox">
                                         <span class="slider round"></span>
                                     </label>
                                 </div>
 
-                                <button  id="myBtn" type="button" class="btn btn-danger">Уведомления от компаний</button>
+                                <button data-th-text="#{label.NotificationsFromCompanies}" id="myBtn" type="button" class="btn btn-warning"></button>
                                 <!-- The Modal -->
                                 <div id="myModal" class="modal">
                                     <!-- Modal content -->
@@ -66,7 +74,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
                 </div>
             </div>
 
