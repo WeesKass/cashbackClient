@@ -14,6 +14,6 @@ public class NotificationPageController {
 
     @GetMapping(value = "/notificationPage")
     public String notificationPage(Model model) {
-        model.addAttribute("notifications", notificationService.getNotificationByClientId(1L));
+        model.addAttribute("notifications", notificationService.getNotifications());
         return "notificationPage";}
 }

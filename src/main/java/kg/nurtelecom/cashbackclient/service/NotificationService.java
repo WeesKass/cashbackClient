@@ -1,7 +1,7 @@
 package kg.nurtelecom.cashbackclient.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kg.nurtelecom.cashbackclient.model.HistoryModel;
+import kg.nurtelecom.cashbackclient.model.EventFullModel;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -20,15 +20,15 @@ public class NotificationService {
         restTemplate = restTemplateBuilder.build();
     }
 
-    public List<HistoryModel> getNotificationByClientId(Long clientId) {
-        String url = "http://localhost:8080/api/balanceHistory/client/{id}";
+    public List<EventFullModel> getNotifications() {
+        String url = "http://localhost:8080/api/event/all";
 
         ObjectMapper mapper = new ObjectMapper();
-        String json = restTemplate.getForObject(url, String.class, clientId);
-        List<HistoryModel> result = new ArrayList<>();
+        String json = restTemplate.getForObject(url, String.class);
+        List<EventFullModel> result = new ArrayList<>();
 
         try {
-            result = Arrays.asList(mapper.readValue(json, HistoryModel[].class));
+            result = Arrays.asList(mapper.readValue(json, EventFullModel[].class));
         } catch (IOException e) {
             e.printStackTrace();
         }
