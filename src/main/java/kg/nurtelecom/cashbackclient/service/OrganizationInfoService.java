@@ -28,7 +28,7 @@ public class OrganizationInfoService {
         String url = "http://localhost:4445/api/organization/info/{id}";
 
         ObjectMapper mapper = new ObjectMapper();
-        ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(requestTemplate.getHeaders()), String.class , requestTemplate.getClientId());
+        ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(requestTemplate.getHeaders()), String.class, id);
         System.out.println(response);
         OrganizationFullModel orgFull = new OrganizationFullModel();
         try {

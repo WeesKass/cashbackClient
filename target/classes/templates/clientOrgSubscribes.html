@@ -5,32 +5,42 @@
       layout:decorate="~{layout}"
       xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
+    <style>
+        .card{
+            float: left;
+            width: 360px;
+            min-height: auto;
+            border-radius: 5px;
+            background: #adb5bd;
+            margin: 18px 18px 0 0;
+        }
+    </style>
     <title data-th-text="#{label.OrganizationsCategoryList}"></title>
 </head>
 <body>
 <section layout:fragment="content" class="my-3 p-3 rounded shadow-sm" th:each="key : ${categoryOrganizationList.keySet()}">
-    <div class="section-title text-white">
-    <h6 class="pb-2 mb-0" th:text="${key}" ></h6>
-    <div class="card-body">
-        <div class="row" th:each="org : ${categoryOrganizationList.get(key)}">
-            <div class="col-md-auto">
-                <img th:src="${org.getImage()}" src="assets/img/organizationDefault.png" alt="organizationDefault" width="45" >
-            </div>
-            <div class="col-md-auto">
-                <div class="d-flex justify-content-between align-items-center w-100">
-                    <strong class="text-gray-dark" th:text="${org.getName()}" ></strong>
+    <div class="card">
+        <h6 class="pb-2 mb-0 text-center" STYLE="margin-left: 10px; margin-top: 10px" th:text="${key}" ></h6>
+        <div class="card-body">
+            <div class="row" th:each="org : ${categoryOrganizationList.get(key)}">
+                <div class="col-md-auto">
+                                    <img th:src="${org.getImage()}" src="assets/img/organizationDefault.png" alt="organizationDefault" width="45" >
                 </div>
-                <p class="d-block" th:text="${org.getDescription()}"  ></p>
-<!--                <span class="d-block" th:text="${org.getAmountOfBonus()}">amount of bonus</span>-->
-            </div>
-            <div class="col-md-auto">
-                <a href="#" th:href="@{'/orgInfo/'+${org.getId()}}" data-th-text="#{label.Info}"></a>
+                <div class="col-md-auto">
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <strong class="text-gray-dark" th:text="${org.getName()}"></strong>
+                    </div>
+                    <p class="d-block" th:text="${org.getDescription()}"  ></p>
+                    <!--                <span class="d-block" th:text="${org.getAmountOfBonus()}">amount of bonus</span>-->
+                </div>
+                <div class="col-md-auto">
+                    <a href="#" th:href="@{'/orgInfo/'+${org.getId()}}" data-th-text="#{label.Info}"></a>
+                </div>
             </div>
         </div>
-    </div>
-    <small class="d-block text-right mt-3">
-<!--        <a th:href="@{'/organizationByCategoryId/'+${categoryOrganizationList.get(0).getCategoryId()}}">All suggestions</a>-->
-    </small>
+        <small class="d-block text-right mt-3">
+            <!--        <a th:href="@{'/organizationByCategoryId/'+${categoryOrganizationList.get(0).getCategoryId()}}">All suggestions</a>-->
+        </small>
     </div>
 </section>
 </body>

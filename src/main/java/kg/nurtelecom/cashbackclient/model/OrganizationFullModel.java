@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
 public class OrganizationFullModel{
 
     private Long id;
-    private String imageUrl;
+    private String image;
     private Boolean status;
     private String name;
     private Long categoryId;

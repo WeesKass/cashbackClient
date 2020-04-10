@@ -28,11 +28,11 @@ public class ClientOrgSubscribesService {
     public Map<String, List<OrganizationModel>> getAllSubscribes(Long id){
         String url = "http://localhost:4445/api/organization/list/{id}";
 
+
         ObjectMapper mapper = new ObjectMapper();
         ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(requestTemplate.getHeaders()), String.class , requestTemplate.getClientId());
         System.out.println(response);
         Map<String,List<OrganizationModel>> result = new HashMap<>();
-
         try {
 
             OrganizationModel[] list2 = mapper.readValue(response.getBody(), OrganizationModel[].class);
@@ -46,7 +46,6 @@ public class ClientOrgSubscribesService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return result;
     }
 

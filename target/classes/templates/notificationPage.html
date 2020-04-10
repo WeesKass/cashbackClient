@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout}"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <title data-th-text="#{label.Notification}"> </title>
+    <link rel="stylesheet" href="/assets/libs/css/notificationStyle.css">
+
+</head>
+
+<body>
+<section layout:fragment="content">
+
+    <div>
+        <h3 class="text-center" style="margin-top: 42px;" data-th-text="#{label.Notification}"></h3>
+    </div>
+    <div class="container">
+        <div class="card-group flex-column align-items-center" th:each = "notification : ${notifications}">
+
+        <div class="card" style="margin: 100px; margin-bottom: 50px; margin-top: 50px; border-radius: 10px 10px;">
+            <div class="card-body">
+                <div class="card-title row" style="margin-left: 20px">
+<!--                    <h5  style="width: 250px"  data-th-text ="#{label.OrganizationName} "></h5>-->
+                    <h5 class="text-center" data-th-text ="${notification.getName()}" style="margin-right: 20px"></h5>
+                </div>
+                <div class="card-text row " style="margin-left: 20px">
+<!--                    <h5  style="width: 250px" data-th-text ="#{label.BonusSize}"></h5>-->
+                    <h5   data-th-text ="${notification.getDescription()}" style="margin-right: 20px"></h5>
+                </div>
+                <div class="card-text row" style="margin-left: 20px">
+                    <h5  style="width: 250px" data-th-text ="#{label.From}"></h5>
+                    <h5  data-th-text ="${notification.getDateFrom()}" style="margin-left: 20px;margin-right: 20px"></h5>
+                </div>
+                <div class="card-text row" style="margin-left: 20px">
+                    <h5  style="width: 250px" data-th-text ="#{label.To}"></h5>
+                    <h5  data-th-text ="${notification.getDateTo()}" style="margin-left: 20px;margin-right: 20px"></h5>
+                </div>
+<!--                <a style="margin-left: 20px" href="#" class="btn btn-primary"><strong data-th-text="Ok"></strong></a>-->
+            </div>
+        </div>
+
+    </div>
+    </div>
+</section>
+
+</body>
+</html>
