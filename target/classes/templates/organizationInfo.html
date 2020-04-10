@@ -1,0 +1,94 @@
+<!doctype html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        layout:decorate="~{layout}"
+        xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        .card {
+            float: left;
+            width: auto;
+            height: auto;
+            border-radius: 5px;
+            background: #adb5bd;
+            margin: 18px 18px 10px 10px;
+        }
+    </style>
+    <title th:text="#{label.OrganizationsInfo}"></title>
+</head>
+<body>
+<section layout:fragment="content" class="shadow-lg p-3 mb-5 ">
+    <div class="container">
+        <h1 class="lead-3" style="color:white;" th:text="${organizationInfo.getName()}" ></h1>
+        <div class="row">
+            <div class="col-sm-auto">
+                <img th:src="${organizationInfo.getImage()}" alt="Organization Image" width="256" height="256"
+                     class="img-thumbnail">
+
+            </div>
+            <div class= "col-sm">
+                <p class="lead" style="color:white;" th:text="${organizationInfo.getCategoryName()}" >.</p>
+            </div>
+            <div class="col-sm">
+                <div class="col-md-auto">
+                    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                        <ul class="list-group list-group-flush" th:each="filial : ${organizationInfo.getFilialShortModels()}">
+                            <li class="list-group-item">
+                                <p class="mb-1" th:text="${filial.getName()}" ></p>
+                                <span class="badge badge-primary badge-pill" th:text="${filial.getAverageRate()}">0</span>
+                                <p class="mb-1" th:text="${filial.getAddress()}" ></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <p class="lead" th:text="${organizationInfo.getDescription()}" ></p>
+        </div>
+        <div class="content-container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h5 class="card-header" data-th-text="#{label.Bonuses}" ></h5>
+                        <div th:each="bonus : ${organizationInfo.getBonusShortModels()}">
+                            <div class="card-body">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title" th:text="${bonus.getOrgBonusType()}" ></h5>
+                                        <p class="card-text"
+                                           th:text="|${bonus.getValidFrom()} - ${bonus.getValidTo()}|"></p>
+                                        <p class="card-text" th:text="|Remained: ${bonus.getValidity()}|"></p>
+                                        <!--                                        <a th:href="@{'/bonusInfo/'+${bonus.getId()}}" class="btn btn-primary">Info</a>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <h5 class="card-header" data-th-text="#{label.Events}"></h5>
+                        <div th:each="event : ${organizationInfo.getEventModels()}">
+                            <div class="card-body">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title" th:text="${event.getDescription()}" data-th-text="#{label.BonusType}"></h5>
+                                        <p class="card-text"
+                                           th:text="|${event.getDateFrom()} - ${event.getDateTo()}|"></p>
+                                        <!--                                        <a th:href="@{'/eventInfo/'+${event.getId()}}" class="btn btn-primary">Info</a>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+

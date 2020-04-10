@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout}"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <title data-th-text="#{label.Code}" ></title>
+</head>
+
+<body style="background-position: bottom;">
+
+<section layout:fragment="content">
+
+    <div>
+        <h1 class="text-center"><strong data-th-text="#{label.ClientCode}" style="color:white;"></strong></h1>
+        <br>
+        <div class="container" style="text-align:center;">
+            <img th:src="@{'https://api.qrserver.com/v1/create-qr-code/?size=350x350&data=' + ${code.getPersonalCode()}}" alt="QR Code" width="300" height="300" >
+            <h5 class="card-title" style="color:white;" th:text = "${code.getPersonalCode()}">000 000</h5>
+        </div>
+        <button class="btn btn-primary d-flex d-sm-flex d-md-flex justify-content-center mx-auto justify-content-sm-center mx-sm-auto justify-content-md-center mx-md-auto mx-lg-auto mx-xl-auto bg-danger"
+                type="button"
+                style="width: 207px;margin-top: 18px;">
+            <a class="nav-link" href="#" th:href="@{/clientPromoCodePage}" data-th-text="#{label.inputPromoCode}"></a>
+        </button>
+    </div>
+</section>
+</body>
+
+</html>
+

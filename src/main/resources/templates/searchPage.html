@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html
+
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        layout:decorate="~{layout}"
+        xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/assets/libs/css/notificationStyle.css">
+    <title data-th-text="#{label.searchPage}" ></title>
+
+</head>
+<body>
+<section layout:fragment="content">
+    <div class=" blog-content">
+        <h3 class="text-center" style="margin-top: 42px;height: 65px; color: white" ><strong data-th-text="#{label.searchingResults}"></strong></h3>
+    </div>
+
+    <div class="container">
+
+        <div class="card-group flex-column align-items-center" th:each = "searchResults : ${search}">
+
+            <div class="card" style="margin: 100px; margin-bottom: 50px; margin-top: 50px; border-radius: 10px 10px;">
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="bg-light">
+                        <tr class="border-0">
+<!--                            <th class="border-0" data-th-text="#{label.Image}"></th>-->
+                            <th class="border-0" data-th-text="#{label.Status}"></th>
+                            <th class="border-0" data-th-text="#{label.OrganizationName}"></th>
+                            <th class="border-0" data-th-text="#{label.CategoryName}"></th>
+                            <th class="border-0" data-th-text="#{label.description}"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+<!--                        <tr class="align-items-center" th:if="${isEmpty}">-->
+<!--                            <h3 th:text="${ searchResult  + ' ' + #{label.not_found} }" class="m-l-10 text-danger text-bold"></h3>-->
+<!--                        </tr>-->
+
+                        <!--looping through organizations list-->
+                        <tr>
+<!--                            <td>-->
+<!--                                <div class="m-r-10"><img th:src="assets/img/organizationDefault.png" alt="org" class="rounded" width="45"></div>-->
+
+<!--                            </td>-->
+                            <td th:text="${searchResults.getStatus()} ? 'active' : 'not'"></td>
+                            <td th:text="${searchResults.getName()}">Organization Name</td>
+                            <td th:text="${searchResults.getCategoryName()}">Category Name</td>
+                            <td><a th:href="${searchResults.getDescription()}">Description</a></td>
+                        </tr>
+                        <!--    end of looping     -->
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</section>
+</body>
+
+</html>

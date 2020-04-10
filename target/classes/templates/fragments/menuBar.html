@@ -1,0 +1,48 @@
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<!-- ============================================================== -->
+<!-- left sidebar -->
+<!-- ============================================================== -->
+<div class="nav-left-sidebar sidebar-dark" th:fragment="menuBar">
+    <div class="menu-list">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav flex-column">
+                    <li class="nav-divider">
+                        Menu
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#" th:href="@{/codePage}">Code</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" th:href="@{/subscribes}">Subscribes</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" th:href="@{/historyPage}">History</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#" th:href="@{/notificationPage}">Notification</a>
+                    </li>
+<!--                    <li class="nav-item ">-->
+<!--                        <a  class="nav-link" th:href="@{/settings}">Settings</a>-->
+<!--                    </li>-->
+                    <li class="nav-item ">
+<!--                        <a  class="nav-link" th:href="@{/cabinet}">Cabinet</a>-->
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- end left sidebar -->
+<!-- ============================================================== -->
+</html>
