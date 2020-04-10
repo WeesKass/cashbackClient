@@ -22,7 +22,7 @@ public class AuthService {
     }
 
     public boolean login (AuthModel model){
-        String url = "http://localhost:4445/api/authenticate";
+        String url = "http://157.245.219.46:4445/api/authenticate";
         try {
             ResponseEntity<JwtResponse> result = restTemplate.postForEntity(url, model, JwtResponse.class);
             if (result.getStatusCode() == HttpStatus.ACCEPTED) {

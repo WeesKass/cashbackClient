@@ -21,7 +21,7 @@ public class NotificationService {
     }
 
     public List<EventFullModel> getNotifications() {
-        String url = "http://localhost:8080/api/event/all";
+        String url = "http://localhost:4445/api/event/all";
 
         ObjectMapper mapper = new ObjectMapper();
         String json = restTemplate.getForObject(url, String.class);

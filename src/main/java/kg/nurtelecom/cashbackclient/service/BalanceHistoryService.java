@@ -28,7 +28,7 @@ public class BalanceHistoryService {
     }
 
     public List<HistoryModel> getAllHistory(Long id){
-        String url = "http://localhost:4445/api/balanceHistory/client/{id}";
+        String url = "http://157.245.219.46:4445/api/balanceHistory/client/{id}";
         System.out.println(requestTemplate.getHeaders().toString());
         ObjectMapper mapper = new ObjectMapper();
         ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(requestTemplate.getHeaders()), String.class , requestTemplate.getClientId());
