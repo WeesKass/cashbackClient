@@ -2,7 +2,7 @@ package kg.nurtelecom.cashbackclient.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kg.nurtelecom.cashbackclient.model.HistoryModel;
-import org.springframework.beans.factory.annotation.Autowired;
+import kg.nurtelecom.cashbackclient.utils.ContextHolder;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -18,20 +18,20 @@ import java.util.List;
 @Service
 public class BalanceHistoryService {
 
-    @Autowired
-    private RequestTemplate requestTemplate;
+    private ContextHolder contextHolder;
 
     private final RestTemplate restTemplate;
 
     BalanceHistoryService (RestTemplateBuilder restTemplateBuilder) {
         restTemplate = restTemplateBuilder.build();
+        contextHolder = ContextHolder.getInstance();
     }
 
     public List<HistoryModel> getAllHistory(Long id){
-        String url = "http://157.245.219.46:4445/api/balanceHistory/client/{id}";
-        System.out.println(requestTemplate.getHeaders().toString());
+        String url = "http://localhost:4445/api/balanceHistory/client/{id}";
+        System.out.println(contextHolder.getHeaders().toString());
         ObjectMapper mapper = new ObjectMapper();
-        ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(requestTemplate.getHeaders()), String.class , requestTemplate.getClientId());
+        ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class , contextHolder.getClientId());
         System.out.println(response);
         List<HistoryModel> result = new ArrayList<>();
 

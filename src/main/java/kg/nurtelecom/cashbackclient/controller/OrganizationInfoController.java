@@ -15,7 +15,7 @@ public class OrganizationInfoController {
 
     @GetMapping(value = "/orgInfo/{id}")
     public String clientOrgSubscribes(@PathVariable("id")Long id, Model model) {
-        model.addAttribute("organizationInfo", organizationInfoService.getOrganizationInfo(id));
+//        model.addAttribute("organizationInfo", organizationInfoService.getOrganizationInfo(id));
         return "organizationInfo";
     }
 

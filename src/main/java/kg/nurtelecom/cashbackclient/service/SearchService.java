@@ -20,7 +20,7 @@ public class SearchService {
     }
 
     public List<OrganizationModel> findByName(String name){
-        String url = "http://157.245.219.46:4445/api/organization/list/search?search=" + name;
+        String url = "http://localhost:4445/api/organization/list/search?search=" + name;
 
         ObjectMapper mapper = new ObjectMapper();
         String json =  restTemplate.getForObject(url, String.class,1);

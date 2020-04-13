@@ -19,8 +19,8 @@ public class ClientOrgSubscribesController {
     public String clientOrgSubscribes(Model model) {
 
         Map<String, List<OrganizationModel>> result;
-        result = subscribesService.getAllSubscribes(1L);
-        model.addAttribute("categoryOrganizationList", result);
+//        result = subscribesService.getAllSubscribes(1L);
+//        model.addAttribute("categoryOrganizationList", result);
         return "clientOrgSubscribes";
     }
 }

@@ -10,7 +10,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClientPersonalCodeModel {
-
     private Long id;
     private String personalCode;
 

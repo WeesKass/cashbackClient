@@ -12,9 +12,10 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BonusShortModel {
-    Long id;
-    String orgBonusType;
-    Date validFrom;
-    Date validTo;
-    Integer validity;
+    private Long id;
+    private Date validFrom;
+    private Date validTo;
+    private Integer validity;
+    private Date createdDate;
+    private String orgBonusType;
 }

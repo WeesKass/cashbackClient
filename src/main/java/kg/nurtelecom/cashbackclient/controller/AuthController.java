@@ -2,7 +2,7 @@ package kg.nurtelecom.cashbackclient.controller;
 
 import kg.nurtelecom.cashbackclient.model.AuthModel;
 import kg.nurtelecom.cashbackclient.service.AuthService;
-import kg.nurtelecom.cashbackclient.service.RequestTemplate;
+import kg.nurtelecom.cashbackclient.utils.ContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,18 +16,17 @@ public class AuthController {
 
     @Autowired
     private AuthService authService;
-    @Autowired
-    private RequestTemplate requestTemplate;
+    private ContextHolder contextHolder = ContextHolder.getInstance();
 
 
     @GetMapping(value = "/login")
     public String authPage(Model model){
-        if (requestTemplate.getHeaders().get("Authorization") == null){
-            model.addAttribute("user", new AuthModel());
-            return "authorization/authorization";
-        } else {
+//        if (contextHolder.getHeaders().get("Authorization") == null){
+//            model.addAttribute("user", new AuthModel());
+//            return "authorization/authorization";
+//        } else {
             return "redirect:/";
-        }
+//        }
 
 
     }

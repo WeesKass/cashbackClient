@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout}"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <title data-th-text="#{label.home.title}"></title>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card bg-light mb-3">
+                <div class="card-header">
+                    Bonuses
+                </div>
+                <div class="card-body">
+                    <div th:each="bonus : ${bonuses.getContent()}" class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Organization 4</h5>
+                            <p class="card-text" th:text="${bonus.getOrgBonusType()}">Welcome</p>
+                            <p class="card-text" th:text=" 'Remaining:' + ${bonus.getValidity()}"></p>
+                            <a href="#" class="btn btn-outline-secondary">info</a>
+                        </div>
+                    </div>
+                    <nav>
+                        <ul class="pagination">
+                            <li th:if="not${bonuses.getFirst()}" class="page-item">
+                                <a class="page-link"
+                                   th:href="@{/bonus/list(page=${bonuses.getNumber()-1})}"
+                                   tabindex="-1"><</a>
+                            </li>
+                            <th:block
+                                    th:each="i: ${#numbers.sequence(0, bonuses.getTotalPages() - 1)}">
+                                <li class="page-item active" th:if="${bonuses.getNumber() == i}">
+                                    <span class="page-link">[[${i}+1]]</span>
+                                </li>
+                                <li th:unless="${bonuses.getNumber() == i}">
+                                    <a class="page-link"
+                                       th:href="@{/bonus/list(page=${i})}">[[${i}+1]]</a>
+                                </li>
+                            </th:block>
+                            <li class="page-item" th:if="not${bonuses.getLast()}">
+                                <a class="page-link"
+                                   th:href="@{/bonus/list(page=${bonuses.getNumber()+1})}">></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="card bg-light mb-3">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <p class="card-title">Events</p>
+                        </div>
+                        <div class="col-lg-2 ml-auto">
+                            <ul class="pagination">
+                                <li th:if="not${events.getFirst()}" class="page-item">
+                                    <a class="page-link"
+                                       th:href="@{/event/list(page=${events.getNumber()-1})}"
+                                       tabindex="-1"><</a>
+                                </li>
+                                <th:block
+                                        th:each="i: ${#numbers.sequence(0, events.getTotalPages() - 1)}">
+                                    <li class="page-item active" th:if="${events.getNumber() == i}">
+                                        <span class="page-link">[[${i}+1]]</span>
+                                    </li>
+                                    <li th:unless="${events.getNumber() == i}">
+                                        <a class="page-link"
+                                           th:href="@{/event/list(page=${i})}">[[${i}+1]]</a>
+                                    </li>
+                                </th:block>
+                                <li class="page-item" th:if="not${events.getLast()}">
+                                    <a class="page-link"
+                                       th:href="@{/event/list(page=${events.getNumber()+1})}">></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div th:each="event : ${events.getContent()}" class="col-lg-5">
+                            <div class="card bg-light"
+                                 style="max-width: 500px; max-height: 300px;">
+                                <img src="assets/img/bonusDefault1.png" width="500px" height="300px"
+                                     class="card-img-top"
+                                     alt="...">
+                                <div class="card-body row">
+                                    <div class="col-lg-10">
+                                        <h5 th:text="${event.getName()}" class="card-title">Events Name</h5>
+                                        <p th:text="${event.getDescription()}" class="card-text">Events DESCRIPTION</p>
+                                    </div>
+                                    <a href="#" class="btn btn-outline-secondary col-lg-2 ml-auto">info</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section id="search-section">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="nav navbar-light bg-light">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-3 d-flex justify-content-center">
+                                        <nav class="nav nav-left">
+                                            <ul class="pagination">
+                                                <li th:if="not${orgList.getFirst()}" class="page-item">
+                                                    <a class="page-link"
+                                                       th:href="@{/org/list(search=${value},page=${orgList.getNumber()-1})}"
+                                                       tabindex="-1"><</a>
+                                                </li>
+                                                <th:block
+                                                        th:each="i: ${#numbers.sequence(0, orgList.getTotalPages() - 1)}">
+                                                    <li class="page-item active" th:if="${orgList.getNumber() == i}">
+                                                        <span class="page-link">[[${i}+1]]</span>
+                                                    </li>
+                                                    <li th:unless="${orgList.getNumber() == i}">
+                                                        <a class="page-link"
+                                                           th:href="@{/org/list(search=${value},page=${i})}">[[${i}+1]]</a>
+                                                    </li>
+                                                </th:block>
+                                                <li class="page-item" th:if="not${orgList.getLast()}">
+                                                    <a class="page-link"
+                                                       th:href="@{/org/list(search=${value},page=${orgList.getNumber()+1})}">></a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <div class="col-lg-5 ml-auto d-flex justify-content-center">
+                                        <nav class="nav nav-right">
+                                            <div class="row">
+                                                <form th:action="@{/list(search=${value})}" method="get"
+                                                      class="form-inline my-2 my-lg-0">
+                                                    <input th:value="${value}" class="form-control mr-sm-2" type="text"
+                                                           name="search" id="search"
+                                                           placeholder="Search"
+                                                           style="min-width: 300px;">
+                                                    <button class="btn btn-outline-secondary my-2 my-sm-0"
+                                                            type="submit">
+                                                        Search
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">
+                                    <div th:if="${orgList.getLast()}" th:text="${orgList.getTotalElements() + '/' + orgList.getTotalElements()}"></div>
+                                    <div th:unless="${orgList.getLast()}" th:text="${orgList.getSize()*(orgList.getNumber()+1)} + '/' + ${orgList.getTotalElements()}"></div>
+                                </th> <!-- -->
+                                <th scope="col">Organization Name</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="org : ${orgList.getContent()}">
+                                <th scope="row"><img th:src="${org.getImage()}" width="64" height="64" alt="default">
+                                </th><!---->
+                                <td th:text="${org.getName()}"></td>
+                                <td th:text="${org.getCategoryName()}"></td><!---->
+                                <td th:text="${org.getDescription()}"></td><!---->
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
