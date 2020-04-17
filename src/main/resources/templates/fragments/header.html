@@ -21,9 +21,17 @@
                 </div>
                 <div class="col-lg-3 ml-auto d-flex justify-content-center">
                     <nav class="nav nav-right">
-                        <a class="nav-link" href="#"><i class="fa fa-bell" style="font-size:24px"><span
-                                class="badge badge-light">4</span></i></a>
-                        <a class="nav-link" href="#"><i class="fa fa-map-marker-alt" style="font-size:24px"></i></a>
+
+                        <a class="notification-trigger" href="#">
+                            <i class="fa fa-bell" style="font-size:24px">
+                                <span class="badge badge-light">4</span>
+                            </i>
+                        </a>
+
+                        <a class="nav-link" href="#">
+                            <i class="fa fa-map-marker-alt" style="font-size:24px"></i>
+                        </a>
+
                         <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdownLangMenu" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -50,6 +58,7 @@
                 </div>
             </div>
         </div>
+
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
@@ -76,6 +85,16 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="panel" style="overflow-y: scroll; height:100%;">
+            <div class="title">Notifications</div>
+
+            <ul class="notification-bar">
+                <li >
+                    <div style="margin-top: 20px">Test notification</div>
+                </li>
+            </ul>
         </div>
     </div>
 </hmtl>
