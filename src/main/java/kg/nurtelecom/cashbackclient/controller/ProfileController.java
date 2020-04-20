@@ -1,8 +1,6 @@
 package kg.nurtelecom.cashbackclient.controller;
 
-import kg.nurtelecom.cashbackclient.model.ClientChangeModel;
-import kg.nurtelecom.cashbackclient.model.ClientModel;
-import kg.nurtelecom.cashbackclient.model.DeviceChangeModel;
+import kg.nurtelecom.cashbackclient.model.*;
 import kg.nurtelecom.cashbackclient.service.CodeService;
 import kg.nurtelecom.cashbackclient.service.ProfileService;
 import kg.nurtelecom.cashbackclient.utils.ContextHolder;
@@ -12,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ProfileController {
@@ -23,20 +22,23 @@ public class ProfileController {
 
     private ContextHolder contextHolder = ContextHolder.getInstance();
 
-    @GetMapping(value = "/p")
+    @GetMapping(value = "/profile")
     public String main(Model model) {
 //        if (contextHolder.getHeaders().get("Authorization") == null) {
 //            return "redirect:/login";
 //        }
+        ProfileModel profileModel = profileService.getClientById(contextHolder.getClientId());
         model.addAttribute("device", new DeviceChangeModel());
+        model.addAttribute("phone", new PhoneChangeModel());
         model.addAttribute("code", codeService.getCodeByClientId());
-        model.addAttribute("client", profileService.getClientById(contextHolder.getClientId()));
+        model.addAttribute("client", profileModel.getClient());
+        model.addAttribute("profile", profileModel);
 
 
         return "profile";
     }
 
-    @PostMapping(value = "/p")
+    @PostMapping(value = "/profile")
     public String update(@ModelAttribute ClientModel clientModel) {
 //        if (contextHolder.getHeaders().get("Authorization") == null) {
 //            return "redirect:/login";
@@ -44,23 +46,38 @@ public class ProfileController {
         ClientChangeModel dto = new ClientChangeModel(clientModel.getFirstName(), clientModel.getLastName(), clientModel.getPatronymic(), clientModel.getClientSex(), clientModel.getNationality(), clientModel.getLocale());
         profileService.putClientById(contextHolder.getClientId(), dto);
 
-        return "redirect:/p";
+        return "redirect:/profile";
     }
-    @PostMapping(value = "/p/c")
+    @PostMapping(value = "/profile/password")
     public String change(@ModelAttribute DeviceChangeModel deviceModel) {
 //        if (contextHolder.getHeaders().get("Authorization") == null) {
 //            return "redirect:/login";
 //        }
-        System.out.println("change:");
+        System.out.println("change password:");
         System.out.println(deviceModel);
 
         if (deviceModel.getCurrentPassword()!=null && (deviceModel.getNewPassword().equals(deviceModel.getConfirmPassword()))){
             if(profileService.putDeviceById(contextHolder.getClientId(), deviceModel)){
-                return "redirect:/p";
+                return "redirect:/profile";
             }
         }
 
 
-        return "redirect:/p?error";
+        return "redirect:/profile?error";
+    }
+
+    @PostMapping(value = "/profile/phone")
+    public String change(@ModelAttribute PhoneChangeModel phone) {
+//        if (contextHolder.getHeaders().get("Authorization") == null) {
+//            return "redirect:/login";
+//        }
+        System.out.println("change phone:");
+        System.out.println(phone);
+        if(profileService.changeDeviceById(contextHolder.getClientId(), phone.getPhoneNumber())){
+            return "redirect:/profile";
+        }
+
+
+        return "redirect:/profile?error";
     }
 }

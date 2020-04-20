@@ -29,7 +29,7 @@
                 <div class="card-body">
                     <div class="card">
                         <div class="card-body">
-                            <form th:action="@{/p}" th:object="${client}" method="post">
+                            <form th:action="@{/profile}" th:object="${client}" method="post">
                                 <div class="form-group">
                                     <div class="form-group row">
                                         <label for="name" class="col-sm-3 col-form-label">Name</label>
@@ -132,34 +132,53 @@
                                             <h4>Current Device</h4>
                                         </div>
                                         <div class="card-body">
-                                            <form>
-                                                <div class="form-group">
-                                                    <div class="form-group row">
-                                                        <label for="phone" class="col-sm-6 col-form-label">Phone
-                                                            number</label>
-                                                        <div class="col-sm-6">
-                                                            <input type="text" class="form-control" id="phone"
-                                                                   placeholder="col-form-label">
+                                            <div class="row">
+                                                <div class="col-lg-7">
+                                                    <div class="form-group">
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-5">
+                                                                <label for="phone" class="col-sm-12 col-form-label">Phone
+                                                                    number</label>
+                                                                <small class="col-sm-12">Format: xxx-xxx-xxx</small>
+                                                            </div>
+                                                            <form th:action="@{/profile/phone}" th:object="${phone}"
+                                                                  method="post" class="col-sm-7">
+                                                                <div class="input-group mb-3">
+
+                                                                    <input type="text" class="form-control"
+                                                                           id="phone" th:field="*{phoneNumber}"
+                                                                           th:placeholder="${profile.getPhoneNumber()}"
+                                                                           pattern="\d{3}[\-]\d{3}[\-]\d{3}" required>
+                                                                    <div class="input-group-append">
+                                                                        <button class="btn btn-outline-secondary"
+                                                                                type="submit" id="button-addon2">
+                                                                            Save
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="password"
-                                                               class="col-sm-6 col-form-label">Password</label>
-                                                        <div class="col-sm-6">
-                                                            <button type="button"
-                                                                    class="btn btn-outline-secondary btn-lg btn-block"
-                                                                    id="password" data-toggle="modal"
-                                                                    data-target="#passwordChange">Change
-                                                            </button>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-5">
+                                                                <label for="password"
+                                                                       class="col-sm-5 col-form-label">Password</label>
+                                                            </div>
+                                                            <div class="col-sm-7">
+                                                                <button type="button"
+                                                                        class="btn btn-outline-secondary btn-lg btn-block"
+                                                                        id="password" data-toggle="modal"
+                                                                        data-target="#passwordChange">Change
+                                                                </button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </form>
-
-                                            <a class="btn btn-outline-secondary" href="#" role="button">Change current
-                                                device</a>
-                                            <a class="btn btn-outline-secondary" href="#" role="button">Add new
-                                                device</a>
+                                                <div class="col-lg-3 ml-auto"
+                                                     style="position: absolute;top: 80%;right: 0%;display: grid;">
+                                                    <a class="btn btn-outline-secondary" href="#" role="button">Add new
+                                                        device</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -258,7 +277,7 @@
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-body">
-                            <form th:action="@{/p/c}" th:object="${device}" method="post">
+                            <form th:action="@{/profile/password}" th:object="${device}" onsubmit="check_pass()" method="post">
                                 <div class="form-group">
                                     <label for="current">Current Password</label>
                                     <input type="password" class="form-control" id="current"
@@ -267,16 +286,22 @@
                                 <div class="form-group">
                                     <label for="new">New Password</label>
                                     <input type="password" class="form-control" id="new"
-                                           th:field="*{newPassword}" required><span class="form-text small text-muted">The password must be 6-16 characters, and must <em>not</em> contain spaces.</span>
+                                           th:field="*{newPassword}" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" onkeyup="validate_confirm()" required><span class="form-text small text-muted">The password must be 6-16 characters. Contains at least one number, capital and lowercase letter.</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="confirm">Verify</label>
                                     <input type="password" class="form-control" id="confirm"
-                                           th:field="*{confirmPassword}" required> <span class="form-text small text-muted">To confirm, type the new password again.</span>
+                                           th:field="*{confirmPassword}" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" onkeyup="validate_confirm()"  required> <span
+                                        class="form-text small text-muted">To confirm, type the new password again.</span>
                                 </div>
-                                <button type="submit"
+                                <button id="submit" type="submit"
                                         class="btn btn-outline-secondary btn-lg float-right">Save
                                 </button>
+                                <script>
+                                    function validate_confirm() {
+                                        document.getElementById('submit').disabled = document.getElementById("confirm").value !== document.getElementById("new").value;
+                                    }
+                                </script>
                             </form>
                         </div>
                     </div>
