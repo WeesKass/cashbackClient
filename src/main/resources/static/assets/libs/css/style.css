@@ -4306,7 +4306,7 @@ Pills vertical
 
 .switch-button input[type=checkbox]:checked+span label {
     float: right;
-    border-color: #2a75f3;
+    border-color: #ff407b;
 }
 
 .switch-button.switch-button-xs label {
@@ -4348,7 +4348,7 @@ Pills vertical
 }
 
 .switch-button input[type=checkbox]:checked+span {
-    background-color: #5969ff;
+    background-color: #ff407b;
     display: block;
     position: absolute;
     top: 0;
