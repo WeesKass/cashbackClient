@@ -8,7 +8,7 @@
     <div class="card-header">
         <div class="nav navbar-light bg-light">
             <div class="container-fluid">
-                <div class="row">
+                <div style="background: white" class="row">
                     <div class="col-lg-3 d-flex justify-content-center">
                         <nav class="nav nav-left">
                             <ul class="pagination">
@@ -36,17 +36,19 @@
                     </div>
                     <div class="col-lg-5 ml-auto d-flex justify-content-center">
                         <nav class="nav nav-right">
-                            <div class="row">
+                            <div  class="row">
                                 <form th:action="@{/org/list(search=${value})}" method="get"
                                       class="form-inline my-2 my-lg-0">
+                                    <div class="d-flex">
                                     <input th:value="${value}" class="form-control mr-sm-2" type="text"
                                            name="search" id="search"
-                                           placeholder="Search"
+                                           th:placeholder="#{label.SearchForOrgs}"
                                            style="min-width: 300px;">
-                                    <button class="btn btn-outline-secondary my-2 my-sm-0"
+                                    <button  th:text="#{label.Search}" style="background: #ff407b;color: #ffffff;" class="btn btn-outline-secondary my-2 my-sm-0"
                                             type="submit">
                                         Search
                                     </button>
+                                    </div>
                                 </form>
                             </div>
                         </nav>
@@ -65,9 +67,9 @@
                     <div th:unless="${orgList.getLast()}"
                          th:text="${orgList.getSize()*(orgList.getNumber()+1)} + '/' + ${orgList.getTotalElements()}"></div>
                 </th> <!-- -->
-                <th scope="col">Organization Name</th>
-                <th scope="col">Category</th>
-                <th scope="col">Description</th>
+                <th th:text="#{label.OrganizationName}" scope="col">Organization Name</th>
+                <th th:text="#{label.OrganizationsCategory}" scope="col">Category</th>
+                <th th:text="#{label.OrganizationDescription}" scope="col">Description</th>
             </tr>
             </thead>
             <tbody>

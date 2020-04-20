@@ -8,14 +8,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3 d-flex justify-content-center">
-                    <a class="navbar-brand" href="/" style="color: #f0047f; font-size: 36px; ">O!</a>
+                    <a class="navbar-brand" th:href="@{/}" style="color: #f0047f; font-size: 36px; ">O!</a>
                     <ul class="navbar-nav mr-auto nav-left">
                         <li class="nav-item active" style="margin-right: 20%">
-                            <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModalCenter">Code</a>
+                            <a class="nav-link" th:text="#{label.Code}" href="#" data-toggle="modal" data-target="#exampleModalCenter">Code</a>
                         </li>
                         <br>
                         <li class="nav-item active" style="margin-right: 20%">
-                            <a class="nav-link" href="#">Subscribes</a>
+                            <a class="nav-link" th:text="#{label.Subscribes}" href="#">Subscribes</a>
                         </li>
                     </ul>
                 </div>
@@ -23,19 +23,19 @@
                     <nav class="nav nav-right">
 
                         <a class="notification-trigger" href="#">
-                            <i class="fa fa-bell" style="font-size:24px">
+                            <i th:title="#{label.Notifications}" class="fa fa-bell" style="font-size:24px">
                                 <span class="badge badge-light">4</span>
                             </i>
                         </a>
 
                         <a class="nav-link" href="#">
-                            <i class="fa fa-map-marker-alt" style="font-size:24px"></i>
+                            <i th:title="#{label.Map}" class="fa fa-map-marker-alt" style="font-size:24px"></i>
                         </a>
 
                         <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdownLangMenu" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-language" style="font-size: 24px"></i>
+                                <i th:title="#{label.Languages}" class="fa fa-language" style="font-size: 24px"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownLangMenu">
                                 <a class="dropdown-item" href="?lang=en">EN</a>
@@ -45,13 +45,13 @@
                         <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-user" style="font-size:24px"></i>
+                                <i th:title="#{label.profile.title}" class="fa fa-user" style="font-size:24px"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="/profile">Profile</a>
-                                <a class="dropdown-item" href="#">Balance</a>
-                                <a class="dropdown-item" href="#">Settings</a>
-                                <a class="dropdown-item" href="#">Log Out</a>
+                                <a class="dropdown-item" th:text="#{label.profile.title}" th:href="@{/p}">Profile</a>
+                                <a class="dropdown-item" th:text="#{label.Balance}" href="#">Balance</a>
+                                <a class="dropdown-item" th:text="#{label.settings}" href="#">Settings</a>
+                                <a class="dropdown-item" th:text="#{label.Logout}" th:href="@{/}">Log Out</a>
                             </div>
                         </div>
                     </nav>
