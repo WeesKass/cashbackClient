@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="orgs" class="card">
+    <div class="card-header">
+        <div class="nav navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 d-flex justify-content-center">
+                        <nav class="nav nav-left">
+                            <ul class="pagination">
+                                <li th:if="not${orgList.getFirst()}" class="page-item">
+                                    <a class="page-link"
+                                       th:href="@{/org/list(search=${value},page=${orgList.getNumber()-1})}"
+                                       tabindex="-1"><</a>
+                                </li>
+                                <th:block
+                                        th:each="i: ${#numbers.sequence(0, orgList.getTotalPages() - 1)}">
+                                    <li class="page-item active" th:if="${orgList.getNumber() == i}">
+                                        <span class="page-link">[[${i}+1]]</span>
+                                    </li>
+                                    <li th:unless="${orgList.getNumber() == i}">
+                                        <a class="page-link"
+                                           th:href="@{/org/list(search=${value},page=${i})}">[[${i}+1]]</a>
+                                    </li>
+                                </th:block>
+                                <li class="page-item" th:if="not${orgList.getLast()}">
+                                    <a class="page-link"
+                                       th:href="@{/org/list(search=${value},page=${orgList.getNumber()+1})}">></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-lg-5 ml-auto d-flex justify-content-center">
+                        <nav class="nav nav-right">
+                            <div class="row">
+                                <form th:action="@{/org/list(search=${value})}" method="get"
+                                      class="form-inline my-2 my-lg-0">
+                                    <input th:value="${value}" class="form-control mr-sm-2" type="text"
+                                           name="search" id="search"
+                                           placeholder="Search"
+                                           style="min-width: 300px;">
+                                    <button class="btn btn-outline-secondary my-2 my-sm-0"
+                                            type="submit">
+                                        Search
+                                    </button>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">
+                    <div th:if="${orgList.getLast()}"
+                         th:text="${orgList.getTotalElements() + '/' + orgList.getTotalElements()}"></div>
+                    <div th:unless="${orgList.getLast()}"
+                         th:text="${orgList.getSize()*(orgList.getNumber()+1)} + '/' + ${orgList.getTotalElements()}"></div>
+                </th> <!-- -->
+                <th scope="col">Organization Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="org : ${orgList.getContent()}">
+                <th scope="row">
+                    <img th:src="${org.getImage()}" width="64" height="64" alt="default">
+                </th><!---->
+                <td th:text="${org.getName()}"></td>
+                <td th:text="${org.getCategoryName()}"></td><!---->
+                <td th:text="${org.getDescription()}"></td><!---->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

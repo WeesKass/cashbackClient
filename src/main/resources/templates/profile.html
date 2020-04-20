@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout}"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <title data-th-text="#{label.profile.title}"></title>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="card">
+                <h3 class="card-header" data-th-text="#{label.profile.title}">Profile</h3>
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-7" style="margin: 2%">
+                            <img th:src="${client.getImage()}" style="max-width: 200px;border-radius: 50%;"
+                                 alt="profile">
+                            <p class="card-text">
+                                <small th:text="${client.getCreatedDate()}" class="text-muted">created date</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <form th:action="@{/p}" th:object="${client}" method="post">
+                                <div class="form-group">
+                                    <div class="form-group row">
+                                        <label for="name" class="col-sm-3 col-form-label">Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="name"
+                                                   th:placeholder="${client.getFirstName()}" th:field="*{firstName}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="surname" class="col-sm-3 col-form-label">Surname</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="surname"
+                                                   th:placeholder="${client.getLastName()}" th:field="*{lastName}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="patronymic" class="col-sm-3 col-form-label">Patronymic</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="patronymic"
+                                                   th:placeholder="${client.getPatronymic()}" th:field="*{patronymic}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="nationality" class="col-sm-3 col-form-label">Nationality</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="nationality"
+                                                   th:placeholder="${client.getNationality()}"
+                                                   th:field="*{nationality}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="input-group mb-3">
+                                                <label class="col-sm-3 col-form-label" for="lang">Language</label>
+                                                <div class="col-sm-3">
+                                                    <select class="custom-select" id="lang"
+                                                            th:field="*{locale}">
+                                                        <option th:value="'EN'"
+                                                                th:selected="${client.getLocale()=='EN'}">EN
+                                                        </option>
+                                                        <option th:value="'RU'"
+                                                                th:selected="${client.getLocale()=='RU'}">RU
+                                                        </option>
+                                                        <option th:value="'KG'"
+                                                                th:selected="${client.getLocale()=='KG'}">KG
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <label class="col-sm-3 col-form-label" for="lang">Gender</label>
+                                                <div class="col-sm-3">
+                                                    <select class="custom-select" id="sex"
+                                                            th:field="*{clientSex}">
+                                                        <option th:value="'MALE'"
+                                                                th:selected="${client.getClientSex()=='Male'}">Male
+                                                        </option>
+                                                        <option th:value="'FEMALE'"
+                                                                th:selected="${client.getClientSex()=='Female'}">Female
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-outline-secondary"
+                                        style="position: absolute;top: 100%;right: 2%;">Submit
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7">
+
+            <section id="search-section">
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="devices-tab" data-toggle="tab" href="#devices"
+                                   role="tab" aria-controls="devices" aria-selected="true">Devices</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings"
+                                   role="tab"
+                                   aria-controls="settings" aria-selected="false">Settings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="preferences-tab" data-toggle="tab" href="#preferences"
+                                   role="tab" aria-controls="preferences" aria-selected="false">Preferences</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="devices" role="tabpanel"
+                                 aria-labelledby="devices-tab" style="min-height: 300px">
+                                <div class="row-fluid">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4>Current Device</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="form-group">
+                                                    <div class="form-group row">
+                                                        <label for="phone" class="col-sm-6 col-form-label">Phone
+                                                            number</label>
+                                                        <div class="col-sm-6">
+                                                            <input type="text" class="form-control" id="phone"
+                                                                   placeholder="col-form-label">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="password"
+                                                               class="col-sm-6 col-form-label">Password</label>
+                                                        <div class="col-sm-6">
+                                                            <button type="button"
+                                                                    class="btn btn-outline-secondary btn-lg btn-block"
+                                                                    id="password" data-toggle="modal"
+                                                                    data-target="#passwordChange">Change
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+
+                                            <a class="btn btn-outline-secondary" href="#" role="button">Change current
+                                                device</a>
+                                            <a class="btn btn-outline-secondary" href="#" role="button">Add new
+                                                device</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="settings" role="tabpanel"
+                                 aria-labelledby="settings-tab" style="min-height: 300px">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="col-lg-5">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                   id="notification">
+                                                            <h3 class="form-check-label" for="notification">
+                                                                Notifications</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-7 ml-auto">
+                                                        <form>
+                                                            <div class="form-row align-items-center">
+                                                                <div class="col-auto my-1">
+
+                                                                    <select class="custom-select mr-sm-2"
+                                                                            id="inlineFormCustomSelect">
+                                                                        <option value="1">org One</option>
+                                                                        <option value="2">org Two</option>
+                                                                        <option value="3">org Three</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-auto my-1">
+                                                                    <button type="submit"
+                                                                            class="btn btn-outline-secondary">Add
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="card-title">
+                                                    <h4>Ignore list</h4>
+                                                </div>
+                                                <div>
+                                                    <div class="btn-group" role="group" aria-label="Basic example"
+                                                         style="margin: 2% 2%;">
+                                                        <button type="button" class="btn  disabled">org
+                                                            name
+                                                        </button>
+                                                        <button type="button" class="btn ">X</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="preferences" role="tabpanel"
+                                 aria-labelledby="preferences-tab" style="min-height: 300px">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3>Tags</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <button type="button" class="btn ">
+                                            product name
+                                            <span class="badge badge-light">9</span>
+                                        </button>
+                                        <button type="button" class="btn ">
+                                            product name
+                                            <span class="badge badge-light">9</span>
+                                        </button>
+                                        <button type="button" class="btn ">
+                                            product name
+                                            <span class="badge badge-light">9</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="modal fade" id="passwordChange" tabindex="-1" role="dialog"
+         aria-labelledby="passwordChangeTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
+            <div class="modal-content">
+                <div class="modal-header d-flex justify-content-center">
+                    <h2 class="modal-title" id="passwordChangeTitle">Change password</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <form th:action="@{/p/c}" th:object="${device}" method="post">
+                                <div class="form-group">
+                                    <label for="current">Current Password</label>
+                                    <input type="password" class="form-control" id="current"
+                                           th:field="*{currentPassword}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="new">New Password</label>
+                                    <input type="password" class="form-control" id="new"
+                                           th:field="*{newPassword}" required><span class="form-text small text-muted">The password must be 6-16 characters, and must <em>not</em> contain spaces.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm">Verify</label>
+                                    <input type="password" class="form-control" id="confirm"
+                                           th:field="*{confirmPassword}" required> <span class="form-text small text-muted">To confirm, type the new password again.</span>
+                                </div>
+                                <button type="submit"
+                                        class="btn btn-outline-secondary btn-lg float-right">Save
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

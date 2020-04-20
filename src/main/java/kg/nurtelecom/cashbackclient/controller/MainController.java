@@ -45,6 +45,7 @@ public class MainController {
 //        if (contextHolder.getHeaders().get("Authorization") == null) {
 //            return "redirect:/login";
 //        }
+        model.addAttribute("code", codeService.getCodeByClientId());
         model.addAttribute("bonuses", bonusService.getAllBonus(0, 3));
         model.addAttribute("events", eventService.getAllEvents(0, 2));
         model.addAttribute("orgList", organizationService.getAllOrgByNameOrDesc(search, page, size));
@@ -59,6 +60,7 @@ public class MainController {
 //        if (contextHolder.getHeaders().get("Authorization") == null) {
 //            return "redirect:/login";
 //        }
+        model.addAttribute("code", codeService.getCodeByClientId());
         model.addAttribute("bonuses", bonusService.getAllBonus(0, 3));
         model.addAttribute("events", eventService.getAllEvents(page, size));
         model.addAttribute("orgList", organizationService.getAllOrgByNameOrDesc("",0,5));
@@ -73,6 +75,7 @@ public class MainController {
 //        if (contextHolder.getHeaders().get("Authorization") == null) {
 //            return "redirect:/login";
 //        }
+        model.addAttribute("code", codeService.getCodeByClientId());
         model.addAttribute("bonuses", bonusService.getAllBonus(page, size));
         model.addAttribute("events", eventService.getAllEvents(0, 2));
         model.addAttribute("orgList", organizationService.getAllOrgByNameOrDesc("",0,5));

@@ -13,15 +13,12 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 
 public class OrganizationModel {
-
     private Long id;
     private String image;
     private Boolean status;
-    @Size(min = 5, max = 255)
     private String name;
     private Long categoryId;
     private String categoryName;
-    @Size(min = 50, max = 255)
     private String description;
 
 

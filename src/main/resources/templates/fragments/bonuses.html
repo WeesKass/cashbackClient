@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="bonuses" class="card">
+    <div class="card bg-light mb-3">
+        <div class="card-header">
+            <h3>
+                Bonuses
+            </h3>
+        </div>
+        <div class="card-body">
+            <div th:each="bonus : ${bonuses.getContent()}" class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Organization 4</h5>
+                    <p class="card-text" th:text="${bonus.getOrgBonusType()}">Welcome</p>
+                    <p class="card-text" th:text=" 'Remaining:' + ${bonus.getValidity()}"></p>
+                    <a href="#" class="btn btn-outline-secondary"
+                       style="position: absolute;top:10px;right: 10px;">info</a>
+                </div>
+            </div>
+            <nav>
+                <ul class="pagination">
+                    <li th:if="not${bonuses.getFirst()}" class="page-item">
+                        <a class="page-link"
+                           th:href="@{/bonus/list(page=${bonuses.getNumber()-1})}"
+                           tabindex="-1"><</a>
+                    </li>
+                    <th:block
+                            th:each="i: ${#numbers.sequence(0, bonuses.getTotalPages() - 1)}">
+                        <li class="page-item active" th:if="${bonuses.getNumber() == i}">
+                            <span class="page-link">[[${i}+1]]</span>
+                        </li>
+                        <li th:unless="${bonuses.getNumber() == i}">
+                            <a class="page-link"
+                               th:href="@{/bonus/list(page=${i})}">[[${i}+1]]</a>
+                        </li>
+                    </th:block>
+                    <li class="page-item" th:if="not${bonuses.getLast()}">
+                        <a class="page-link"
+                           th:href="@{/bonus/list(page=${bonuses.getNumber()+1})}">></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+</body>
+</html>

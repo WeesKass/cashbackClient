@@ -13,6 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class EventFullModel {
     private Long id;
+    private String image;
     private String name;
     private Date dateFrom;
     private Date dateTo;

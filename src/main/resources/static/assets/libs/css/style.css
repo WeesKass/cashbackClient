@@ -7048,3 +7048,213 @@ Media Query
     text-align: center;
     margin: 5px;
 }
+
+.img-container {
+    position: relative;
+    width: 100%;
+}
+.img-container:hover .img-overlay {
+    opacity: 1;
+}
+
+.info {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.img-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(255, 0, 132, 0.31);
+}
+
+.jumbotron-spec{
+    padding: 1rem 2rem 1rem 2rem;
+    margin-bottom:2rem;
+    background-color:#e9ecef;
+    border-radius:.3rem
+}
+@media (min-width:576px) {
+    .jumbotron-spec{
+        padding: 1rem 2rem 1rem 2rem;
+    }
+}
+.jumbotron-spec-fluid{
+    padding-right: 0;
+    padding-left: 0;
+    border-radius: 10px;
+}
+box {
+    display: block;
+    max-width: 300px;
+    height: 300px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+}
+
+.upload-options {
+    position: relative;
+    height: 75px;
+    background-color: #393939;
+    cursor: pointer;
+    overflow: hidden;
+    text-align: center;
+    -webkit-transition: background-color ease-in-out 150ms;
+    transition: background-color ease-in-out 150ms;
+}
+.upload-options:hover {
+    background-color: #E1E1E1;
+}
+.upload-options input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.upload-options label {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    overflow: hidden;
+}
+.upload-options label::after {
+    content: 'add';
+    font-family: 'Material Icons';
+    position: absolute;
+    font-size: 2.5rem;
+    color: #e6e6e6;
+    top: calc(50% - 2.5rem);
+    left: calc(50% - 1.25rem);
+    z-index: 0;
+}
+.upload-options label span {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+    text-align: center;
+}
+.upload-options label span:hover i.material-icons {
+    color: lightgray;
+}
+
+.js--image-preview {
+    height: 225px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-image: url("");
+    background-color: white;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.js--image-preview::after {
+    content: "photo_size_select_actual";
+    font-family: 'Material Icons';
+    position: relative;
+    font-size: 4.5em;
+    color: black;
+    top: calc(50% - 3rem);
+    left: calc(50% - 2.25rem);
+    z-index: 0;
+}
+
+.js--image-preview.js--no-default::after {
+    display: none;
+}
+
+i.material-icons {
+    -webkit-transition: color 100ms ease-in-out;
+    transition: color 100ms ease-in-out;
+    font-size: 2.25em;
+    line-height: 55px;
+    color: white;
+    display: block;
+}
+
+.drop {
+    display: block;
+    position: absolute;
+    background: rgba(95, 158, 160, 0.2);
+    border-radius: 100%;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+.animate {
+    -webkit-animation: ripple 0.4s linear;
+    animation: ripple 0.4s linear;
+}
+
+@-webkit-keyframes ripple {
+    100% {
+        opacity: 0;
+        -webkit-transform: scale(2.5);
+        transform: scale(2.5);
+    }
+}
+
+@keyframes ripple {
+    100% {
+        opacity: 0;
+        -webkit-transform: scale(2.5);
+        transform: scale(2.5);
+    }
+}
+
+/*.btn-file {*/
+/*    position: relative;*/
+/*    overflow: hidden;*/
+/*}*/
+/*.btn-file input[type=file] {*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    right: 0;*/
+/*    min-width: 100%;*/
+/*    min-height: 100%;*/
+/*    font-size: 100px;*/
+/*    text-align: right;*/
+/*    filter: alpha(opacity=0);*/
+/*    opacity: 0;*/
+/*    outline: none;*/
+/*    background: white;*/
+/*    cursor: inherit;*/
+/*    display: block;*/
+/*}*/
+
+/*#img-upload{*/
+/*    width: 100%;*/
+/*}*/
