@@ -21,7 +21,7 @@
                             <img th:src="${client.getImage()}" style="max-width: 200px;border-radius: 50%;"
                                  alt="profile">
                             <p class="card-text">
-                                <small th:text="${client.getCreatedDate()}" class="text-muted">created date</small>
+                                <small th:text="#{label.registration_date} + ' ' +  ${#dates.format(client.createdDate,'dd-MMM-yyyy')}" class="text-muted">created date</small>
                             </p>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                                 <div class="form-group">
                                     <div class="form-group row">
                                         <label for="name" class="col-sm-3 col-form-label">Name</label>
-                                        <div class="col-sm-9">
+                                        <div class="col-sm- 9">
                                             <input type="text" class="form-control" id="name"
                                                    th:placeholder="${client.getFirstName()}" th:field="*{firstName}">
                                         </div>
