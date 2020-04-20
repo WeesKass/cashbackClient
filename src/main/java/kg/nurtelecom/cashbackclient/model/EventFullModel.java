@@ -15,7 +15,6 @@ public class EventFullModel {
     private Long id;
     private String image;
     private String name;
-    private String image;
     private Date dateFrom;
     private Date dateTo;
     private String description;
