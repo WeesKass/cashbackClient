@@ -7,7 +7,7 @@
 <div th:fragment="bonuses" class="card">
     <div class="card bg-light mb-3">
         <div class="card-header">
-            <h3>
+            <h3  th:text="#{label.Bonuses}">
                 Bonuses
             </h3>
         </div>
@@ -17,7 +17,7 @@
                     <h5 class="card-title">Organization 4</h5>
                     <p class="card-text" th:text="${bonus.getOrgBonusType()}">Welcome</p>
                     <p class="card-text" th:text=" 'Remaining:' + ${bonus.getValidity()}"></p>
-                    <a href="#" class="btn btn-outline-secondary"
+                    <a href="#"  th:text="#{label.more}" class="btn btn-outline-secondary"
                        style="position: absolute;top:10px;right: 10px;">info</a>
                 </div>
             </div>

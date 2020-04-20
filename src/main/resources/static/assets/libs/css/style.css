@@ -1905,7 +1905,7 @@ Sidebar Page Navigations
 .dropdown-menu {
     background: #fff;
     font-size: 14px;
-    color: #3d405c;
+    color: #ff407b;;
     min-width: 4rem;
     border: 1px solid #e6e6f2;
 }
@@ -1924,7 +1924,7 @@ Sidebar Page Navigations
 }
 
 .dropdown-item:hover {
-    color: #5969ff;
+    color: #ff407b;
     background: #efeff6;
 }
 
@@ -1934,7 +1934,7 @@ Sidebar Page Navigations
 .dropdown-item:active {
     color: #fff;
     text-decoration: none;
-    background-color: #5969ff;
+    background-color: #ff407b;
 }
 
 
@@ -4167,15 +4167,15 @@ Pills vertical
     z-index: 2;
     color: #fff;
     text-decoration: none;
-    background-color: #5969ff;
-    border-color: #5969ff;
+    background-color: #ff407b;
+    border-color: #ff407b;
 }
 
 .page-item.active .page-link {
     z-index: 1;
     color: #fff;
-    background-color: #5969ff;
-    border-color: #5969ff;
+    background-color: #ff407b;
+    border-color: #ff407b;
 }
 
 
