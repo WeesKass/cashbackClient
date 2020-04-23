@@ -1,5 +1,6 @@
 package kg.nurtelecom.cashbackclient.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,4 +19,7 @@ public class BonusShortModel {
     private Integer validity;
     private Date createdDate;
     private String orgBonusType;
+    private String orgName;
+    @JsonProperty
+    private String image;
 }
