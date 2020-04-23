@@ -17,8 +17,8 @@
                     <h5 th:text="${bonus.getOrgName()}" class="card-title">Organization 4</h5>
                     <p class="card-text" th:text="${bonus.getOrgBonusType()}">Welcome</p>
                     <p class="card-text" th:text="#{label.days} +' '+ ${bonus.getValidity()}"></p>
-                    <a href="#" th:text="#{label.more}" class="btn btn-outline-secondary"
-                       style="position: absolute;top:10px;right: 10px;">info</a>
+                    <button th:text="#{label.more}" th:id="${bonus.id}" class="btn btn-outline-secondary"
+                       style="position: absolute;top:10px;right: 10px;">info</button>
                     <img style="position: absolute;top:50px;right: 20px;" th:src="${bonus.getImage()}" width="64"
                          height="64" alt="default">
                 </div>
@@ -46,8 +46,32 @@
                     </li>
                 </ul>
             </nav>
+            <div  th:id="${bonus.id}+'modal'"  th:each="bonus : ${bonuses.getContent()}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <p class="card-text" th:text="${bonus.getOrgBonusType()}">Welcome</p>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <script>
+        $(".btn").click(function () {
+            var idcheck = $(this).attr('id');
+            var window = '#'+idcheck+'modal';
+            $(window).modal('show');
+        });
+    </script>
 </div>
 </body>
 </html>
