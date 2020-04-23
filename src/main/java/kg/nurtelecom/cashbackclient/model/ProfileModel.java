@@ -12,7 +12,6 @@ import java.util.Date;
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ProfileModel {
-
     private Long id;
     private ClientModel client;
     private String phoneNumber;

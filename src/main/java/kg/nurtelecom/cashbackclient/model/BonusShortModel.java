@@ -22,4 +22,6 @@ public class BonusShortModel {
     private String orgName;
     @JsonProperty
     private String image;
+    private String orgDesc;
+    private String desc;
 }
