@@ -75,7 +75,9 @@
             <tbody>
             <tr th:each="org : ${orgList.getContent()}">
                 <th scope="row">
+                    <a th:href="@{'/info/' + ${org.id}}" >
                     <img th:src="${org.getImage()}" width="64" height="64" alt="default">
+                    </a>
                 </th><!---->
                 <td th:text="${org.getName()}"></td>
                 <td th:text="${org.getCategoryName()}"></td><!---->
