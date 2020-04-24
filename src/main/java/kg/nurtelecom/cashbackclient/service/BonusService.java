@@ -45,6 +45,7 @@ public class BonusService {
         ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
         BonusPage result = new BonusPage();
         try {
+            System.out.println(response.getBody());
             result = mapper.readValue(response.getBody(), BonusPage.class);
         } catch (IOException e) {
             e.printStackTrace();

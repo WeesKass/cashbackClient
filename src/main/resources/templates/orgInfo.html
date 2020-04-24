@@ -52,7 +52,8 @@
                                                         </li>
                                                         <th:block
                                                                 th:each="i: ${#numbers.sequence(0, filials.getTotalPages() - 1)}">
-                                                            <li class="page-item active" th:if="${filials.getNumber() == i}">
+                                                            <li class="page-item active"
+                                                                th:if="${filials.getNumber() == i}">
                                                                 <span class="page-link">[[${i}+1]]</span>
                                                             </li>
                                                             <li th:unless="${filials.getNumber() == i}">
@@ -70,10 +71,15 @@
                                             <div class="card-body">
                                                 <div th:each="filial : ${filials.getContent()}" class="card">
                                                     <div class="card-body">
-                                                        <h5 th:text="${filial.getName()}" class="card-title">Filial Name</h5>
-                                                        <span th:text="${filial.getAverageRate()}" class="badge badge-pill badge-secondary" style="position: absolute;top:10px;right: 10px;">Average Rate</span>
-                                                        <p class="card-text" th:text="${filial.getAddress()}">Welcome</p>
-                                                            <a href="#"  th:text="#{label.more}" class="btn btn-outline-secondary"
+                                                        <h5 th:text="${filial.getName()}" class="card-title">Filial
+                                                            Name</h5>
+                                                        <span th:text="${filial.getAverageRate()}"
+                                                              class="badge badge-pill badge-secondary"
+                                                              style="position: absolute;top:10px;right: 10px;">Average Rate</span>
+                                                        <p class="card-text" th:text="${filial.getAddress()}">
+                                                            Welcome</p>
+                                                        <a href="#" th:text="#{label.more}"
+                                                           class="btn btn-outline-secondary"
                                                            style="position: absolute;bottom:10px;right: 10px;">info</a>
                                                     </div>
                                                 </div>
@@ -100,7 +106,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-lg-3">
-                                <h3 th:text="#{label.Events}"class="card-title">Events</h3>
+                                <h3 th:text="#{label.Events}" class="card-title">Events</h3>
                             </div>
                             <div class="col-lg-2 ml-auto">
                                 <ul class="pagination">
@@ -129,19 +135,24 @@
                     </div>
                     <div class="card-body" style="position: relative">
                         <div class="row d-flex justify-content-center">
-                            <div th:each="event : ${events.getContent()}" class="col-lg-6 d-flex justify-content-center">
-                                <div class="card bg-light" style="max-width: 500px; max-height: 300px;border-radius: 10px;">
+                            <div th:each="event : ${events.getContent()}"
+                                 class="col-lg-6 d-flex justify-content-center">
+                                <div class="card bg-light"
+                                     style="max-width: 500px; max-height: 300px;border-radius: 10px;">
                                     <div class="img-container">
-                                        <img th:src="${event.getImage()}" class="card-img-top" width="500px" height="300px"
+                                        <img th:src="${event.getImage()}" class="card-img-top" width="500px"
+                                             height="300px"
                                              style="border-radius: 10px;" alt="events">
                                         <div class="img-overlay" style="border-radius: 10px;">
                                             <div class="info-fluid">
                                                 <div class="jumbotron-spec jumbotron-spec-fluid">
                                                     <div class="container">
-                                                        <h5 th:text="${event.getName()}" class="display-10">Events Name</h5>
+                                                        <h5 th:text="${event.getName()}" class="display-10">Events
+                                                            Name</h5>
                                                         <p th:text="${event.getDescription()}">Events DESCRIPTION</p>
                                                         <hr class="my-4">
-                                                        <a href="#" th:text="#{label.more}" class="btn btn-outline-secondary"
+                                                        <a href="#" th:text="#{label.more}"
+                                                           class="btn btn-outline-secondary"
                                                            style="position: absolute;top:10px;right: 10px;">info</a>
                                                     </div>
                                                 </div>
@@ -161,18 +172,23 @@
                 <div th:fragment="bonuses" class="card">
                     <div class="card bg-light mb-3">
                         <div class="card-header">
-                            <h3  th:text="#{label.Bonuses}">
+                            <h3 th:text="#{label.Bonuses}">
                                 Bonuses
                             </h3>
                         </div>
                         <div class="card-body">
                             <div th:each="bonus : ${bonuses.getContent()}" class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Organization 4</h5>
+                                    <h5 th:text="${bonus.getOrgName()}" class="card-title">Organization 4</h5>
                                     <p class="card-text" th:text="${bonus.getOrgBonusType()}">Welcome</p>
-                                    <p class="card-text" th:text=" 'Remaining:' + ${bonus.getValidity()}"></p>
-                                    <a href="#"  th:text="#{label.more}" class="btn btn-outline-secondary"
-                                       style="position: absolute;top:10px;right: 10px;">info</a>
+                                    <p class="card-text" th:text="#{label.days} +' '+ ${bonus.getValidity()}"></p>
+                                    <button th:text="#{label.more}" th:id="${bonus.id}"
+                                            class="btn btn-outline-secondary"
+                                            style="position: absolute;bottom:10px;right: 10px    ;">info
+                                    </button>
+                                    <img style="position: absolute;top:30px;right: 20px;" th:src="${bonus.getImage()}"
+                                         width="64"
+                                         height="64" alt="default">
                                 </div>
                             </div>
                             <nav>
@@ -198,12 +214,52 @@
                                     </li>
                                 </ul>
                             </nav>
+                            <div th:id="${bonus.id}+'modal'" th:each="bonus : ${bonuses.getContent()}"
+                                 class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <img th:src="${bonus.getImage()}" width="64"
+                                                 height="64" alt="default">
+                                            <h5 style="position: absolute;left: 100px;top:0;font-size: 2em"
+                                                class="modal-title" th:text="${bonus.getOrgName()}">Modal title</h5>
+                                            <h5 style="position: absolute;left: 101px;top:40px;font-family: 'Fira Sans', sans-serif"
+                                                th:text="${bonus.getOrgDesc()}">Modal title</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h5 style="font-family: 'Fira Sans', sans-serif;font-size: 1.3em;"
+                                                th:text="${bonus.getDesc()}">Modal title</h5>
+                                            <h5 style="font-family: 'Fira Sans', sans-serif;font-size: 1em;"
+                                                th:text="#{label.modal.from} + ' ' +  ${#dates.format(bonus.validFrom,'dd-MMM-yyyy')}">
+                                                Modal title</h5>
+                                            <h5 style="font-family: 'Fira Sans', sans-serif;font-size: 1em;"
+                                                th:text="#{label.modal.to} + ' ' +  ${#dates.format(bonus.validTo,'dd-MMM-yyyy')}">
+                                                Modal title</h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" th:text="#{label.modal.close}" class="btn btn-primary"
+                                                    data-dismiss="modal">Close
+                                            </button>
+                                            <button type="button" th:text="#{label.modal.toOrg}"
+                                                    class="btn btn-secondary">Save changes
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
-
+        <script>
+            $(".btn").click(function () {
+                var idcheck = $(this).attr('id');
+                var window = '#' + idcheck + 'modal';
+                $(window).modal('show');
+            });
+        </script>
     </div>
 </div>
 </body>
