@@ -148,24 +148,25 @@
                                                         <div class="form-group row">
                                                             <div class="col-lg-5">
                                                                 <label th:text="#{label.settings.phoneNumber}"
-                                                                       for="phone" class="col-sm-12 col-form-label">Phone
+                                                                       for="phone" class="col-sm-12 col-for m-label">Phone
                                                                     number</label>
-                                                                <small class="col-sm-12">Format: xxx-xxx-xxx</small>
+                                                                <small  th:text="#{label.password.format}" class="col-sm-12">Format: xxx-xxx-xxx</small>
                                                             </div>
                                                             <form th:action="@{/profile/phone}" th:object="${phone}"
                                                                   method="post" class="col-sm-7">
-                                                                <div class="input-group mb-3">
-
-                                                                    <input type="text" class="form-control"
+                                                                <div class="input-group mb-3" >
+<div class="d-flex">
+                                                                    <input type="text" class="form-control d-flex"
                                                                            id="phone" th:field="*{phoneNumber}"
                                                                            th:placeholder="${profile.getPhoneNumber()}"
                                                                            pattern="\d{3}[\-]\d{3}[\-]\d{3}" required>
                                                                     <div class="input-group-append">
-                                                                        <button class="btn btn-outline-secondary"
-                                                                                type="submit" id="button-addon2">
-                                                                            Save
-                                                                        </button>
                                                                     </div>
+                                                                </div>
+                                                                <button th:text="#{label.settings.save}" class="btn btn-outline-secondary"
+                                                                        style="background: #ff407b;color: #ffffff;" type="submit" id="button-addon2">
+                                                                    Save
+                                                                </button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -293,36 +294,36 @@
     </div>
     <div class="modal fade" id="passwordChange" tabindex="-1" role="dialog"
          aria-labelledby="passwordChangeTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
+         <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
             <div class="modal-content">
                 <div class="modal-header d-flex justify-content-center">
-                    <h2 class="modal-title" id="passwordChangeTitle">Change password</h2>
+                    <h2 th:text="#{label.password.change}" class="modal-title" id="passwordChangeTitle">Change password</h2>
                 </div>
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-body">
                             <form th:action="@{/profile/password}" th:object="${device}" method="post">
                                 <div class="form-group">
-                                    <label for="current">Current Password</label>
-                                    <input type="password" class="form-control" id="current"
+                                    <label th:text="#{label.password.current}" for="current">Current Password</label>
+                                    <input  type="password" class="form-control" id="current"
                                            th:field="*{currentPassword}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="new">New Password</label>
+                                    <label th:text="#{label.password.new}" for="new">New Password</label>
                                     <input type="password" class="form-control" id="new"
                                            th:field="*{newPassword}" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
                                            onkeyup="validate_confirm()" required><span
-                                        class="form-text small text-muted">The password must be 6-16 characters. Contains at least one number, capital and lowercase letter.</span>
+                                        class="form-text small text-muted" th:text="#{label.password.info}">The password must be 6-16 characters. Contains at least one number, capital and lowercase letter.</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="confirm">Verify</label>
+                                    <label th:text="#{label.password.verify}" for="confirm">Verify</label>
                                     <input type="password" class="form-control" id="confirm"
                                            th:field="*{confirmPassword}" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
                                            onkeyup="validate_confirm()" required> <span
-                                        class="form-text small text-muted">To confirm, type the new password again.</span>
+                                        class="form-text small text-muted" th:text="#{label.password.info2}">To confirm, type the new password again.</span>
                                 </div>
                                 <button id="submit" type="submit"
-                                        class="btn btn-outline-secondary btn-lg float-right">Save
+                                        class="btn btn-outline-secondary btn-lg float-right" th:text="#{label.settings.save}" >Save
                                 </button>
                                 <script>
                                     function validate_confirm() {
@@ -341,7 +342,7 @@
         <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
             <div class="modal-content">
                 <div class="modal-header d-flex justify-content-center">
-                    <h2 class="modal-title" id="addNewTitle">Add new device</h2>
+                    <h2  th:text="#{label.settings.addDevice}" class="modal-title" id="addNewTitle">Add new device</h2>
                 </div>
                 <div class="modal-body">
                     <div class="card">
@@ -351,23 +352,23 @@
                                     <label th:text="#{label.settings.phoneNumber}" for="phone" >Phone number</label>
                                     <input type="text" class="form-control" id="phone"
                                            th:field="*{username}" pattern="\d{3}[\-]\d{3}[\-]\d{3}" required> <span
-                                        class="form-text small text-muted">Format: xxx-xxx-xxx</span>
+                                        class="form-text small text-muted"  th:text="#{label.password.format}" >Format: xxx-xxx-xxx</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="new">New Password</label>
+                                    <label  th:text="#{label.password.new}" for="new">New Password</label>
                                     <input type="password" class="form-control" id="new"
                                            th:field="*{password}" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-                                           onkeyup="validate_add()" required><span class="form-text small text-muted">The password must be 6-16 characters. Contains at least one number, capital and lowercase letter.</span>
+                                           onkeyup="validate_add()" required><span class="form-text small text-muted"  th:text="#{label.password.info}">The password must be 6-16 characters. Contains at least one number, capital and lowercase letter.</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="confirm">Verify</label>
+                                    <label  th:text="#{label.password.verify}" for="confirm">Verify</label>
                                     <input type="password" class="form-control" id="confirm"
                                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" onkeyup="validate_add()"
                                            required> <span
-                                        class="form-text small text-muted">To confirm, type the new password again.</span>
+                                        class="form-text small text-muted"  th:text="#{label.password.info2}">To confirm, type the new password again.</span>
                                 </div>
                                 <button id="submit" type="submit"
-                                        class="btn btn-outline-secondary btn-lg float-right">Submit
+                                        class="btn btn-outline-secondary btn-lg float-right" th:text="#{label.password.submit}" >Submit
                                 </button>
                                 <script>
                                     function validate_add() {
