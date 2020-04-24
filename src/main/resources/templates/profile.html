@@ -21,7 +21,8 @@
                             <img th:src="${client.getImage()}" style="max-width: 200px;border-radius: 50%;"
                                  alt="profile">
                             <p class="card-text">
-                                <small th:text="#{label.registration_date} + ' ' +  ${#dates.format(client.createdDate,'dd-MMM-yyyy')}" class="text-muted">created date</small>
+                                <small th:text="#{label.registration_date} + ' ' +  ${#dates.format(client.createdDate,'dd MMMMMMMM yyyy')}"
+                                       class="text-muted">created date</small>
                             </p>
                         </div>
                     </div>
@@ -32,28 +33,32 @@
                             <form th:action="@{/profile}" th:object="${client}" method="post">
                                 <div class="form-group">
                                     <div class="form-group row">
-                                        <label th:text="#{label.client.name}" for="name" class="col-sm-3 col-form-label">Name</label>
-                                        <div class="col-sm- 9">
+                                        <label th:text="#{label.client.name}" for="name"
+                                               class="col-sm-3 col-form-label">Name</label>
+                                        <div class="col-sm-9">
                                             <input type="text" class="form-control" id="name"
                                                    th:placeholder="${client.getFirstName()}" th:field="*{firstName}">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label th:text="#{label.client.surname}" for="surname" class="col-sm-3 col-form-label">Surname</label>
+                                        <label th:text="#{label.client.surname}" for="surname"
+                                               class="col-sm-3 col-form-label">Surname</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="surname"
                                                    th:placeholder="${client.getLastName()}" th:field="*{lastName}">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label th:text="#{label.client.patronymic}" for="patronymic" class="col-sm-3 col-form-label">Patronymic</label>
+                                        <label th:text="#{label.client.patronymic}" for="patronymic"
+                                               class="col-sm-3 col-form-label">Patronymic</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="patronymic"
                                                    th:placeholder="${client.getPatronymic()}" th:field="*{patronymic}">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label th:text="#{label.client.nationality}" for="nationality" class="col-sm-3 col-form-label">Nationality</label>
+                                        <label th:text="#{label.client.nationality}" for="nationality"
+                                               class="col-sm-3 col-form-label">Nationality</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="nationality"
                                                    th:placeholder="${client.getNationality()}"
@@ -63,7 +68,8 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="input-group mb-3">
-                                                <label th:text="#{label.client.language}" class="col-sm-3 col-form-label" for="lang">Language</label>
+                                                <label th:text="#{label.client.language}"
+                                                       class="col-sm-3 col-form-label" for="lang">Language</label>
                                                 <div class="col-sm-3">
                                                     <select class="custom-select" id="lang"
                                                             th:field="*{locale}">
@@ -78,7 +84,8 @@
                                                         </option>
                                                     </select>
                                                 </div>
-                                                <label th:text="#{label.client.gender}" class="col-sm-3 col-form-label" for="lang">Gender</label>
+                                                <label th:text="#{label.client.gender}" class="col-sm-3 col-form-label"
+                                                       for="lang">Gender</label>
                                                 <div class="col-sm-3">
                                                     <select class="custom-select" id="sex"
                                                             th:field="*{clientSex}">
@@ -94,7 +101,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button  type="submit" class="btn btn-outline-secondary"
+                                <button type="submit" class="btn btn-outline-secondary"
                                         style="position: absolute;top: 100%;right: 2%;">Submit
                                 </button>
                             </form>
@@ -110,16 +117,19 @@
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a th:text="#{label.settings.devices}" class="nav-link active" id="devices-tab" data-toggle="tab" href="#devices"
+                                <a th:text="#{label.settings.devices}" class="nav-link active" id="devices-tab"
+                                   data-toggle="tab" href="#devices"
                                    role="tab" aria-controls="devices" aria-selected="true">Devices</a>
                             </li>
                             <li class="nav-item">
-                                <a th:text="#{label.settings.settings}" class="nav-link" id="settings-tab" data-toggle="tab" href="#settings"
+                                <a th:text="#{label.settings.settings}" class="nav-link" id="settings-tab"
+                                   data-toggle="tab" href="#settings"
                                    role="tab"
                                    aria-controls="settings" aria-selected="false">Settings</a>
                             </li>
                             <li class="nav-item">
-                                <a th:text="#{label.settings.preferences}" class="nav-link" id="preferences-tab" data-toggle="tab" href="#preferences"
+                                <a th:text="#{label.settings.preferences}" class="nav-link" id="preferences-tab"
+                                   data-toggle="tab" href="#preferences"
                                    role="tab" aria-controls="preferences" aria-selected="false">Preferences</a>
                             </li>
                         </ul>
@@ -137,7 +147,8 @@
                                                     <div class="form-group">
                                                         <div class="form-group row">
                                                             <div class="col-lg-5">
-                                                                <label th:text="#{label.settings.phoneNumber}" for="phone" class="col-sm-12 col-form-label">Phone
+                                                                <label th:text="#{label.settings.phoneNumber}"
+                                                                       for="phone" class="col-sm-12 col-form-label">Phone
                                                                     number</label>
                                                                 <small class="col-sm-12">Format: xxx-xxx-xxx</small>
                                                             </div>
@@ -160,11 +171,13 @@
                                                         </div>
                                                         <div class="form-group row">
                                                             <div class="col-lg-5">
-                                                                <label for="password" th:text="#{label.settings.password}"
+                                                                <label for="password"
+                                                                       th:text="#{label.settings.password}"
                                                                        class="col-sm-5 col-form-label">Password</label>
                                                             </div>
                                                             <div class="col-sm-7">
-                                                                <button type="button" th:text="#{label.settings.changePassword}"
+                                                                <button type="button"
+                                                                        th:text="#{label.settings.changePassword}"
                                                                         class="btn btn-outline-secondary btn-lg btn-block"
                                                                         id="password" data-toggle="modal"
                                                                         data-target="#passwordChange">Change
@@ -175,7 +188,10 @@
                                                 </div>
                                                 <div class="col-lg-3 ml-auto"
                                                      style="position: absolute;top: 80%;right: 0%;display: grid;">
-                                                    <a th:text="#{label.settings.addDevice}" class="btn btn-outline-secondary" href="#" role="button">Add new
+                                                    <a th:text="#{label.settings.addDevice}"
+                                                       class="btn btn-outline-secondary" href="#" role="button"
+                                                       data-toggle="modal"
+                                                       data-target="#addNewDevice">>Add new
                                                         device</a>
                                                 </div>
                                             </div>
@@ -192,12 +208,15 @@
                                                 <div class="row">
                                                     <div class="col-lg-5">
                                                         <div class="form-check d-flex">
-<!--                                                            <input type="checkbox" class="form-check-input"-->
-<!--                                                                   id="notification">-->
-                                                            <h3 th:text="#{label.settings.notifications}" class="form-check-label" style="margin: 0px 15px 15px 0px;" for="notification">
+                                                            <!--                                                            <input type="checkbox" class="form-check-input"-->
+                                                            <!--                                                                   id="notification">-->
+                                                            <h3 th:text="#{label.settings.notifications}"
+                                                                class="form-check-label"
+                                                                style="margin: 0px 15px 15px 0px;" for="notification">
                                                                 Notifications</h3>
                                                             <div class="switch-button switch-button-xs">
-                                                                <input type="checkbox" name="status" id="notification"><span>
+                                                                <input type="checkbox" name="status"
+                                                                       id="notification"><span>
                                                                 <label for="notification"></label></span>
                                                             </div>
                                                         </div>
@@ -215,7 +234,8 @@
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-auto my-1">
-                                                                    <button th:text="#{label.settings.addNotification}" type="submit"
+                                                                    <button th:text="#{label.settings.addNotification}"
+                                                                            type="submit"
                                                                             class="btn btn-outline-secondary">Add
                                                                     </button>
                                                                 </div>
@@ -281,7 +301,7 @@
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-body">
-                            <form th:action="@{/profile/password}" th:object="${device}" onsubmit="check_pass()" method="post">
+                            <form th:action="@{/profile/password}" th:object="${device}" method="post">
                                 <div class="form-group">
                                     <label for="current">Current Password</label>
                                     <input type="password" class="form-control" id="current"
@@ -290,12 +310,15 @@
                                 <div class="form-group">
                                     <label for="new">New Password</label>
                                     <input type="password" class="form-control" id="new"
-                                           th:field="*{newPassword}" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" onkeyup="validate_confirm()" required><span class="form-text small text-muted">The password must be 6-16 characters. Contains at least one number, capital and lowercase letter.</span>
+                                           th:field="*{newPassword}" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                                           onkeyup="validate_confirm()" required><span
+                                        class="form-text small text-muted">The password must be 6-16 characters. Contains at least one number, capital and lowercase letter.</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="confirm">Verify</label>
                                     <input type="password" class="form-control" id="confirm"
-                                           th:field="*{confirmPassword}" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" onkeyup="validate_confirm()"  required> <span
+                                           th:field="*{confirmPassword}" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                                           onkeyup="validate_confirm()" required> <span
                                         class="form-text small text-muted">To confirm, type the new password again.</span>
                                 </div>
                                 <button id="submit" type="submit"
@@ -303,6 +326,51 @@
                                 </button>
                                 <script>
                                     function validate_confirm() {
+                                        document.getElementById('submit').disabled = document.getElementById("confirm").value !== document.getElementById("new").value;
+                                    }
+                                </script>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="addNewDevice" tabindex="-1" role="dialog"
+         aria-labelledby="addNewTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
+            <div class="modal-content">
+                <div class="modal-header d-flex justify-content-center">
+                    <h2 class="modal-title" id="addNewTitle">Add new device</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <form th:action="@{/profile/create}" th:object="${user}" method="post">
+                                <div class="form-group">
+                                    <label th:text="#{label.settings.phoneNumber}" for="phone" >Phone number</label>
+                                    <input type="text" class="form-control" id="phone"
+                                           th:field="*{username}" pattern="\d{3}[\-]\d{3}[\-]\d{3}" required> <span
+                                        class="form-text small text-muted">Format: xxx-xxx-xxx</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="new">New Password</label>
+                                    <input type="password" class="form-control" id="new"
+                                           th:field="*{password}" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                                           onkeyup="validate_add()" required><span class="form-text small text-muted">The password must be 6-16 characters. Contains at least one number, capital and lowercase letter.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm">Verify</label>
+                                    <input type="password" class="form-control" id="confirm"
+                                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" onkeyup="validate_add()"
+                                           required> <span
+                                        class="form-text small text-muted">To confirm, type the new password again.</span>
+                                </div>
+                                <button id="submit" type="submit"
+                                        class="btn btn-outline-secondary btn-lg float-right">Submit
+                                </button>
+                                <script>
+                                    function validate_add() {
                                         document.getElementById('submit').disabled = document.getElementById("confirm").value !== document.getElementById("new").value;
                                     }
                                 </script>

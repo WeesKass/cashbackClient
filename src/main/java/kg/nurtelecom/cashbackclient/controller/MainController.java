@@ -35,8 +35,6 @@ public class MainController {
         model.addAttribute("events", eventService.getAllEvents(0, 2));
         model.addAttribute("orgList", organizationService.getAllOrgByNameOrDesc("",0,7));
 
-
-
         return "home";
     }
     @GetMapping(value = "org/list")

@@ -30,6 +30,7 @@ public class ProfileController {
         ProfileModel profileModel = profileService.getClientById(contextHolder.getClientId());
         model.addAttribute("device", new DeviceChangeModel());
         model.addAttribute("phone", new PhoneChangeModel());
+        model.addAttribute("user", new AuthModel());
         model.addAttribute("code", codeService.getCodeByClientId());
         model.addAttribute("client", profileModel.getClient());
         model.addAttribute("profile", profileModel);
@@ -48,6 +49,7 @@ public class ProfileController {
 
         return "redirect:/profile";
     }
+
     @PostMapping(value = "/profile/password")
     public String change(@ModelAttribute DeviceChangeModel deviceModel) {
 //        if (contextHolder.getHeaders().get("Authorization") == null) {
@@ -77,6 +79,20 @@ public class ProfileController {
             return "redirect:/profile";
         }
 
+
+        return "redirect:/profile?error";
+    }
+
+    @PostMapping(value = "/profile/create")
+    public String change(@ModelAttribute AuthModel model) {
+//        if (contextHolder.getHeaders().get("Authorization") == null) {
+//            return "redirect:/login";
+//        }
+        System.out.println("change phone:");
+        System.out.println(model);
+        if(profileService.createDeviceById(contextHolder.getClientId(), model)){
+            return "redirect:/profile";
+        }
 
         return "redirect:/profile?error";
     }

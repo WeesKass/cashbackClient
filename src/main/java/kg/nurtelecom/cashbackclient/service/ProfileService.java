@@ -1,9 +1,7 @@
 package kg.nurtelecom.cashbackclient.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kg.nurtelecom.cashbackclient.model.ClientChangeModel;
-import kg.nurtelecom.cashbackclient.model.ProfileModel;
-import kg.nurtelecom.cashbackclient.model.DeviceChangeModel;
+import kg.nurtelecom.cashbackclient.model.*;
 import kg.nurtelecom.cashbackclient.utils.ContextHolder;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
@@ -60,6 +58,18 @@ public class ProfileService {
         HttpEntity<String> request = new HttpEntity<String>(phone, contextHolder.getHeaders());
         System.out.println(request.toString());
         if(restTemplate.postForEntity(url, request, String.class).getStatusCode() == HttpStatus.ACCEPTED){
+            return true;
+        }
+        return false;
+    }
+
+    public Boolean createDeviceById(Long clientId, AuthModel model) {
+        String url = "http://localhost:4445/api/clientDevice/device";
+        System.out.println("yo");
+        HttpEntity<NewDeviceModel> request = new HttpEntity<NewDeviceModel>(new NewDeviceModel(1,model.getUsername(),model.getPassword(),"Desktop-IMEI-25162243"), contextHolder.getHeaders());
+        System.out.println(request.toString());
+        HttpStatus status = restTemplate.postForEntity(url, request, String.class).getStatusCode();
+        if(status == HttpStatus.ACCEPTED || status == HttpStatus.OK){
             return true;
         }
         return false;

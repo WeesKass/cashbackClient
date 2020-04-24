@@ -24,7 +24,7 @@ public class OrganizationFullModel{
     private String description;
     List<BonusShortModel> bonusShortModels;
     List<EventFullModel> eventModels;
-    List<FilialShortModel> filialShortModels;
+//    List<FilialShortModel> filialShortModels;
 
 
 }

@@ -2,6 +2,7 @@ package kg.nurtelecom.cashbackclient.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kg.nurtelecom.cashbackclient.model.pages.EventPage;
+import kg.nurtelecom.cashbackclient.model.pages.FilialPage;
 import kg.nurtelecom.cashbackclient.utils.ContextHolder;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
@@ -13,38 +14,25 @@ import org.springframework.web.client.RestTemplate;
 import java.io.IOException;
 
 @Service
-public class EventService {
+public class FilialService {
 
     private ContextHolder contextHolder;
     private final RestTemplate restTemplate;
     private final ObjectMapper mapper;
 
-    public EventService(RestTemplateBuilder restTemplateBuilder) {
+    public FilialService (RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
         contextHolder = ContextHolder.getInstance();
         mapper = new ObjectMapper();
     }
 
-    public EventPage getAllEvents(Integer page, Integer size){
-        String url = String.format("http://localhost:4445/api/event/all?page=%d&size=%d",page,size);
+    public FilialPage getAllFilialsByOrgId(Long id, Integer page, Integer size){
+        String url = String.format("http://localhost:4445/api/filial/org/%d?page=%d&size=%d", id, page,size);
 
         ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
-        EventPage result = new EventPage();
+        FilialPage result = new FilialPage();
         try {
-            result = mapper.readValue(response.getBody(), EventPage.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    public EventPage getAllEventsByOrgId(Long id,Integer page, Integer size){
-        String url = String.format("http://localhost:4445/api/event/all/org/%d?page=%d&size=%d", id, page, size);
-
-        ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
-        EventPage result = new EventPage();
-        try {
-            result = mapper.readValue(response.getBody(), EventPage.class);
+            result = mapper.readValue(response.getBody(), FilialPage.class);
         } catch (IOException e) {
             e.printStackTrace();
         }

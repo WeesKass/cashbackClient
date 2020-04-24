@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout}"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <title data-th-text="#{label.home.title}"></title>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="card bg-light mb-3">
+                <div class="card-header">
+                    <h3>
+                        Organization
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <div class="row">
+                                    <div class="col-lg-3" style="margin: 2%">
+                                        <img th:src="${org.getImage()}"
+                                             style="max-width: 200px;border-radius: 50%;"
+                                             alt="profile">
+                                    </div>
+                                    <div class="col-lg-3" style="margin: 2%">
+                                        <h5 class="display-8" th:text="${org.getName()}">Organization name</h5>
+                                        <p class="card-text" th:text="${org.getCategoryName()}">Category name</p>
+                                        <!--                                        <p class="card-text">-->
+                                        <!--                                            <small th:text="#{label.registration_date} + ' ' +  ${#dates.format(org.ge,'dd MMMMMMMM yyyy')}">created date</small>-->
+                                        <!--                                        </p>-->
+                                        <a href="#" class="btn btn-secondary">SUBSCRIBE</a>
+                                    </div>
+                                    <div class="col-lg-4 ml-auto">
+                                        <div class="card bg-light mb-3">
+                                            <div class="card-header row">
+                                                <h3>
+                                                    Filial
+                                                </h3>
+                                                <nav style="position: absolute;right: 10px">
+                                                    <ul class="pagination">
+                                                        <li th:if="not${filials.getFirst()}" class="page-item">
+                                                            <a class="page-link"
+                                                               th:href="@{/info/{id}/filial/list/(id=${org.getId()},page=${filials.getNumber()-1})}"
+                                                               tabindex="-1"><</a>
+                                                        </li>
+                                                        <th:block
+                                                                th:each="i: ${#numbers.sequence(0, filials.getTotalPages() - 1)}">
+                                                            <li class="page-item active" th:if="${filials.getNumber() == i}">
+                                                                <span class="page-link">[[${i}+1]]</span>
+                                                            </li>
+                                                            <li th:unless="${filials.getNumber() == i}">
+                                                                <a class="page-link"
+                                                                   th:href="@{/info/{id}/filial/list/(id=${org.getId()},page=${i})}">[[${i}+1]]</a>
+                                                            </li>
+                                                        </th:block>
+                                                        <li class="page-item" th:if="not${filials.getLast()}">
+                                                            <a class="page-link"
+                                                               th:href="@{/info/{id}/filial/list/(id=${org.getId()},page=${filials.getNumber()+1})}">></a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                            <div class="card-body">
+                                                <div th:each="filial : ${filials.getContent()}" class="card">
+                                                    <div class="card-body">
+                                                        <h5 th:text="${filial.getName()}" class="card-title">Filial Name</h5>
+                                                        <span th:text="${filial.getAverageRate()}" class="badge badge-pill badge-secondary" style="position: absolute;top:10px;right: 10px;">Average Rate</span>
+                                                        <p class="card-text" th:text="${filial.getAddress()}">Welcome</p>
+                                                            <a href="#"  th:text="#{label.more}" class="btn btn-outline-secondary"
+                                                           style="position: absolute;bottom:10px;right: 10px;">info</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="jumbotron jumbotron-fluid"
+                                     style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
+                                    <h5 class="display-12">Description</h5>
+                                    <p th:text="${org.getDescription()}">This is a modified jumbotron that occupies the
+                                        entire horizontal space of its
+                                        parent.This is a modified jumbotron that occupies the entire horizontal
+                                        space of its parent.This is a modified jumbotron that occupies the entire
+                                        horizontal space of its parent.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:fragment="events">
+                <div class="card bg-light mb-3">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <h3 th:text="#{label.Events}"class="card-title">Events</h3>
+                            </div>
+                            <div class="col-lg-2 ml-auto">
+                                <ul class="pagination">
+                                    <li th:if="not${events.getFirst()}" class="page-item">
+                                        <a class="page-link"
+                                           th:href="@{/info/{id}/event/list/(id=${org.getId()},page=${events.getNumber()-1})}"
+                                           tabindex="-1"><</a>
+                                    </li>
+                                    <th:block
+                                            th:each="i: ${#numbers.sequence(0, events.getTotalPages() - 1)}">
+                                        <li class="page-item active" th:if="${events.getNumber() == i}">
+                                            <span class="page-link">[[${i}+1]]</span>
+                                        </li>
+                                        <li th:unless="${events.getNumber() == i}">
+                                            <a class="page-link"
+                                               th:href="@{/info/{id}/event/list/(id=${org.getId()},page=${i})}">[[${i}+1]]</a>
+                                        </li>
+                                    </th:block>
+                                    <li class="page-item" th:if="not${events.getLast()}">
+                                        <a class="page-link"
+                                           th:href="@{/info/{id}/event/list/(id=${org.getId()},page=${events.getNumber()+1})}">></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" style="position: relative">
+                        <div class="row d-flex justify-content-center">
+                            <div th:each="event : ${events.getContent()}" class="col-lg-6 d-flex justify-content-center">
+                                <div class="card bg-light" style="max-width: 500px; max-height: 300px;border-radius: 10px;">
+                                    <div class="img-container">
+                                        <img th:src="${event.getImage()}" class="card-img-top" width="500px" height="300px"
+                                             style="border-radius: 10px;" alt="events">
+                                        <div class="img-overlay" style="border-radius: 10px;">
+                                            <div class="info-fluid">
+                                                <div class="jumbotron-spec jumbotron-spec-fluid">
+                                                    <div class="container">
+                                                        <h5 th:text="${event.getName()}" class="display-10">Events Name</h5>
+                                                        <p th:text="${event.getDescription()}">Events DESCRIPTION</p>
+                                                        <hr class="my-4">
+                                                        <a href="#" th:text="#{label.more}" class="btn btn-outline-secondary"
+                                                           style="position: absolute;top:10px;right: 10px;">info</a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <section id="search-section">
+                <div th:fragment="bonuses" class="card">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header">
+                            <h3  th:text="#{label.Bonuses}">
+                                Bonuses
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div th:each="bonus : ${bonuses.getContent()}" class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Organization 4</h5>
+                                    <p class="card-text" th:text="${bonus.getOrgBonusType()}">Welcome</p>
+                                    <p class="card-text" th:text=" 'Remaining:' + ${bonus.getValidity()}"></p>
+                                    <a href="#"  th:text="#{label.more}" class="btn btn-outline-secondary"
+                                       style="position: absolute;top:10px;right: 10px;">info</a>
+                                </div>
+                            </div>
+                            <nav>
+                                <ul class="pagination">
+                                    <li th:if="not${bonuses.getFirst()}" class="page-item">
+                                        <a class="page-link"
+                                           th:href="@{/info/{id}/bonus/list/(id=${org.getId()},page=${bonuses.getNumber()-1})}"
+                                           tabindex="-1"><</a>
+                                    </li>
+                                    <th:block
+                                            th:each="i: ${#numbers.sequence(0, bonuses.getTotalPages() - 1)}">
+                                        <li class="page-item active" th:if="${bonuses.getNumber() == i}">
+                                            <span class="page-link">[[${i}+1]]</span>
+                                        </li>
+                                        <li th:unless="${bonuses.getNumber() == i}">
+                                            <a class="page-link"
+                                               th:href="@{/info/{id}/bonus/list/(id=${org.getId()},page=${i})}">[[${i}+1]]</a>
+                                        </li>
+                                    </th:block>
+                                    <li class="page-item" th:if="not${bonuses.getLast()}">
+                                        <a class="page-link"
+                                           th:href="@{/info/{id}/bonus/list/(id=${org.getId()},page=${bonuses.getNumber()+1})}">></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

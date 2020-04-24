@@ -63,18 +63,18 @@ public class OrganizationService {
         return result;
     }
 
-    public OrganizationFullModel getOrganizationInfo(Long id) {
+    public OrganizationModel getOrganizationInfo(Long id) {
         String url = "http://localhost:4445/api/organization/info/{id}";
 
         ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class, id);
-        OrganizationFullModel orgFull = new OrganizationFullModel();
+        OrganizationModel org = new OrganizationModel();
         try {
-            orgFull = mapper.readValue(response.getBody(), OrganizationFullModel.class);
-            System.out.println(orgFull.toString());
+            org = mapper.readValue(response.getBody(), OrganizationModel.class);
+            System.out.println(org.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return orgFull;
+        return org;
     }
 
 }

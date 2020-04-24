@@ -38,4 +38,18 @@ public class BonusService {
         System.out.println(result);
         return result;
     }
+
+    public Object getAllBonusByOrgId(Long id, Integer page, Integer size) {
+        String url = String.format("http://localhost:4445/api/orgBonus/all/org/%d?page=%d&size=%d",id, page, size);
+
+        ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
+        BonusPage result = new BonusPage();
+        try {
+            result = mapper.readValue(response.getBody(), BonusPage.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(result);
+        return result;
+    }
 }
