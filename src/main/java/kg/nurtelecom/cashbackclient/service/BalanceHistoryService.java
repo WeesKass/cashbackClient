@@ -2,6 +2,7 @@ package kg.nurtelecom.cashbackclient.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kg.nurtelecom.cashbackclient.model.HistoryModel;
+import kg.nurtelecom.cashbackclient.model.pages.HistoryPage;
 import kg.nurtelecom.cashbackclient.utils.ContextHolder;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
@@ -27,16 +28,16 @@ public class BalanceHistoryService {
         contextHolder = ContextHolder.getInstance();
     }
 
-    public List<HistoryModel> getAllHistory(Long id){
-        String url = "http://localhost:4445/api/balanceHistory/client/{id}";
+    public HistoryPage getAllHistory(Integer page, Integer size){
+        String url = String.format("http://localhost:4445/api/balanceHistory/client/%d?page=%d&size=%d", 1L, page, size); //contextHolder.getClientId()
         System.out.println(contextHolder.getHeaders().toString());
         ObjectMapper mapper = new ObjectMapper();
-        ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class , contextHolder.getClientId());
+        ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
         System.out.println(response);
-        List<HistoryModel> result = new ArrayList<>();
+        HistoryPage result = new HistoryPage();
 
         try {
-            result = Arrays.asList(mapper.readValue(response.getBody(), HistoryModel[].class));
+            result = mapper.readValue(response.getBody(), HistoryPage.class);
         } catch (IOException e) {
             e.printStackTrace();
         }

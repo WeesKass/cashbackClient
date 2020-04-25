@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout}"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <title data-th-text="#{label.Subscribes}"></title>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5>History</h5>
+                    <nav style="position: absolute;top:20px;right:10px">
+                        <ul class="pagination">
+                            <li th:if="not${history.getFirst()}" class="page-item">
+                                <a class="page-link"
+                                   th:href="@{/subs/history/list/(page=${history.getNumber()-1})}"
+                                   tabindex="-1"><</a>
+                            </li>
+                            <th:block
+                                    th:each="i: ${#numbers.sequence(0, history.getTotalPages() - 1)}">
+                                <li class="page-item active"
+                                    th:if="${history.getNumber() == i}">
+                                    <span class="page-link">[[${i}+1]]</span>
+                                </li>
+                                <li th:unless="${history.getNumber() == i}">
+                                    <a class="page-link"
+                                       th:href="@{/subs/history/list/(page=${i})}">[[${i}+1]]</a>
+                                </li>
+                            </th:block>
+                            <li class="page-item" th:if="not${history.getLast()}">
+                                <a class="page-link"
+                                   th:href="@{/subs/history/list/(page=${history.getNumber()+1})}">></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Organization Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="h : ${history.getContent()}">
+                            <th scope="row" th:text="${#dates.format(h.getCreatedDate(),'dd MMMMMMMM yyyy')}">Default
+                                date
+                            </th>
+                            <td th:if="${h.getOperationType().equals('DEBIT')}" th:text="${'+ ' + h.getAmount()}"
+                                style="color: green">Default Amount
+                            </td>
+                            <td th:if="${h.getOperationType().equals('CREDIT')}" th:text="${'- ' + h.getAmount()}"
+                                style="color: red    ">Default Amount
+                            </td>
+                            <td th:text="${h.getOrganizationName()}">Default org name</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="card">
+                <h5 class="card-header">Subscriptions</h5>
+                <div class="card-body">
+                    <div class="card">
+                        <div th:each="orgs, key : ${orgsList}" class="card-body row"
+                             th:if="not${orgs.getContent().isEmpty()}">
+                            <div class="col-sm-12">
+                                <h5 th:text="${orgs.getContent().get(0).getCategoryName()}" class="card-title"></h5>
+                            </div>
+                            <div class="col-sm-1">
+                                <a class="page-link fluid"
+                                   style="height:100%;display:flex;justify-content:center;align-items:center;"
+                                   href=""><</a>
+                            </div>
+                            <div th:each="org : ${orgs.getContent()}" class="col-sm-2">
+                                <div class="card border-light mb-3"
+                                     style="height:100%;display:flex;justify-content:center;align-items:center;">
+                                    <div th:text="${org.getName()}" class="card-header">Organization Name</div>
+                                    <div class="card-body">
+                                        <img th:src="${org.getImage()}" style="max-width:70px;" alt="organization">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <a class="page-link"
+                                   style="height:100%;display:flex;justify-content:center;align-items:center;"
+                                   href="">></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

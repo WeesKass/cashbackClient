@@ -27,4 +27,5 @@ public class BonusShortModel {
     private String orgDesc;
     private String desc;
     private Long orgId;
+
 }

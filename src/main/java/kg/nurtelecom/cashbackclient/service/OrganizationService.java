@@ -3,6 +3,8 @@ package kg.nurtelecom.cashbackclient.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kg.nurtelecom.cashbackclient.model.OrganizationFullModel;
 import kg.nurtelecom.cashbackclient.model.OrganizationModel;
+import kg.nurtelecom.cashbackclient.model.pages.HistoryPage;
+import kg.nurtelecom.cashbackclient.model.pages.OrgShortPage;
 import kg.nurtelecom.cashbackclient.utils.ContextHolder;
 import kg.nurtelecom.cashbackclient.model.pages.OrganizationPage;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -77,4 +79,21 @@ public class OrganizationService {
         return org;
     }
 
+    public List<OrgShortPage> getAllOrgs(Integer page, Integer size) {
+        List<OrgShortPage> result = new ArrayList<>();
+        String url = "http://localhost:4445/api/organization/category/%d?page=%d&size=%d";
+        ObjectMapper mapper = new ObjectMapper();
+
+        for (int i = 0; i < 3; i++) {
+        ResponseEntity<String> response =  restTemplate.exchange(String.format(url, i, page, size), HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
+        OrgShortPage element = new OrgShortPage();
+        try {
+            element = mapper.readValue(response.getBody(), OrgShortPage.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        result.add(element);
+        }
+        return result;
+    }
 }

@@ -14,10 +14,10 @@ import java.util.Date;
 public class HistoryModel {
     private Long id;
     private Long clientId;
-    private Date createdDate;
-    private String operationType;
-    private Double amount;
+    private Date createdDate;//
+    private String operationType;//
+    private Double amount;//
     private Double total;
     private String bonusType;
-    private String organizationName;
+    private String organizationName;//
 }
