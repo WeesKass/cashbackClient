@@ -16,7 +16,7 @@
                         </li>
                         <br>
                         <li class="nav-item active" style="margin-right: 20%">
-                            <a class="nav-link" th:text="#{label.Subscribes}" href="#">Subscribes</a>
+                            <a th:href="@{/subs}" class="nav-link" th:text="#{label.Subscribes}" href="#">Subscribes</a>
                         </li>
                     </ul>
                 </div>
@@ -51,7 +51,7 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" th:text="#{label.profile.title}"
                                    th:href="@{/profile}">Profile</a>
-                                <a class="dropdown-item" th:text="#{label.Balance}" href="#">Balance</a>
+                                <a th:href="@{/subs}" class="dropdown-item" th:text="#{label.Balance}" href="#">Balance</a>
                                 <!--                                <a class="dropdown-item" th:text="#{label.settings}" href="#">Settings</a>-->
                                 <a class="dropdown-item" th:text="#{label.Logout}" th:href="@{/}">Log Out</a>
                             </div>
