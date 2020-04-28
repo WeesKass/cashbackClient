@@ -18,7 +18,7 @@
                     <p class="card-text" th:text="${bonus.getOrgBonusType()}">Welcome</p>
                     <p class="card-text" th:text="#{label.days} +' '+ ${bonus.getValidity()}"></p>
                     <button th:text="#{label.more}" th:id="${bonus.id}" class="btn btn-outline-secondary"
-                       style="position: absolute;bottom:10px;right: 10px; ">info</button>
+                            style="position: absolute;bottom:20px;right: 20px;">info</button>
                     <img style="position: absolute;top:30px;right: 20px;" th:src="${bonus.getImage()}" width="64"
                          height="64" alt="default">
                 </div>
@@ -46,7 +46,7 @@
                     </li>
                 </ul>
             </nav>
-            <div  th:id="${bonus.id}+'modal'"  th:each="bonus : ${bonuses.getContent()}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div  th:id="${bonus.id}+'bonuses'"  th:each="bonus : ${bonuses.getContent()}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -56,7 +56,7 @@
                             <h5 style="position: absolute;left: 101px;top:40px;font-family: 'Fira Sans', sans-serif" th:text="${bonus.getOrgDesc()}" >Modal title</h5>
                         </div>
                         <div class="modal-body">
-                        <h5 style="font-family: 'Fira Sans', sans-serif;font-size: 1.3em;" th:text="${bonus.getDesc()}" >Modal title</h5>
+                            <h5 style="font-family: 'Fira Sans', sans-serif;font-size: 1.3em;" th:text="${bonus.getDesc()}" >Modal title</h5>
                             <h5 style="font-family: 'Fira Sans', sans-serif;font-size: 1em;"  th:text="#{label.modal.from} + ' ' +  ${#dates.format(bonus.validFrom,'dd-MMM-yyyy')}" >Modal title</h5>
                             <h5 style="font-family: 'Fira Sans', sans-serif;font-size: 1em;"  th:text="#{label.modal.to} + ' ' +  ${#dates.format(bonus.validTo,'dd-MMM-yyyy')}" >Modal title</h5>
                         </div>
@@ -72,7 +72,7 @@
     <script>
         $(".btn").click(function () {
             var idcheck = $(this).attr('id');
-            var window = '#'+idcheck+'modal';
+            var window = '#'+idcheck+'bonuses';
             $(window).modal('show');
         });
     </script>

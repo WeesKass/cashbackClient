@@ -18,4 +18,8 @@ public class EventFullModel {
     private Date dateFrom;
     private Date dateTo;
     private String description;
+    private Long orgId;
+    private String orgImage;
+    private String orgName;
+    private String orgDesc;
 }

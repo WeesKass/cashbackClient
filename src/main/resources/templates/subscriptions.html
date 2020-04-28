@@ -65,9 +65,9 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th scope="col">Date</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Organization Name</th>
+                            <th th:text="#{label.subs.date}" scope="col">Date</th>
+                            <th th:text="#{label.subs.amount}" scope="col">Amount</th>
+                            <th th:text="#{label.subs.org}" scope="col">Organization Name</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -81,7 +81,7 @@
                             <td th:if="${h.getOperationType().equals('CREDIT')}" th:text="${'- ' + h.getAmount()}"
                                 style="color: red    ">Default Amount
                             </td>
-                            <td th:text="${h.getOrganizationName()}">Default org name</td>
+                            <td  th:text="${h.getOrganizationName()}">Default org name</td>
                         </tr>
                         </tbody>
                     </table>
@@ -116,7 +116,7 @@
         </div>
         <div class="col-lg-8">
             <div class="card">
-                <h5 class="card-header">Subscriptions</h5>
+                <h5 th:text="#{label.subs.subs}" class="card-header">Subscriptions</h5>
                 <div class="card-body">
                     <div class="card" >
                         <div th:each="orgs, key : ${orgsList}" class="card-body row"
@@ -142,7 +142,9 @@
                                      style="height:100%;display:flex;justify-content:center;align-items:center;">
                                     <div th:text="${org.getName()}" id="name" class="card-header">Organization Name</div>
                                     <div class="card-body">
-                                        <img th:src="${org.getImage()}" id="img" style="max-width:70px;" alt="organization">
+                                        <a th:href="@{'/info/' + ${org.id}}" >
+                                        <img  th:src="${org.getImage()}" style="max-width:70px;" alt="organization">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
