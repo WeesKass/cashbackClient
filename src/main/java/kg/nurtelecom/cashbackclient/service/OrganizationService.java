@@ -84,7 +84,7 @@ public class OrganizationService {
         String url = "http://localhost:4445/api/organization/category/%d?page=%d&size=%d";
         ObjectMapper mapper = new ObjectMapper();
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
         ResponseEntity<String> response =  restTemplate.exchange(String.format(url, i, page, size), HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
         OrgShortPage element = new OrgShortPage();
         try {

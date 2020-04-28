@@ -32,7 +32,7 @@ public class CodeService {
         HttpEntity<Object> entity = new HttpEntity<>(contextHolder.getHeaders());
         try {
             ObjectMapper mapper = new ObjectMapper();
-            ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, entity, String.class , 1L); //contextHolder.getClientId()
+            ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, entity, String.class , contextHolder.getClientId()); //contextHolder.getClientId()
             result = mapper.readValue(response.getBody(), ClientPersonalCodeModel.class);
 //            GenerateQRCode.generateQRCodeImage(result.getPersonalCode());
 //            result.setImageUrl("/assets/img/qr.png");

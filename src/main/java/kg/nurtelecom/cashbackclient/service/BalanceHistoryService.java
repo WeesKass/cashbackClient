@@ -29,7 +29,7 @@ public class BalanceHistoryService {
     }
 
     public HistoryPage getAllHistory(Integer page, Integer size){
-        String url = String.format("http://localhost:4445/api/balanceHistory/client/%d?page=%d&size=%d", 1L, page, size); //contextHolder.getClientId()
+        String url = String.format("http://localhost:4445/api/balanceHistory/client/%d?page=%d&size=%d", contextHolder.getClientId(), page, size); //contextHolder.getClientId()
         System.out.println(contextHolder.getHeaders().toString());
         ObjectMapper mapper = new ObjectMapper();
         ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);

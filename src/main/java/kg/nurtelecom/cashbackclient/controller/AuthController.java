@@ -21,12 +21,12 @@ public class AuthController {
 
     @GetMapping(value = "/login")
     public String authPage(Model model){
-//        if (contextHolder.getHeaders().get("Authorization") == null){
-//            model.addAttribute("user", new AuthModel());
-//            return "authorization/authorization";
-//        } else {
+        if (contextHolder.getHeaders().get("Authorization") == null){
+            model.addAttribute("user", new AuthModel());
+            return "authorization/authorization";
+        } else {
             return "redirect:/";
-//        }
+        }
 
 
     }

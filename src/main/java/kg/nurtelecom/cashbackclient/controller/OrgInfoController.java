@@ -27,9 +27,9 @@ public class OrgInfoController {
 
     @GetMapping(value = "/info/{id}")
     public String main(@PathVariable("id") Long id, Model model) {
-//        if (contextHolder.getHeaders().get("Authorization") == null) {
-//            return "redirect:/login";
-//        }
+        if (contextHolder.getHeaders().get("Authorization") == null) {
+            return "redirect:/login";
+        }
         model.addAttribute("code", codeService.getCodeByClientId());
         model.addAttribute("bonuses", bonusService.getAllBonusByOrgId(id,0, 3));
         model.addAttribute("filials", filialService.getAllFilialsByOrgId(id,0, 1));
@@ -42,9 +42,9 @@ public class OrgInfoController {
                                   @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
                                   @RequestParam(value = "size", required = false, defaultValue = "1") Integer size,
                                   Model model) {
-//        if (contextHolder.getHeaders().get("Authorization") == null) {
-//            return "redirect:/login";
-//        }
+        if (contextHolder.getHeaders().get("Authorization") == null) {
+            return "redirect:/login";
+        }
         model.addAttribute("code", codeService.getCodeByClientId());
         model.addAttribute("bonuses", bonusService.getAllBonusByOrgId(id,0, 3));
         model.addAttribute("filials", filialService.getAllFilialsByOrgId(id,page, size));
@@ -58,9 +58,9 @@ public class OrgInfoController {
                                   @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
                                   @RequestParam(value = "size", required = false, defaultValue = "2") Integer size,
                                   Model model) {
-//        if (contextHolder.getHeaders().get("Authorization") == null) {
-//            return "redirect:/login";
-//        }
+        if (contextHolder.getHeaders().get("Authorization") == null) {
+            return "redirect:/login";
+        }
         model.addAttribute("code", codeService.getCodeByClientId());
         model.addAttribute("bonuses", bonusService.getAllBonusByOrgId(id,0, 3));
         model.addAttribute("events", eventService.getAllEventsByOrgId(id, page, size));
@@ -75,9 +75,9 @@ public class OrgInfoController {
                                   @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
                                   @RequestParam(value = "size", required = false, defaultValue = "3") Integer size,
                                   Model model) {
-//        if (contextHolder.getHeaders().get("Authorization") == null) {
-//            return "redirect:/login";
-//        }
+        if (contextHolder.getHeaders().get("Authorization") == null) {
+            return "redirect:/login";
+        }
         model.addAttribute("code", codeService.getCodeByClientId());
         model.addAttribute("bonuses", bonusService.getAllBonusByOrgId(id, page, size));
         model.addAttribute("events", eventService.getAllEventsByOrgId(id,0, 2));

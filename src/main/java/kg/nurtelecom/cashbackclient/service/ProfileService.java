@@ -25,7 +25,7 @@ public class ProfileService {
         mapper = new ObjectMapper();
     }
     public ProfileModel getClientById(Long clientId) {
-        String url = "http://localhost:4445/api/clientDevice/" + 1;
+        String url = "http://localhost:4445/api/clientDevice/" + clientId;
 
         String json =  restTemplate.getForObject(url, String.class);
         System.out.println(json);
@@ -40,12 +40,12 @@ public class ProfileService {
     }
 
     public void putClientById(Long clientId, ClientChangeModel dto) {
-        String url = "http://localhost:4445/api/client/" + 1;
+        String url = "http://localhost:4445/api/client/" + clientId;
         restTemplate.put(url, dto);
     }
 
     public Boolean putDeviceById(Long clientId, DeviceChangeModel dto) {
-        String url = "http://localhost:4445/api/clientDevice/" + 1;
+        String url = "http://localhost:4445/api/clientDevice/" + clientId;
         HttpEntity<DeviceChangeModel> request = new HttpEntity<>(dto, contextHolder.getHeaders());
         if(restTemplate.postForEntity(url, request, String.class).getStatusCode() == HttpStatus.ACCEPTED){
             return true;
@@ -53,7 +53,7 @@ public class ProfileService {
         return false;
     }
     public Boolean changeDeviceById(Long clientId, String phone) {
-        String url = "http://localhost:4445/api/clientDevice/phone/" + 1;
+        String url = "http://localhost:4445/api/clientDevice/phone/" + clientId;
 
         HttpEntity<String> request = new HttpEntity<String>(phone, contextHolder.getHeaders());
         System.out.println(request.toString());

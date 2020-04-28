@@ -12,4 +12,5 @@ public class OrganizationShortModel {
     private String image;
     private String name;
     private String categoryName;
+    private Long categoryId;
 }

@@ -27,9 +27,9 @@ public class MainController {
 
     @GetMapping(value = "/")
     public String main(Model model) {
-//        if (contextHolder.getHeaders().get("Authorization") == null) {
-//            return "redirect:/login";
-//        }
+        if (contextHolder.getHeaders().get("Authorization") == null) {
+            return "redirect:/login";
+        }
         model.addAttribute("code", codeService.getCodeByClientId());
         model.addAttribute("bonuses", bonusService.getAllBonus(0, 3));
         model.addAttribute("events", eventService.getAllEvents(0, 2));
@@ -42,9 +42,9 @@ public class MainController {
                        @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
                        @RequestParam(value = "size", required = false, defaultValue = "7") Integer size,
                        Model model) {
-//        if (contextHolder.getHeaders().get("Authorization") == null) {
-//            return "redirect:/login";
-//        }
+        if (contextHolder.getHeaders().get("Authorization") == null) {
+            return "redirect:/login";
+        }
         model.addAttribute("code", codeService.getCodeByClientId());
         model.addAttribute("bonuses", bonusService.getAllBonus(0, 3));
         model.addAttribute("events", eventService.getAllEvents(0, 2));
@@ -57,9 +57,9 @@ public class MainController {
     public String eventPagination(@RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
                        @RequestParam(value = "size", required = false, defaultValue = "2") Integer size,
                        Model model) {
-//        if (contextHolder.getHeaders().get("Authorization") == null) {
-//            return "redirect:/login";
-//        }
+        if (contextHolder.getHeaders().get("Authorization") == null) {
+            return "redirect:/login";
+        }
         model.addAttribute("code", codeService.getCodeByClientId());
         model.addAttribute("bonuses", bonusService.getAllBonus(0, 3));
         model.addAttribute("events", eventService.getAllEvents(page, size));
@@ -72,9 +72,9 @@ public class MainController {
     public String bonusPagination(@RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
                        @RequestParam(value = "size", required = false, defaultValue = "3") Integer size,
                        Model model) {
-//        if (contextHolder.getHeaders().get("Authorization") == null) {
-//            return "redirect:/login";
-//        }
+        if (contextHolder.getHeaders().get("Authorization") == null) {
+            return "redirect:/login";
+        }
         model.addAttribute("code", codeService.getCodeByClientId());
         model.addAttribute("bonuses", bonusService.getAllBonus(page, size));
         model.addAttribute("events", eventService.getAllEvents(0, 2));

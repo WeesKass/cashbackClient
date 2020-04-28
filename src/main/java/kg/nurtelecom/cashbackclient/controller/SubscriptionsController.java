@@ -24,9 +24,9 @@ public class SubscriptionsController {
 
     @GetMapping(value = "/subs")
     public String main(Model model) {
-//        if (contextHolder.getHeaders().get("Authorization") == null) {
-//            return "redirect:/login";
-//        }
+        if (contextHolder.getHeaders().get("Authorization") == null) {
+            return "redirect:/login";
+        }
         model.addAttribute("code", codeService.getCodeByClientId());
         model.addAttribute("history", historyService.getAllHistory(0, 10));
         model.addAttribute("orgsList", organizationService.getAllOrgs(0, 5));
@@ -37,9 +37,9 @@ public class SubscriptionsController {
     public String main(@RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
                        @RequestParam(value = "size", required = false, defaultValue = "10") Integer size,
                        Model model) {
-//        if (contextHolder.getHeaders().get("Authorization") == null) {
-//            return "redirect:/login";
-//        }
+        if (contextHolder.getHeaders().get("Authorization") == null) {
+            return "redirect:/login";
+        }
         model.addAttribute("code", codeService.getCodeByClientId());
         model.addAttribute("history", historyService.getAllHistory(page, size));
         model.addAttribute("orgsList", organizationService.getAllOrgs(0, 5));
