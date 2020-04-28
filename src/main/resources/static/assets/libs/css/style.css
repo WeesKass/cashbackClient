@@ -2664,8 +2664,8 @@ html body .display-7 {
 
 /*--- btn outline secondary --*/
 .btn-outline-secondary {
-    color: #ff407b;
-    background-color: transparent;
+    color: #fff;
+    background-color: #ff407b;
     border-color: #ff407b;
 }
 
