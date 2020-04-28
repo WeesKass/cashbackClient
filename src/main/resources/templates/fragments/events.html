@@ -39,37 +39,35 @@
         <div class="card-body" style="position: relative">
             <div class="row d-flex justify-content-center">
                 <div th:each="event : ${events.getContent()}" class="col-lg-6 d-flex justify-content-center">
-                    <div class="card bg-light" style="max-width: 500px; max-height: 300px;border-radius: 10px;">
-                        <div class="img-container">
-                            <img th:src="${event.getImage()}" class="card-img-top" width="500px" height="300px"
-                                 style="border-radius: 10px;" alt="events">
-                            <div class="img-overlay" style="border-radius: 10px;">
-                                <div class="info-fluid">
-                                    <div class="jumbotron-spec jumbotron-spec-fluid">
-                                        <div class="container">
-                                            <h5 th:text="${event.getName()}" class="display-10">Events Name</h5>
-                                            <p th:text="${event.getDescription()}">Events DESCRIPTION</p>
-                                            <hr class="my-4">
-                                            <button th:text="#{label.more}" th:id="${event.id}" class="btn btn-outline-secondary"
-                                               style="position: absolute;top:10px;right: 10px;">info</button>
-                                        </div>
+                    <div class="img-container">
+                        <img th:src="${event.getImage()}" class="card-img-top" width="500px" height="300px"
+                             style="border-radius: 10px;" alt="events">
+                        <div class="img-overlay" style="border-radius: 10px;">
+                            <div class="info-fluid">
+                                <div class="jumbotron-spec jumbotron-spec-fluid">
+                                    <div class="container">
+                                        <h5 th:text="${event.getName()}" class="display-10">Events Name</h5>
+                                        <p th:text="${event.getDescription()}">Events DESCRIPTION</p>
+                                        <hr class="my-4">
+                                        <button th:text="#{label.more}" th:id="${event.id}" class="btn btn-outline-secondary"
+                                                style="position: absolute;top:10px;right: 10px;">info</button>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div  th:id="${event.id}+'events'"  th:each="event : ${events.getContent()}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <img th:src="${event.getOrgImage()}" width="64"
-                                         height="64" alt="default">
-                                    <h5 th:text="${event.getOrgName()}" style="position: absolute;left: 100px;top:0;font-size: 2em" class="modal-title" >Modal title</h5>
-                                    <h5 th:text="${event.getOrgDesc()}" style="position: absolute;left: 101px;top:40px;font-family: 'Fira Sans', sans-serif"  >Modal title</h5>
-<!--                                </div>-->
+            </div>
+                <div  th:id="${event.id}+'events'"  th:each="event : ${events.getContent()}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" >
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <img th:src="${event.getOrgImage()}" width="64"
+                                     height="64" alt="default">
+                                <h5 th:text="${event.getOrgName()}" style="position: absolute;left: 100px;top:0;font-size: 2em" class="modal-title" >Modal title</h5>
+                                <h5 th:text="${event.getOrgDesc()}" style="position: absolute;left: 101px;top:40px;font-family: 'Fira Sans', sans-serif"  >Modal title</h5>
+                            </div>
                                 <div class="modal-body">
-                                    <img th:src="${event.getImage()}" width="250"
+                                    <img th:src="${event.getImage()}" width="450"
                                          height="250" alt="default">
                                     <h5 style="font-family: 'Fira Sans', sans-serif;font-size: 1.3em;" th:text="${event.getName()}" >Modal title</h5>
                                     <h5 style="font-family: 'Fira Sans', sans-serif;font-size: 1.3em;" th:text="${event.getDescription()}" >Modal title</h5>
@@ -84,16 +82,16 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
+        <script>
+            $(".btn-outline-secondary").click(function () {
+                var idcheck = $(this).attr('id');
+                var window = '#'+idcheck+'events';
+                $(window).modal('show');
+            });
+        </script>
 </div>
-    <script>
-        $(".btn-outline-secondary").click(function () {
-            var idcheck = $(this).attr('id');
-            var window = '#'+idcheck+'events';
-            $(window).modal('show');
-        });
-    </script>
+</div>
 </body>
 </html>
