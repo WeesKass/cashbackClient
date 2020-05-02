@@ -1,6 +1,7 @@
 package kg.nurtelecom.cashbackclient.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import kg.nurtelecom.cashbackclient.model.EventFullModel;
 import kg.nurtelecom.cashbackclient.model.pages.EventPage;
 import kg.nurtelecom.cashbackclient.utils.ContextHolder;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class EventService {
@@ -25,7 +27,7 @@ public class EventService {
         mapper = new ObjectMapper();
     }
 
-    public EventPage getAllEvents(Integer page, Integer size){
+    public List<EventFullModel> getAllEvents(Integer page, Integer size){
         String url = String.format("http://localhost:4445/api/event/all?page=%d&size=%d",page,size);
 
         ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
@@ -35,7 +37,7 @@ public class EventService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return result;
+        return result.getContent();
     }
 
     public EventPage getAllEventsByOrgId(Long id,Integer page, Integer size){
