@@ -154,7 +154,7 @@ input::-webkit-input-placeholder {
 }
 
 input:focus::-webkit-input-placeholder {
-    color: #5969ff !important;
+    color: #71748d !important;
 }
 
 textarea::-webkit-input-placeholder {
@@ -162,7 +162,7 @@ textarea::-webkit-input-placeholder {
 }
 
 textarea:focus::-webkit-input-placeholder {
-    color: #5969ff !important;
+    color: #71748d !important;
 }
 
 button.btn {
@@ -193,7 +193,7 @@ address {
 }
 
 .custom-control-input:checked ~ input[type="checkbox"] {
-    background: #3d404e;
+    background: #71748d;
     border: #7f83a2 1px solid;
 }
 
@@ -208,13 +208,23 @@ address {
 }
 
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-    background-color: #5969ff;
-    border-color: #5969ff;
+    background-color: #71748d;
+    border-color: #71748d;
+}
+
+.carousel-buttons {
+    background-color: hsla(0, 0%, 100%, 1);
+    color: hsla(0, 0%, 0%, 1);
+}
+
+.carousel-buttons:hover {
+    background-color: hsla(25, 50%, 75%, 1);
+    color: hsla(0, 0%, 0%, 1);
 }
 
 .custom-control-input:checked ~ .custom-control-label::before {
     color: #fff;
-    background-color: #5969ff;
+    background-color: #71748d;
 }
 
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
@@ -2664,8 +2674,8 @@ html body .display-7 {
 
 /*--- btn outline secondary --*/
 .btn-outline-secondary {
-    color: #ff407b;
-    background-color: transparent;
+    color: #fff;
+    background-color: #ff407b;
     border-color: #ff407b;
 }
 
@@ -6376,7 +6386,7 @@ form.dropzone {
 
 /* ===================== FILE INPUT ===================== */
 .glyphicon {
-    margin-left: 10px
+    margin-left: 10px;
     position: relative;
     top: 1px;
     display: inline-block;
@@ -6642,6 +6652,7 @@ i.material-icons {
         transform: scale(2.5);
     }
 }
+
 
 /*.btn-file {*/ /*    position: relative;*/ /*    overflow: hidden;*/ /*}*/ /*.btn-file input[type=file] {*/ /*    position: absolute;*/ /*    top: 0;*/ /*    right: 0;*/ /*    min-width: 100%;*/ /*    min-height: 100%;*/ /*    font-size: 100px;*/ /*    text-align: right;*/ /*    filter: alpha(opacity=0);*/ /*    opacity: 0;*/ /*    outline: none;*/ /*    background: white;*/ /*    cursor: inherit;*/ /*    display: block;*/ /*}*/ /*#img-upload{*/ /*    width: 100%;*/ /*}*/
 

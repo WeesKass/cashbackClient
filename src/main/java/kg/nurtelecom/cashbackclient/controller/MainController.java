@@ -32,7 +32,7 @@ public class MainController {
         }
         model.addAttribute("code", codeService.getCodeByClientId());
         model.addAttribute("bonuses", bonusService.getAllBonus(0, 3));
-        model.addAttribute("events", eventService.getAllEvents(0, 2));
+        model.addAttribute("events", eventService.getAllEvents(0, 3));
         model.addAttribute("orgList", organizationService.getAllOrgByNameOrDesc("",0,7));
 
         return "home";

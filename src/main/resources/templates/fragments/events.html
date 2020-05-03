@@ -9,55 +9,80 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-lg-3">
-                    <h3 th:text="#{label.Events}"class="card-title">Events</h3>
+                    <h3 th:text="#{label.Events}" class="card-title">Events</h3>
                 </div>
-                <div class="col-lg-2 ml-auto">
-                    <ul class="pagination">
-                        <li th:if="not${events.getFirst()}" class="page-item">
-                            <a class="page-link"
-                               th:href="@{/event/list(page=${events.getNumber()-1})}"
-                               tabindex="-1"><</a>
-                        </li>
-                        <th:block
-                                th:each="i: ${#numbers.sequence(0, events.getTotalPages() - 1)}">
-                            <li class="page-item active" th:if="${events.getNumber() == i}">
-                                <span class="page-link">[[${i}+1]]</span>
-                            </li>
-                            <li th:unless="${events.getNumber() == i}">
-                                <a class="page-link"
-                                   th:href="@{/event/list(page=${i})}">[[${i}+1]]</a>
-                            </li>
-                        </th:block>
-                        <li class="page-item" th:if="not${events.getLast()}">
-                            <a class="page-link"
-                               th:href="@{/event/list(page=${events.getNumber()+1})}">></a>
-                        </li>
-                    </ul>
-                </div>
+<!--                <div class="col-lg-2 ml-auto">-->
+<!--                    <ul class="pagination">-->
+<!--                        <li th:if="not${events.getFirst()}" class="page-item">-->
+<!--                            <a class="page-link"-->
+<!--                               th:href="@{/event/list(page=${events.getNumber()-1})}"-->
+<!--                               tabindex="-1"><</a>-->
+<!--                        </li>-->
+<!--                        <th:block-->
+<!--                                th:each="i: ${#numbers.sequence(0, events.getTotalPages() - 1)}">-->
+<!--                            <li class="page-item active" th:if="${events.getNumber() == i}">-->
+<!--                                <span class="page-link">[[${i}+1]]</span>-->
+<!--                            </li>-->
+<!--                            <li th:unless="${events.getNumber() == i}">-->
+<!--                                <a class="page-link"-->
+<!--                                   th:href="@{/event/list(page=${i})}">[[${i}+1]]</a>-->
+<!--                            </li>-->
+<!--                        </th:block>-->
+<!--                        <li class="page-item" th:if="not${events.getLast()}">-->
+<!--                            <a class="page-link"-->
+<!--                               th:href="@{/event/list(page=${events.getNumber()+1})}">></a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
             </div>
         </div>
         <div class="card-body" style="position: relative">
             <div class="row d-flex justify-content-center">
-                <div th:each="event : ${events.getContent()}" class="col-lg-6 d-flex justify-content-center">
-                    <div class="img-container">
-                        <img th:src="${event.getImage()}" class="card-img-top" width="500px" height="300px"
-                             style="border-radius: 10px;" alt="events">
-                        <div class="img-overlay" style="border-radius: 10px;">
-                            <div class="info-fluid">
-                                <div class="jumbotron-spec jumbotron-spec-fluid">
-                                    <div class="container">
-                                        <h5 th:text="${event.getName()}" class="display-10">Events Name</h5>
-                                        <p th:text="${event.getDescription()}">Events DESCRIPTION</p>
-                                        <hr class="my-4">
-                                        <button th:text="#{label.more}" th:id="${event.id}" class="btn btn-outline-secondary"
-                                                style="position: absolute;top:10px;right: 10px;">info</button>
-                                    </div>
-                                </div>
+                <div class="col-lg-6 d-flex justify-content-center">
+                    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active"  style="">
+                                <button style="background-color: white" class = "btn" href = "#" th:id="${events[0].id}">
+                                <img th:id="${events[0].id}"  th:href="'#'+${events[0].id}+'events'" class="d-block w-100" style="position: relative;" width="auto" height="auto"  th:src="${events[0].image}" alt="Start Slideshow">
+                                </button>
                             </div>
+                            <div class="carousel-item"  style=""  th:each="event,iterStat : ${events}" th:if="${iterStat.index} != 0">
+                                    <button style="background-color: white" class = "btn" href = "#" th:id="${event.id}">
+                                        <img  th:id="${event.id}" class="d-block w-100"  style="position: relative;" width="auto" height="auto" th:src="${event.image}" alt="@{${photo.fileName}}">
+                                    </button>
+                            </div>
+
                         </div>
+<!--                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">-->
+<!--                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+<!--                            <span class="sr-only">Previous</span>-->
+<!--                        </a>-->
+                        <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+
+
+<!--                    <div class="img-container">-->
+<!--                        <img th:src="${event.getImage()}" class="card-img-top" width="500px" height="300px"-->
+<!--                             style="border-radius: 10px;" alt="events">-->
+<!--                        <div class="img-overlay" style="border-radius: 10px;">-->
+<!--                            <div class="info-fluid">-->
+<!--                                <div class="jumbotron-spec jumbotron-spec-fluid">-->
+<!--                                    <div class="container">-->
+<!--                                        <h5 th:text="${event.getName()}" class="display-10">Events Name</h5>-->
+<!--                                        <p th:text="${event.getDescription()}">Events DESCRIPTION</p>-->
+<!--                                        <hr class="my-4">-->
+<!--                                        <button th:text="#{label.more}" th:id="${event.id}" class="btn btn-outline-secondary"-->
+<!--                                                style="position: absolute;top:10px;right: 10px;">info</button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
             </div>
-                <div  th:id="${event.id}+'events'"  th:each="event : ${events.getContent()}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div  th:id="${event.id}+'events'"  th:each="event : ${events}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog" >
                         <div class="modal-content">
                             <div class="modal-header">
@@ -83,15 +108,24 @@
                     </div>
                 </div>
         </div>
+    <script>
+        $(".btn").click(function () {
+            var idcheck = $(this).attr('id');
+            var window = '#'+idcheck+'events';
+            console.log(window);
+            $(window).modal('show');
+        });
+        // function myFunction() {
+        //     var idcheck = $(this).attr('id');
+        //     var window = '#'+idcheck+'events';
+        //     console.log(window);
+        //     $(window).modal('sh  ow');
+        // }
+        //     $('.carousel-item').on('click', function() {
+        //         console.log('clicked! going to: ');
+        //         // window.location = $(this).find('a').attr('href');
+        //     });
+    </script>
     </div>
-        <script>
-            $(".btn-outline-secondary").click(function () {
-                var idcheck = $(this).attr('id');
-                var window = '#'+idcheck+'events';
-                $(window).modal('show');
-            });
-        </script>
-</div>
-</div>
 </body>
 </html>

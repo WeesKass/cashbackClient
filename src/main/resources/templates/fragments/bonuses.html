@@ -17,8 +17,8 @@
                     <h5 th:text="${bonus.getOrgName()}" class="card-title">Organization 4</h5>
                     <p class="card-text" th:text="${bonus.getOrgBonusType()}">Welcome</p>
                     <p class="card-text" th:text="#{label.days} +' '+ ${bonus.getValidity()}"></p>
-                    <button th:text="#{label.more}" th:id="${bonus.id}" class="btn btn-outline-secondary"
-                            style="position: absolute;bottom:20px;right: 20px;">info</button>
+                    <button th:text="#{label.more}" th:id="${bonus.id}" class="btn btn-block"
+                            style="background-color: #F0047F;color: white">info</button>
                     <img style="position: absolute;top:30px;right: 20px;" th:src="${bonus.getImage()}" width="64"
                          height="64" alt="default">
                 </div>
