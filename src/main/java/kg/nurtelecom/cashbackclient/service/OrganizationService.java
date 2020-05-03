@@ -1,12 +1,10 @@
 package kg.nurtelecom.cashbackclient.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kg.nurtelecom.cashbackclient.model.OrganizationFullModel;
 import kg.nurtelecom.cashbackclient.model.OrganizationModel;
-import kg.nurtelecom.cashbackclient.model.pages.HistoryPage;
 import kg.nurtelecom.cashbackclient.model.pages.OrgShortPage;
-import kg.nurtelecom.cashbackclient.utils.ContextHolder;
 import kg.nurtelecom.cashbackclient.model.pages.OrganizationPage;
+import kg.nurtelecom.cashbackclient.utils.ContextHolder;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -33,10 +31,10 @@ public class OrganizationService {
         mapper = new ObjectMapper();
     }
 
-    public OrganizationPage getAllOrgByNameOrDesc(String search, Integer page, Integer size){
-        String url = String.format("http://localhost:4445/api/organization/list?search=%s&page=%d&size=%d",search,page,size);
+    public OrganizationPage getAllOrgByNameOrDesc(String search, Integer page, Integer size) {
+        String url = String.format("http://localhost:4445/api/organization/list?search=%s&page=%d&size=%d", search, page, size);
 
-        ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
+        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
         OrganizationPage result = new OrganizationPage();
         try {
             result = mapper.readValue(response.getBody(), OrganizationPage.class);
@@ -46,14 +44,14 @@ public class OrganizationService {
         return result;
     }
 
-    public Map<String, List<OrganizationModel>> getAllSubscribes(Long id){
+    public Map<String, List<OrganizationModel>> getAllSubscribes(Long id) {
         String url = "http://localhost:4445/api/organization/list/{id}";
 
-        ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class , contextHolder.getClientId());
-        Map<String,List<OrganizationModel>> result = new HashMap<>();
+        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class, contextHolder.getClientId());
+        Map<String, List<OrganizationModel>> result = new HashMap<>();
         try {
             OrganizationModel[] list2 = mapper.readValue(response.getBody(), OrganizationModel[].class);
-            for (OrganizationModel org : list2 ){
+            for (OrganizationModel org : list2) {
                 if (!result.containsKey(org.getCategoryName())) {
                     result.put(org.getCategoryName(), new ArrayList<>());
                 }
@@ -68,7 +66,7 @@ public class OrganizationService {
     public OrganizationModel getOrganizationInfo(Long id) {
         String url = "http://localhost:4445/api/organization/info/{id}";
 
-        ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class, id);
+        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class, id);
         OrganizationModel org = new OrganizationModel();
         try {
             org = mapper.readValue(response.getBody(), OrganizationModel.class);
@@ -85,14 +83,41 @@ public class OrganizationService {
         ObjectMapper mapper = new ObjectMapper();
 
         for (int i = 0; i < 5; i++) {
-        ResponseEntity<String> response =  restTemplate.exchange(String.format(url, i, page, size), HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
-        OrgShortPage element = new OrgShortPage();
-        try {
-            element = mapper.readValue(response.getBody(), OrgShortPage.class);
-        } catch (IOException e) {
-            e.printStackTrace();
+            ResponseEntity<String> response = restTemplate.exchange(String.format(url, i, page, size), HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
+            OrgShortPage element = new OrgShortPage();
+            try {
+                element = mapper.readValue(response.getBody(), OrgShortPage.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (!element.getContent().isEmpty()) {
+                result.add(element);
+            }
         }
-        result.add(element);
+        return result;
+    }
+
+    public List<OrgShortPage> getAllOrgsByCatId(Long catId, Integer page, Integer size) {
+        List<OrgShortPage> result = new ArrayList<>();
+        String url = "http://localhost:4445/api/organization/category/%d?page=%d&size=%d";
+        ObjectMapper mapper = new ObjectMapper();
+        ResponseEntity<String> response;
+        for (int i = 0; i < 5; i++) {
+            if (catId == i) {
+                response = restTemplate.exchange(String.format(url, i, page, size), HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
+            } else {
+                response = restTemplate.exchange(String.format(url, i, 0, 5), HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
+
+            }
+            OrgShortPage element = new OrgShortPage();
+            try {
+                element = mapper.readValue(response.getBody(), OrgShortPage.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (!element.getContent().isEmpty()) {
+                result.add(element);
+            }
         }
         return result;
     }

@@ -16,49 +16,17 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-10">
                             <h5>History</h5>
                         </div>
-<!--                        <form th:action="@{/subs/history/search/}" method="get"-->
-<!--                              class="form-inline my-2 my-lg-0">-->
-<!--                            <div class="col-sm-4">-->
-<!--                                <div class="form-group row">-->
-<!--                                    &lt;!&ndash;                                <label class="text-dark font-bold" for="dateFrom">From</label>&ndash;&gt;-->
-<!--                                    <div class="input-group date" id="datetimepicker4" data-target-input="nearest">-->
-<!--                                        <input type="text"-->
-<!--                                               class="form-control datetimepicker-input" id="dateFrom">-->
-<!--                                        &lt;!&ndash;th:value="${orgBonus.validFrom}" th:field="${orgBonus.validFrom}"&ndash;&gt;-->
-<!--                                        <div class="input-group-append" data-target="#datetimepicker4"-->
-<!--                                             data-toggle="datetimepicker">-->
-<!--                                            <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="col-sm-4 ml-auto">-->
-<!--                                <div class="form-group row">-->
-<!--                                    &lt;!&ndash;                                <label class="text-dark font-bold" for="dateTo">To</label>&ndash;&gt;-->
-<!--                                    <div class="input-group date" id="datetimepicker5" data-target-input="nearest">-->
-<!--                                        <input type="text"-->
-<!--                                               class="form-control datetimepicker-input" id="dateTo">-->
-<!--                                        &lt;!&ndash;th:value="${orgBonus.validTo}" th:field="${orgBonus.validTo}"&ndash;&gt;-->
-<!--                                        <div class="input-group-append" data-target="#datetimepicker5"-->
-<!--                                             data-toggle="datetimepicker">-->
-<!--                                            <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="col-sm-2 ml-auto">-->
-<!--                                <div class="form-group row">-->
-<!--                                    <button th:text="#{label.Search}" style="background: #ff407b;color: #ffffff;"-->
-<!--                                            class="btn btn-outline-secondary my-2 my-sm-0"-->
-<!--                                            type="submit">-->
-<!--                                        Search-->
-<!--                                    </button>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </form>-->
+                        <div class="col-sm-2 ml-auto">
+                            <button class="btn btn-outline-secondary" type="button" data-toggle="modal"
+                                    data-target=".bd-example-modal-lg"
+                                    style="position: absolute; right: 10px; top: 25%"><span class="fa fa-search"></span>
+                            </button>
+                            <!--                            <button class="btn btn-outline-secondary" href="#" data-toggle="modal"-->
+                            <!--                               data-target="#exampleHistorySearchModal" style="position: absolute; right: 10px; top: 25%"><span class="fa fa-search"></span></button>-->
+                        </div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -81,7 +49,7 @@
                             <td th:if="${h.getOperationType().equals('CREDIT')}" th:text="${'- ' + h.getAmount()}"
                                 style="color: red    ">Default Amount
                             </td>
-                            <td  th:text="${h.getOrganizationName()}">Default org name</td>
+                            <td th:text="${h.getOrganizationName()}">Default org name</td>
                         </tr>
                         </tbody>
                     </table>
@@ -94,7 +62,7 @@
                                    th:href="@{/subs/history/list/(page=${history.getNumber()-1})}"
                                    tabindex="-1"><</a>
                             </li>
-                            <th:block
+                            <th:block th:if="not${history.getContent().isEmpty()}"
                                     th:each="i: ${#numbers.sequence(0, history.getTotalPages() - 1)}">
                                 <li class="page-item active"
                                     th:if="${history.getNumber() == i}">
@@ -118,48 +86,44 @@
             <div class="card">
                 <h5 th:text="#{label.subs.subs}" class="card-header">Subscriptions</h5>
                 <div class="card-body">
-                    <div class="card" >
-                        <div th:each="orgs, key : ${orgsList}" class="card-body row"
-                             th:if="not${orgs.getContent().isEmpty()}" id="key.index">
+                    <div class="card">
+                        <div th:each="orgs, key : ${orgsList}" class="card-body row">
                             <div class="col-sm-12">
-                                <h5 th:text="${orgs.getContent().get(0).getCategoryName()}" class="card-title"></h5>
+                                <h5 th:text="${orgs.getContent().get(0).getCategoryName()}"
+                                    class="card-title"></h5>
                             </div>
                             <div class="col-sm-1">
                                 <form name="subsForm">
-                                    <input name="prevSubsForm__id" type="hidden"
-                                         th:value="${orgs.getContent().get(0).getCategoryName()}">
-                                    <input name="prevSubsForm__page" type="hidden"
-                                         th:value="${orgs.getNumber()-1}">
-                                    <button name="prevSubsForm__btn"
-                                            class="page-link"
-                                            style="height:100%;display:flex;justify-content:center;align-items:center;"
-                                            type="submit"><
-                                    </button>
+                                    <a th:href="@{/subs/{id}(id=${orgs.getContent().get(0).getCategoryId()},page=${orgs.getNumber()-1},size=5)}"
+                                       th:if="not${orgs.getFirst()}"
+                                       class="page-link"
+                                       style="height:100%;display:flex;justify-content:center;align-items:center;"
+                                       type="submit"><
+                                    </a>
                                 </form>
                             </div>
                             <div th:each="org, key : ${orgs.getContent()}" class="col-sm-2">
                                 <div th:id="${'id_' + key.index}" class="card border-light mb-3"
                                      style="height:100%;display:flex;justify-content:center;align-items:center;">
-                                    <div th:text="${org.getName()}" id="name" class="card-header">Organization Name</div>
+                                    <div th:text="${org.getName()}" id="name" class="card-header">Organization
+                                        Name
+                                    </div>
                                     <div class="card-body">
-                                        <a th:href="@{'/info/' + ${org.id}}" >
-                                        <img  th:src="${org.getImage()}" style="max-width:70px;" alt="organization">
+                                        <a th:href="@{'/info/' + ${org.id}}">
+                                            <img th:src="${org.getImage()}" style="max-width:70px;"
+                                                 alt="organization">
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-1">
-                                <form name='nextSubsForm' th:onsubmit="'pagination(event, ' + ${orgs.getContent().get(0).getCategoryId()} + ')'">
-                                    <input name='nextSubsForm__id' type="hidden"
-                                         th:value="${orgs.getContent().get(0).getCategoryId()}">
-                                    <input name='nextSubsForm__page' type="hidden"
-                                           th:value="${orgs.getNumber()+1}">
-                                    <button name='nextSubsForm__btn'
-                                            class="page-link"
-                                            type='submit'
-                                            style="height:100%;display:flex;justify-content:center;align-items:center;">
-                                        >
-                                    </button>
+                            <div class="col-sm-1 ml-auto">
+                                <form name='nextSubsForm'>
+                                    <a th:href="@{/subs/{id}(id=${orgs.getContent().get(0).getCategoryId()},page=${orgs.getNumber()+1},size=5)}"
+                                       th:if="not${orgs.getLast()}"
+                                       class="page-link"
+                                       type='submit'
+                                       style="height:100%;display:flex;justify-content:center;align-items:center;">>
+                                    </a>
                                 </form>
                             </div>
                         </div>
@@ -168,7 +132,59 @@
             </div>
         </div>
     </div>
-    <script src="assets/libs/js/subs.js"></script>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Balance History Search</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/subs/history/search/}" th:object="${search}" method="get">
+                        <div class="row">
+                            <div class="col-sm-4 ml-auto">
+                                <div class="form-group">
+                                    <label class="text-dark font-bold"
+                                           for="dateFrom">From</label>
+                                    <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
+                                        <input type="text"
+                                               th:field="*{from}"
+                                               class="form-control datetimepicker-input" id="dateFrom">
+                                        <div class="input-group-append" data-target="#datetimepicker4"
+                                             data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 ml-auto">
+                                <div class="form-group">
+                                    <label class="text-dark font-bold" for="dateTo">To</label>
+                                    <div class="input-group date" id="datetimepicker5" data-target-input="nearest">
+                                        <input type="text"
+                                               th:field="*{to}"
+                                               class="form-control datetimepicker-input" id="dateTo">
+                                        <div class="input-group-append" data-target="#datetimepicker5"
+                                             data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 ml-auto">
+                                <button style="position: absolute; right: 10%; bottom: 10%" type="submit"
+                                        class="btn btn-outline-secondary">Confirm
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
