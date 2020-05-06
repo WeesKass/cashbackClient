@@ -2484,7 +2484,7 @@ html body .display-7 {
 
 .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show > .btn-secondary.dropdown-toggle {
     color: #fff;
-    /*background-color: #f0346e;*/
+    background-color: #f0346e;
     border-color: #f0346e;
 }
 

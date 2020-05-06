@@ -39,21 +39,24 @@
         <div class="card-body" style="position: relative">
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-6 d-flex justify-content-center">
-                    <div id="carouselExampleFade" class="carousel slide container" style="width: 5000px;">
+                    <div id="carouselEvents" class="carousel slide container" style="width: 5000px;">
                         <div class="carousel-inner">
                             <div class="carousel-item active" style="overflow: auto">
-                                <button style="background-color: white" class = "btn" href = "#" th:id="${events[0].id}">
+                                <button style="background-color: white ; padding: 0 0 0 0;   " class = "btn" href = "#" th:id="${events[0].id}">
                                 <img th:id="${events[0].id}"  class="img-responsive center-block"  th:src="${events[0].image}">
                                 </button>
                             </div>
                             <div class="carousel-item" th:each="event,iterStat : ${events}" th:if="${iterStat.index} != 0">
-                                    <button style="background-color: white" class = "btn" href = "#" th:id="${event.id}">
+                                    <button style="background-color: white;  padding: 0 0 0 0;  " class = "btn" href = "#" th:id="${event.id}">
                                         <img  th:id="${event.id}" style="position: relative;" width="auto" height="auto" th:src="${event.image}" alt="@{${photo.fileName}}">
                                     </button>
                             </div>
-
                         </div>
-                        <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                        <a class="carousel-control-prev" href="#carouselEvents" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselEvents" role="button" data-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>

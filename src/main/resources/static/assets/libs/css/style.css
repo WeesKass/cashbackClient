@@ -2200,10 +2200,6 @@ html body .display-7 {
     background-color: #5969ff;
 }
 
-.product-carousel .carousel-control-next, .carousel-control-prev {
-    display: none;
-}
-
 .product-details {
     background-color: #fff;
     padding: 30px;
