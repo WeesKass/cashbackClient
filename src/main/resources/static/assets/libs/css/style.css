@@ -2200,10 +2200,6 @@ html body .display-7 {
     background-color: #5969ff;
 }
 
-.product-carousel .carousel-control-next, .carousel-control-prev {
-    display: none;
-}
-
 .product-details {
     background-color: #fff;
     padding: 30px;
@@ -2674,9 +2670,11 @@ html body .display-7 {
 
 /*--- btn outline secondary --*/
 .btn-outline-secondary {
-    color: #fff;
-    background-color: #ff407b;
+    color: #ff407b;
+    background-color: transparent;
+    /*background-color: #ff407b;*/
     border-color: #ff407b;
+
 }
 
 .btn-outline-secondary:hover {
@@ -2688,14 +2686,14 @@ html body .display-7 {
 .btn-outline-secondary.focus, .btn-outline-secondary:focus {
     color: #fff;
     background-color: #ff407b;
-    border-color: #ff407b;
-    box-shadow: 0 0 0 1px rgb(227, 45, 201);
+    /*border-color: #ff407b;*/
+    /*box-shadow: 0 0 0 1px rgb(227, 45, 201);*/
 }
 
 .btn-outline-secondary:not(:disabled):not(.disabled).active, .btn-outline-secondary:not(:disabled):not(.disabled):active, .show > .btn-outline-secondary.dropdown-toggle {
     color: #fff;
-    background-color: #ff407b;
-    border-color: #ff407b;
+    /*background-color: #ff407b;*/
+    /*border-color: #ff407b;*/
 }
 
 /*--- btn outline success --*/
@@ -3778,7 +3776,7 @@ html body .display-7 {
     padding: .5rem .75rem;
     margin-left: 0px;
     margin-right: 5px;
-    line-height: 1.25;
+    line-height: 0.25;
     color: #71748d;
     background-color: #fff;
     border: 1px solid #e6e6f2;

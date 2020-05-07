@@ -39,62 +39,76 @@
                                     </div>
                                     <div class="col-lg-4 ml-auto">
                                         <div class="card bg-light mb-3">
-                                            <div class="card-header row">
-                                                <h3>
-                                                    Filial
-                                                </h3>
-                                                <nav style="position: absolute;right: 10px">
-                                                    <ul class="pagination">
-                                                        <li th:if="not${filials.getFirst()}" class="page-item">
-                                                            <a class="page-link"
-                                                               th:href="@{/info/{id}/filial/list/(id=${org.getId()},page=${filials.getNumber()-1})}"
-                                                               tabindex="-1"><</a>
-                                                        </li>
-                                                        <th:block
-                                                                th:each="i: ${#numbers.sequence(0, filials.getTotalPages() - 1)}">
-                                                            <li class="page-item active"
-                                                                th:if="${filials.getNumber() == i}">
-                                                                <span class="page-link">[[${i}+1]]</span>
-                                                            </li>
-                                                            <li th:unless="${filials.getNumber() == i}">
-                                                                <a class="page-link"
-                                                                   th:href="@{/info/{id}/filial/list/(id=${org.getId()},page=${i})}">[[${i}+1]]</a>
-                                                            </li>
-                                                        </th:block>
-                                                        <li class="page-item" th:if="not${filials.getLast()}">
-                                                            <a class="page-link"
-                                                               th:href="@{/info/{id}/filial/list/(id=${org.getId()},page=${filials.getNumber()+1})}">></a>
-                                                        </li>
-                                                    </ul>
-                                                </nav>
-                                            </div>
-                                            <div class="card-body">
-                                                <div th:each="filial : ${filials.getContent()}" class="card">
-                                                    <div class="card-body">
-                                                        <h5 th:text="${filial.getName()}" class="card-title">Filial
-                                                            Name</h5>
-                                                        <span th:text="${filial.getAverageRate()}"
-                                                              class="badge badge-pill badge-secondary"
-                                                              style="position: absolute;top:10px;right: 10px;">Average Rate</span>
-                                                        <p class="card-text" th:text="${filial.getAddress()}">
-                                                            Welcome</p>
-                                                        <a href="#" th:text="#{label.more}"
-                                                           class="btn btn-outline-secondary"
-                                                           style="position: absolute;bottom:10px;right: 10px;">info</a>
+                                                <div id="carouselFilials" style="background-color: #fff" class="carousel slide container" th:if="not${filials.isEmpty()}">
+                                                    <div>
+                                                        <h3>Filials</h3>
+                                                    <div class="d-flex flex-row-reverse justify-content-between" style="position: absolute; top:10px;right: 5px;">
+                                                        <a class="carousel-control-next-icon" href="#carouselFilials"
+                                                           role="button" data-slide="next">
+<!--                                                        <span class="carousel-control-next-icon"-->
+<!--                                                              aria-hidden="true"></span>-->
+<!--                                                            <span class="sr-only">Next</span>-->
+                                                            >
+                                                        </a>
+                                                        <a class="carousel-control-prev-icon" href="#carouselFilials"
+                                                           role="button" data-slide="prev">
+<!--                                                        <span class="carousel-control-prev-icon"-->
+<!--                                                              aria-hidden="true"></span>-->
+<!--                                                            <span class="sr-only">Previous</span>-->
+                                                            <
+                                                        </a>
+                                                    </div>
+                                                    </div>
+                                                    <div class="carousel-inner" style="margin-bottom: 0">
+                                                        <div class="carousel-item active">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <h5 th:text="${filials[0].name}"
+                                                                            class="card-header-title" >Filial
+                                                                            Name</h5>
+                                                                        <p class="card-text"
+                                                                           th:text="${filials[0].address}">
+                                                                            Welcome</p>
+<!--                                                                        <img th:src="${filials[0].image}"-->
+<!--                                                                             width="128"-->
+<!--                                                                             height="64" alt="default">-->
+                                                                        <span th:text="${filials[0].averageRate}"
+                                                                              class="badge badge-pill badge-secondary"
+                                                                              style="position: absolute;top:25px;right: 10px;">Average Rate</span>
+                                                                        <button th:text="#{label.more}" class="btn btn-outline-secondary" style="display:block;width:100%">info</button>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                        <div class="carousel-item"
+                                                             th:each="filial,iterStat : ${filials}"
+                                                             th:if="${iterStat.index} != 0">
+                                                            <div class="card">
+                                                            <div class="card-body">
+                                                                <h5 th:text="${filial.name}"
+                                                                    class="card-header-title" >Filial
+                                                                    Name</h5>
+                                                                <p class="card-text"
+                                                                   th:text="${filial.address}">
+                                                                    Welcome</p>
+<!--                                                                <img th:src="${filial.image}"-->
+<!--                                                                     width="128"-->
+<!--                                                                     height="64" alt="default">-->
+                                                                <span th:text="${filial.averageRate}"
+                                                                      class="badge badge-pill badge-secondary"
+                                                                      style="position: absolute;top:25px;right: 10px;">Average Rate</span>
+                                                                <button th:text="#{label.more}" class="btn btn-outline-secondary" style="display:block;width:100%">info</button>
+                                                            </div>
+                                                        </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="jumbotron jumbotron-fluid"
                                      style="padding: 2rem 1rem;margin-bottom: 2rem;background-color: #e9ecef;border-radius: .3rem;">
                                     <h5 class="display-12">Description</h5>
-                                    <p th:text="${org.getDescription()}">This is a modified jumbotron that occupies the
-                                        entire horizontal space of its
-                                        parent.This is a modified jumbotron that occupies the entire horizontal
-                                        space of its parent.This is a modified jumbotron that occupies the entire
-                                        horizontal space of its parent.</p>
+                                    <p th:text="${org.getDescription()}"></p>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +129,7 @@
                                            th:href="@{/info/{id}/event/list/(id=${org.getId()},page=${events.getNumber()-1})}"
                                            tabindex="-1"><</a>
                                     </li>
-                                    <th:block
+                                    <th:block th:if="not${events.getContent().isEmpty()}"
                                             th:each="i: ${#numbers.sequence(0, events.getTotalPages() - 1)}">
                                         <li class="page-item active" th:if="${events.getNumber() == i}">
                                             <span class="page-link">[[${i}+1]]</span>
@@ -198,7 +212,7 @@
                                            th:href="@{/info/{id}/bonus/list/(id=${org.getId()},page=${bonuses.getNumber()-1})}"
                                            tabindex="-1"><</a>
                                     </li>
-                                    <th:block
+                                    <th:block th:if="not${bonuses.getContent().isEmpty()}"
                                             th:each="i: ${#numbers.sequence(0, bonuses.getTotalPages() - 1)}">
                                         <li class="page-item active" th:if="${bonuses.getNumber() == i}">
                                             <span class="page-link">[[${i}+1]]</span>

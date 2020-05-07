@@ -17,8 +17,7 @@
                     <h5 th:text="${bonus.getOrgName()}" class="card-title">Organization 4</h5>
                     <p class="card-text" th:text="${bonus.getOrgBonusType()}">Welcome</p>
                     <p class="card-text" th:text="#{label.days} +' '+ ${bonus.getValidity()}"></p>
-                    <button th:text="#{label.more}" th:id="${bonus.id}" class="btn btn-block"
-                            style="background-color: #F0047F;color: white">info</button>
+                    <button th:text="#{label.more}" th:id="${bonus.id}" class="btn btn-outline-secondary" style="display:block;width:100%">info</button>
                     <img style="position: absolute;top:30px;right: 20px;" th:src="${bonus.getImage()}" width="64"
                          height="64" alt="default">
                 </div>
@@ -70,7 +69,7 @@
         </div>
     </div>
     <script>
-        $(".btn").click(function () {
+        $(".btn btn-block").click(function () {
             var idcheck = $(this).attr('id');
             var window = '#'+idcheck+'bonuses';
             $(window).modal('show');
