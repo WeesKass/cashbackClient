@@ -26,7 +26,7 @@ public class CodeService {
     }
 
     public ClientPersonalCodeModel getCodeByClientId() {
-        String url = "http://localhost:4445/api/client/code/{id}";
+        String url = "http://157.245.219.46:4445/api/client/code/{id}";
         ClientPersonalCodeModel result = new ClientPersonalCodeModel();
         System.out.println(contextHolder.getHeaders().toString());
         HttpEntity<Object> entity = new HttpEntity<>(contextHolder.getHeaders());
