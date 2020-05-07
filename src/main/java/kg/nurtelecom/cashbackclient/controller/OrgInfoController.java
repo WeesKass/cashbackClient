@@ -32,7 +32,7 @@ public class OrgInfoController {
         }
         model.addAttribute("code", codeService.getCodeByClientId());
         model.addAttribute("bonuses", bonusService.getAllBonusByOrgId(id,0, 3));
-        model.addAttribute("filials", filialService.getAllFilialsByOrgId(id,0, 1));
+        model.addAttribute("filials", filialService.getAllFilialsByOrgId(id,0, 3));
         model.addAttribute("events", eventService.getAllEventsByOrgId(id,0, 2));
         model.addAttribute("org", organizationService.getOrganizationInfo(id));
         return "orgInfo";

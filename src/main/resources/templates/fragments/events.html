@@ -11,29 +11,6 @@
                 <div class="col-lg-3">
                     <h3 th:text="#{label.Events}" class="card-title">Events</h3>
                 </div>
-<!--                <div class="col-lg-2 ml-auto">-->
-<!--                    <ul class="pagination">-->
-<!--                        <li th:if="not${events.getFirst()}" class="page-item">-->
-<!--                            <a class="page-link"-->
-<!--                               th:href="@{/event/list(page=${events.getNumber()-1})}"-->
-<!--                               tabindex="-1"><</a>-->
-<!--                        </li>-->
-<!--                        <th:block-->
-<!--                                th:each="i: ${#numbers.sequence(0, events.getTotalPages() - 1)}">-->
-<!--                            <li class="page-item active" th:if="${events.getNumber() == i}">-->
-<!--                                <span class="page-link">[[${i}+1]]</span>-->
-<!--                            </li>-->
-<!--                            <li th:unless="${events.getNumber() == i}">-->
-<!--                                <a class="page-link"-->
-<!--                                   th:href="@{/event/list(page=${i})}">[[${i}+1]]</a>-->
-<!--                            </li>-->
-<!--                        </th:block>-->
-<!--                        <li class="page-item" th:if="not${events.getLast()}">-->
-<!--                            <a class="page-link"-->
-<!--                               th:href="@{/event/list(page=${events.getNumber()+1})}">></a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </div>-->
             </div>
         </div>
         <div class="card-body" style="position: relative">
@@ -61,24 +38,6 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
-
-
-<!--                    <div class="img-container">-->
-<!--                        <img th:src="${event.getImage()}" class="card-img-top" width="500px" height="300px"-->
-<!--                             style="border-radius: 10px;" alt="events">-->
-<!--                        <div class="img-overlay" style="border-radius: 10px;">-->
-<!--                            <div class="info-fluid">-->
-<!--                                <div class="jumbotron-spec jumbotron-spec-fluid">-->
-<!--                                    <div class="container">-->
-<!--                                        <h5 th:text="${event.getName()}" class="display-10">Events Name</h5>-->
-<!--                                        <p th:text="${event.getDescription()}">Events DESCRIPTION</p>-->
-<!--                                        <hr class="my-4">-->
-<!--                                        <button th:text="#{label.more}" th:id="${event.id}" class="btn btn-outline-secondary"-->
-<!--                                                style="position: absolute;top:10px;right: 10px;">info</button>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
                     </div>
             </div>
                 <div  th:id="${event.id}+'events'"  th:each="event : ${events}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
