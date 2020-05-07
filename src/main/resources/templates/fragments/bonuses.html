@@ -17,7 +17,8 @@
                     <h5 th:text="${bonus.getOrgName()}" class="card-title">Organization 4</h5>
                     <p class="card-text" th:text="${bonus.getOrgBonusType()}">Welcome</p>
                     <p class="card-text" th:text="#{label.days} +' '+ ${bonus.getValidity()}"></p>
-                    <button th:text="#{label.more}" th:id="${bonus.id}" class="btn btn-outline-secondary" style="display:block;width:100%">info</button>
+                    <button th:text="#{label.more}" th:id="${bonus.id}" class="btn btn-block"
+                            style="background-color: #F0047F;color: white">info</button>
                     <img style="position: absolute;top:30px;right: 20px;" th:src="${bonus.getImage()}" width="64"
                          height="64" alt="default">
                 </div>
@@ -60,7 +61,7 @@
                             <h5 style="font-family: 'Fira Sans', sans-serif;font-size: 1em;"  th:text="#{label.modal.to} + ' ' +  ${#dates.format(bonus.validTo,'dd-MMM-yyyy')}" >Modal title</h5>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" th:text="#{label.modal.close}" class="btn btn-primary" data-dismiss="modal">Close</button>
+<!--                            <button type="button" th:text="#{label.modal.close}" class="btn btn-primary" data-dismiss="modal">Close</button>-->
                             <a type="button" th:href="@{'/info/' + ${bonus.getOrgId()}}" th:text="#{label.modal.toOrg}" class="btn btn-secondary">Save changes</a>
                         </div>
                     </div>
@@ -69,7 +70,7 @@
         </div>
     </div>
     <script>
-        $(".btn btn-block").click(function () {
+        $(".btn-block").click(function () {
             var idcheck = $(this).attr('id');
             var window = '#'+idcheck+'bonuses';
             $(window).modal('show');

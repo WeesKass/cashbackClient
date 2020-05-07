@@ -27,8 +27,12 @@ public class FilialService {
         mapper = new ObjectMapper();
     }
 
+<<<<<<< Updated upstream
 
     public List<FilialModel> getAllFilialsByOrgId(Long id, Integer page, Integer size){
+=======
+    public FilialPage getAllFilialsByOrgId(Long id, Integer page, Integer size){
+>>>>>>> Stashed changes
         String url = String.format("http://157.245.219.46:4445/api/filial/org/%d?page=%d&size=%d", id, page,size);
 
         ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
