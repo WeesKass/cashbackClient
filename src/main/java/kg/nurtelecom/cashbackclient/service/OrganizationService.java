@@ -32,7 +32,7 @@ public class OrganizationService {
     }
 
     public OrganizationPage getAllOrgByNameOrDesc(String search, Integer page, Integer size) {
-        String url = String.format("http://localhost:4445/api/organization/list?search=%s&page=%d&size=%d", search, page, size);
+        String url = String.format("http://157.245.219.46:4445/api/organization/list?search=%s&page=%d&size=%d", search, page, size);
 
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
         OrganizationPage result = new OrganizationPage();
@@ -45,7 +45,7 @@ public class OrganizationService {
     }
 
     public Map<String, List<OrganizationModel>> getAllSubscribes(Long id) {
-        String url = "http://localhost:4445/api/organization/list/{id}";
+        String url = "http://157.245.219.46:4445/api/organization/list/{id}";
 
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class, contextHolder.getClientId());
         Map<String, List<OrganizationModel>> result = new HashMap<>();
@@ -64,7 +64,7 @@ public class OrganizationService {
     }
 
     public OrganizationModel getOrganizationInfo(Long id) {
-        String url = "http://localhost:4445/api/organization/info/{id}";
+        String url = "http://157.245.219.46:4445/api/organization/info/{id}";
 
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class, id);
         OrganizationModel org = new OrganizationModel();
@@ -79,7 +79,7 @@ public class OrganizationService {
 
     public List<OrgShortPage> getAllOrgs(Integer page, Integer size) {
         List<OrgShortPage> result = new ArrayList<>();
-        String url = "http://localhost:4445/api/organization/category/%d?page=%d&size=%d";
+        String url = "http://157.245.219.46:4445/api/organization/category/%d?page=%d&size=%d";
         ObjectMapper mapper = new ObjectMapper();
 
         for (int i = 0; i < 5; i++) {
@@ -99,7 +99,7 @@ public class OrganizationService {
 
     public List<OrgShortPage> getAllOrgsByCatId(Long catId, Integer page, Integer size) {
         List<OrgShortPage> result = new ArrayList<>();
-        String url = "http://localhost:4445/api/organization/category/%d?page=%d&size=%d";
+        String url = "http://157.245.219.46:4445/api/organization/category/%d?page=%d&size=%d";
         ObjectMapper mapper = new ObjectMapper();
         ResponseEntity<String> response;
         for (int i = 0; i < 5; i++) {

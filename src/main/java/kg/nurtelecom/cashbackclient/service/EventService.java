@@ -28,7 +28,7 @@ public class EventService {
     }
 
     public List<EventFullModel> getAllEvents(Integer page, Integer size){
-        String url = String.format("http://localhost:4445/api/event/all?page=%d&size=%d",page,size);
+        String url = String.format("http://157.245.219.46:4445/api/event/all?page=%d&size=%d",page,size);
 
         ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
         EventPage result = new EventPage();
@@ -41,7 +41,7 @@ public class EventService {
     }
 
     public EventPage getAllEventsByOrgId(Long id,Integer page, Integer size){
-        String url = String.format("http://localhost:4445/api/event/all/org/%d?page=%d&size=%d", id, page, size);
+        String url = String.format("http://157.245.219.46:4445/api/event/all/org/%d?page=%d&size=%d", id, page, size);
 
         ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
         EventPage result = new EventPage();

@@ -61,7 +61,7 @@
                             <h5 style="font-family: 'Fira Sans', sans-serif;font-size: 1em;"  th:text="#{label.modal.to} + ' ' +  ${#dates.format(bonus.validTo,'dd-MMM-yyyy')}" >Modal title</h5>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" th:text="#{label.modal.close}" class="btn btn-primary" data-dismiss="modal">Close</button>
+<!--                            <button type="button" th:text="#{label.modal.close}" class="btn btn-primary" data-dismiss="modal">Close</button>-->
                             <a type="button" th:href="@{'/info/' + ${bonus.getOrgId()}}" th:text="#{label.modal.toOrg}" class="btn btn-secondary">Save changes</a>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
         </div>
     </div>
     <script>
-        $(".btn btn-block").click(function () {
+        $(".btn-block").click(function () {
             var idcheck = $(this).attr('id');
             var window = '#'+idcheck+'bonuses';
             $(window).modal('show');
