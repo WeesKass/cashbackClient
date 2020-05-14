@@ -32,7 +32,7 @@ public class OrganizationService {
     }
 
     public OrganizationPage getAllOrgByNameOrDesc(String search, Integer page, Integer size) {
-        String url = String.format("http://157.245.219.46:4445/api/organization/list?search=%s&page=%d&size=%d", search, page, size);
+        String url = String.format("http://localhost:4445/api/organization/list?search=%s&page=%d&size=%d", search, page, size);
 
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
         OrganizationPage result = new OrganizationPage();

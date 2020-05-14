@@ -26,7 +26,7 @@ public class BonusService {
     }
 
     public BonusPage getAllBonus(Integer page, Integer size){
-        String url = String.format("http://157.245.219.46:4445/api/orgBonus/all?page=%d&size=%d",page,size);
+        String url = String.format("http://localhost:4445/api/orgBonus/all?page=%d&size=%d",page,size);
 
         ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
         BonusPage result = new BonusPage();
@@ -40,7 +40,7 @@ public class BonusService {
     }
 
     public Object getAllBonusByOrgId(Long id, Integer page, Integer size) {
-        String url = String.format("http://157.245.219.46:4445/api/orgBonus/all/org/%d?page=%d&size=%d",id, page, size);
+        String url = String.format("http://localhost:4445/api/orgBonus/all/org/%d?page=%d&size=%d",id, page, size);
 
         ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
         BonusPage result = new BonusPage();

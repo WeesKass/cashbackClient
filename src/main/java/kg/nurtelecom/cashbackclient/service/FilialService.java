@@ -29,7 +29,7 @@ public class FilialService {
 
 
     public List<FilialModel> getAllFilialsByOrgId(Long id, Integer page, Integer size){
-        String url = String.format("http://157.245.219.46:4445/api/filial/org/%d?page=%d&size=%d", id, page,size);
+        String url = String.format("http://localhost:4445/api/filial/org/%d?page=%d&size=%d", id, page,size);
 
         ResponseEntity<String> response =  restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
         FilialPage result = new FilialPage();
