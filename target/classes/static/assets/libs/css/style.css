@@ -2390,6 +2390,12 @@ html body .display-7 {
     border-radius: 2px;
 }
 
+.btn-orgs {
+    font-size: 14px;
+    padding: 9px 16px;
+    border-radius: 2px;
+}
+
 .btn-wishlist {
     background-color: #efeff6;
     border-radius: 100px;
