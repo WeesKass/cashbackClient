@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html
-        lang="en"
-        xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout}"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
 <body>
 <div th:fragment="orgs" class="card">
     <div class="card-header">
@@ -11,26 +12,27 @@
                 <div style="background: white" class="row">
                     <div class="col-lg-3 d-flex justify-content-center">
                         <nav class="nav nav-left">
-                            <ul class="pagination">
-                                <li th:if="not${orgList.getFirst()}" class="page-item">
-                                    <a class="page-link"
-                                       th:href="@{/org/list(search=${value},page=${orgList.getNumber()-1})}"
-                                       tabindex="-1"><</a>
-                                </li>
-                                <th:block
-                                        th:each="i: ${#numbers.sequence(0, orgList.getTotalPages() - 1)}">
-                                    <li class="page-item active" th:if="${orgList.getNumber() == i}">
-                                        <span class="page-link">[[${i}+1]]</span>
-                                    </li>
-                                    <li th:unless="${orgList.getNumber() == i}">
-                                        <a class="page-link"
-                                           th:href="@{/org/list(search=${value},page=${i})}">[[${i}+1]]</a>
-                                    </li>
+                            <ul class="pagination" style="justify-content: space-around">
+<!--                                <li th:if="not${orgList.getFirst()}" class="page-item">-->
+<!--                                    <a class="page-link"-->
+<!--                                       th:href="@{/org/list(search=${value},page=${orgList.getNumber()-1})}"-->
+<!--                                       tabindex="-1"><</a>-->
+<!--                                </li>-->
+                                <div class="btn-group">
+                                <th:block th:each="i: ${#numbers.sequence(0, orgList.getTotalPages() - 1)}">
+<!--                                    <button class="btn btn-block"-->
+<!--                                            style="background-color: #F0047F;color: white" th:if="${orgList.getNumber() == i}">-->
+<!--                                        [[${i}+1]]-->
+<!--                                    </button>-->
+                                    <button class="btn-orgs rounded mr-2 border-0" style="background-color: #F0047F;color: white" >
+                                          [[${i}+1]]
+                                    </button>
                                 </th:block>
-                                <li class="page-item" th:if="not${orgList.getLast()}">
-                                    <a class="page-link"
-                                       th:href="@{/org/list(search=${value},page=${orgList.getNumber()+1})}">></a>
-                                </li>
+                                </div>
+<!--                                <li class="page-item" th:if="not${orgList.getLast()}">-->
+<!--                                    <a class="page-link"-->
+<!--                                       th:href="@{/org/list(search=${value},page=${orgList.getNumber()+1})}">></a>-->
+<!--                                </li>-->
                             </ul>
                         </nav>
                     </div>
@@ -72,7 +74,7 @@
                 <th th:text="#{label.OrganizationDescription}" scope="col">Description</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="items-wrap">
             <tr th:each="org : ${orgList.getContent()}">
                 <th scope="row">
                     <a th:href="@{'/info/' + ${org.id}}" >
@@ -85,6 +87,36 @@
             </tr>
             </tbody>
         </table>
+        <script>
+            $(".btn-orgs").click(function (e) {
+                let id = (e.target.innerText) - 1;
+                fetch(`http://localhost:4445/api/organization/lists/${id}`)
+                    .then(e => e.json())
+                    .then(e => {
+                        console.log(id);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 (e)
+                        const wrap = document.getElementById("items-wrap");
+                        wrap.innerHTML = "";
+                        console.log(e);
+                        e.content.map(item => {
+                            wrap.innerHTML +=
+                                `
+                                    <tr>
+                                        <th scope="row">
+                                            <a href="/info/${item.categoryId}" >
+                                                 <img src="${item.image}" width="64" height="64" alt="default">
+                                            </a>
+                                        </th>
+                                        <td>${item.name}</td>
+                                        <td>${item.categoryName}</td><!---->
+                                        <td>${item.description}</td><!---->
+                                    </tr>
+                                `;
+                        })
+
+                    })
+                    .catch(e => console.error(e))
+            });
+        </script>
     </div>
 </div>
 </body>

@@ -17,7 +17,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-sm-10">
-                            <h5>History</h5>
+                            <h5 data-th-text="#{label.History}">History</h5>
                         </div>
                         <div class="col-sm-2 ml-auto">
                             <button class="btn btn-outline-secondary" type="button" data-toggle="modal"
@@ -137,7 +137,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Balance History Search</h5>
+                    <h5 class="modal-title" data-th-text="#{label.balanceSearch}">Balance History Search</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -147,7 +147,7 @@
                         <div class="row">
                             <div class="col-sm-4 ml-auto">
                                 <div class="form-group">
-                                    <label class="text-dark font-bold"
+                                    <label data-th-text="#{label.balance.from}" class="text-dark font-bold"
                                            for="dateFrom">From</label>
                                     <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
                                         <input type="text"
@@ -162,7 +162,7 @@
                             </div>
                             <div class="col-sm-4 ml-auto">
                                 <div class="form-group">
-                                    <label class="text-dark font-bold" for="dateTo">To</label>
+                                    <label data-th-text="#{label.balance.to}" class="text-dark font-bold" for="dateTo">To</label>
                                     <div class="input-group date" id="datetimepicker5" data-target-input="nearest">
                                         <input type="text"
                                                th:field="*{to}"
@@ -175,7 +175,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-3 ml-auto">
-                                <button style="position: absolute; right: 10%; bottom: 10%" type="submit"
+                                <button data-th-text="#{label.Submit}" style="position: absolute; right: 10%; bottom: 10%" type="submit"
                                         class="btn btn-outline-secondary">Confirm
                                 </button>
                             </div>

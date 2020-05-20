@@ -33,7 +33,7 @@ public class OrganizationService {
 
     public OrganizationPage getAllOrgByNameOrDesc(String search, Integer page, Integer size) {
         String url = String.format("http://localhost:4445/api/organization/list?search=%s&page=%d&size=%d", search, page, size);
-
+        System.out.println(url);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
         OrganizationPage result = new OrganizationPage();
         try {
@@ -43,6 +43,8 @@ public class OrganizationService {
         }
         return result;
     }
+
+
 
     public Map<String, List<OrganizationModel>> getAllSubscribes(Long id) {
         String url = "http://localhost:4445/api/organization/list/{id}";
@@ -107,7 +109,6 @@ public class OrganizationService {
                 response = restTemplate.exchange(String.format(url, i, page, size), HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
             } else {
                 response = restTemplate.exchange(String.format(url, i, 0, 5), HttpMethod.GET, new HttpEntity<>(contextHolder.getHeaders()), String.class);
-
             }
             OrgShortPage element = new OrgShortPage();
             try {
