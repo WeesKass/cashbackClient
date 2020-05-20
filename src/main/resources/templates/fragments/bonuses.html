@@ -30,8 +30,7 @@
                            th:href="@{/bonus/list(page=${bonuses.getNumber()-1})}"
                            tabindex="-1"><</a>
                     </button>
-                    <th:block>
-                            th:each="i: ${#numbers.sequence(0, bonuses.getTotalPages() - 1)}">
+                    <th:block th:each="i: ${#numbers.sequence(0, bonuses.getTotalPages() - 1)}">
                         <li class="page-item active" th:if="${bonuses.getNumber() == i}">
                             <span class="page-link">[[${i}+1]]</span>
                         </li>

@@ -11,45 +11,66 @@
             <div class="container-fluid">
                 <div style="background: white" class="row">
                     <div class="col-lg-3 d-flex justify-content-center">
-                        <nav class="nav nav-left">
-                            <ul class="pagination" style="justify-content: space-around">
-<!--                                <li th:if="not${orgList.getFirst()}" class="page-item">-->
-<!--                                    <a class="page-link"-->
-<!--                                       th:href="@{/org/list(search=${value},page=${orgList.getNumber()-1})}"-->
-<!--                                       tabindex="-1"><</a>-->
-<!--                                </li>-->
-                                <div class="btn-group">
-                                <th:block th:each="i: ${#numbers.sequence(0, orgList.getTotalPages() - 1)}">
-<!--                                    <button class="btn btn-block"-->
-<!--                                            style="background-color: #F0047F;color: white" th:if="${orgList.getNumber() == i}">-->
-<!--                                        [[${i}+1]]-->
-<!--                                    </button>-->
-                                    <button class="btn-orgs rounded mr-2 border-0" style="background-color: #F0047F;color: white" >
-                                          [[${i}+1]]
-                                    </button>
+                        <nav class="nav nav-left" >
+                            <ul class="pagination" style="justify-content: space-around" id="pagination">
+                                <li th:if="not${orgList.getFirst()}" class="page-item">
+                                    <a class="page-link"
+                                       th:href="@{/org/list(search=${value},page=${orgList.getNumber()-1})}"
+                                       tabindex="-1"><</a>
+                                </li>
+                                <th:block
+                                        th:each="i: ${#numbers.sequence(0, orgList.getTotalPages() - 1)}">
+                                    <li class="page-item active" th:if="${orgList.getNumber() == i}">
+                                        <span class="page-link">[[${i}+1]]</span>
+                                    </li>
+                                    <li th:unless="${orgList.getNumber() == i}">
+                                        <a class="page-link" onclick="myFunc(event)"
+                                        >[[${i}+1]]</a>
+                                    </li>
                                 </th:block>
-                                </div>
-<!--                                <li class="page-item" th:if="not${orgList.getLast()}">-->
-<!--                                    <a class="page-link"-->
-<!--                                       th:href="@{/org/list(search=${value},page=${orgList.getNumber()+1})}">></a>-->
-<!--                                </li>-->
+                                <li class="page-item" th:if="not${orgList.getLast()}">
+                                    <a class="page-link"
+                                       th:href="@{/org/list(search=${value},page=${orgList.getNumber()+1})}">></a>
+                                </li>
+
+                                <!--&lt;!&ndash;                                <li th:if="not${orgList.getFirst()}" class="page-item">&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                    <a class="page-link"&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                       th:href="@{/org/list(search=${value},page=${orgList.getNumber()-1})}"&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                       tabindex="-1"><</a>&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                </li>&ndash;&gt;-->
+                                <!--                                <div class="btn-group">-->
+                                <!--                                <th:block th:each="i: ${#numbers.sequence(0, orgList.getTotalPages() - 1)}">-->
+                                <!--&lt;!&ndash;                                    <button class="btn btn-block"&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                            style="background-color: #F0047F;color: white" th:if="${orgList.getNumber() == i}">&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                        [[${i}+1]]&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                    </button>&ndash;&gt;-->
+                                <!--                                    <button class="btn-orgs rounded mr-2 border-0" style="background-color: #F0047F;color: white" >-->
+                                <!--                                          [[${i}+1]]-->
+                                <!--                                    </button>-->
+                                <!--                                </th:block>-->
+                                <!--                                </div>-->
+                                <!--&lt;!&ndash;                                <li class="page-item" th:if="not${orgList.getLast()}">&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                    <a class="page-link"&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                       th:href="@{/org/list(search=${value},page=${orgList.getNumber()+1})}">></a>&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                </li>&ndash;&gt;-->
                             </ul>
                         </nav>
                     </div>
                     <div class="col-lg-5 ml-auto d-flex justify-content-center">
                         <nav class="nav nav-right">
-                            <div  class="row">
+                            <div class="row">
                                 <form th:action="@{/org/list(search=${value})}" method="get"
                                       class="form-inline my-2 my-lg-0">
                                     <div class="d-flex">
-                                    <input th:value="${value}" class="form-control mr-sm-2" type="text"
-                                           name="search" id="search"
-                                           th:placeholder="#{label.SearchForOrgs}"
-                                           style="min-width: 300px;">
-                                    <button  th:text="#{label.Search}" style="background: #ff407b;color: #ffffff;" class="btn btn-outline-secondary my-2 my-sm-0"
-                                            type="submit">
-                                        Search
-                                    </button>
+                                        <input th:value="${value}" class="form-control mr-sm-2" type="text"
+                                               name="search" id="search"
+                                               th:placeholder="#{label.SearchForOrgs}"
+                                               style="min-width: 300px;">
+                                        <button th:text="#{label.Search}" style="background: #ff407b;color: #ffffff;"
+                                                class="btn btn-outline-secondary my-2 my-sm-0"
+                                                type="submit">
+                                            Search
+                                        </button>
                                     </div>
                                 </form>
                             </div>
@@ -77,8 +98,8 @@
             <tbody id="items-wrap">
             <tr th:each="org : ${orgList.getContent()}">
                 <th scope="row">
-                    <a th:href="@{'/info/' + ${org.id}}" >
-                    <img th:src="${org.getImage()}" width="64" height="64" alt="default">
+                    <a th:href="@{'/info/' + ${org.id}}">
+                        <img th:src="${org.getImage()}" width="64" height="64" alt="default">
                     </a>
                 </th><!---->
                 <td th:text="${org.getName()}"></td>
@@ -88,15 +109,14 @@
             </tbody>
         </table>
         <script>
-            $(".btn-orgs").click(function (e) {
+            function myFunc(e) {
                 let id = (e.target.innerText) - 1;
+                console.log(id);
                 fetch(`http://localhost:4445/api/organization/lists/${id}`)
                     .then(e => e.json())
                     .then(e => {
-                        console.log(id);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 (e)
                         const wrap = document.getElementById("items-wrap");
                         wrap.innerHTML = "";
-                        console.log(e);
                         e.content.map(item => {
                             wrap.innerHTML +=
                                 `
@@ -111,11 +131,51 @@
                                         <td>${item.description}</td><!---->
                                     </tr>
                                 `;
-                        })
-
+                        });
+                        const pagination = document.getElementById("pagination");
+                        pagination.innerHTML = "";
+                        if (!e.first){
+                        pagination.innerHTML +=
+                            `
+                            <li class="page-item">
+                                    <a class="page-link"
+                                       href="/org/list?search=&page=${e.number-1}"
+                                       tabindex="-1"><</a>
+                            </li>
+                            `;
+                        }
+                        for (i = 0; i < e.totalPages; i++) {
+                            if (e.number == i){
+                                pagination.innerHTML +=
+                                    `
+                                    <li class="page-item active">
+                                        <span class="page-link">${i+1}</span>
+                                    </li>
+                                    `;
+                            }else{
+                                pagination.innerHTML +=
+                                    `
+                                    <li>
+                                        <a class="page-link orgs" onclick="myFunc(event)">${i+1}</a>
+                                    </li>
+                                    `;
+                            }
+                        }
+                        if (!e.last){
+                            pagination.innerHTML +=
+                                `
+                            <li class="page-item">
+                                    <a class="page-link"
+                                       href="/org/list?search=&page=${e.number+1}"
+                                       tabindex="-1">></a>
+                            </li>
+                            `;
+                        }
+                        console.log(e);
                     })
-                    .catch(e => console.error(e))
-            });
+                    .catch(e => console.error(e));
+                console.log(e);
+            };
         </script>
     </div>
 </div>
