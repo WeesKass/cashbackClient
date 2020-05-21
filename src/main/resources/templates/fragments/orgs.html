@@ -84,12 +84,12 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th scope="col">
-                    <div th:if="${orgList.getLast()}"
-                         th:text="${orgList.getTotalElements() + '/' + orgList.getTotalElements()}"></div>
-                    <div th:unless="${orgList.getLast()}"
-                         th:text="${orgList.getSize()*(orgList.getNumber()+1)} + '/' + ${orgList.getTotalElements()}"></div>
-                </th> <!-- -->
+<!--                <th scope="col">-->
+<!--                    <div th:if="${orgList.getLast()}"-->
+<!--                         th:text="${orgList.getTotalElements() + '/' + orgList.getTotalElements()}"></div>-->
+<!--                    <div th:unless="${orgList.getLast()}"-->
+<!--                         th:text="${orgList.getSize()*(orgList.getNumber()+1)} + '/' + ${orgList.getTotalElements()}"></div>-->
+<!--                </th> &lt;!&ndash; &ndash;&gt;-->
                 <th th:text="#{label.OrganizationName}" scope="col">Organization Name</th>
                 <th th:text="#{label.OrganizationsCategory}" scope="col">Category</th>
                 <th th:text="#{label.OrganizationDescription}" scope="col">Description</th>

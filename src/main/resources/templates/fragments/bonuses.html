@@ -17,8 +17,7 @@
                     <h5 th:text="${bonus.getOrgName()}" class="card-title">Organization 4</h5>
                     <p class="card-text" th:text="${bonus.getOrgBonusType()}">Welcome</p>
                     <p class="card-text" th:text="#{label.days} +' '+ ${bonus.getValidity()}"></p>
-                    <button th:text="#{label.more}" th:id="${bonus.id}" class="btn btn-block"
-                            style="background-color: #F0047F;color: white">info</button>
+                    <button th:text="#{label.more}" th:data-target="'#bonus' + ${bonus.id}" style="display:block;width:100%" type="button" class="btn btn-outline-secondary" data-toggle="modal"></button>
                     <img style="position: absolute;top:30px;right: 20px;" th:src="${bonus.getImage()}" width="64"
                          height="64" alt="default">
                 </div>
@@ -45,60 +44,30 @@
                     </li>
                 </ul>
             </nav>
-            <div  th:id="${bonus.id}+'bonuses'"  th:each="bonus : ${bonuses.getContent()}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <img th:src="${bonus.getImage()}" width="64"
-                                 height="64" alt="default">
-                            <h5 style="position: absolute;left: 100px;top:0;font-size: 2em" class="modal-title" th:text="${bonus.getOrgName()}">Modal title</h5>
-                            <h5 style="position: absolute;left: 101px;top:40px;font-family: 'Fira Sans', sans-serif" th:text="${bonus.getOrgDesc()}" >Modal title</h5>
-                        </div>
-                        <div class="modal-body">
-                            <h5 style="font-family: 'Fira Sans', sans-serif;font-size: 1.3em;" th:text="${bonus.getDesc()}" >Modal title</h5>
-                            <h5 style="font-family: 'Fira Sans', sans-serif;font-size: 1em;"  th:text="#{label.modal.from} + ' ' +  ${#dates.format(bonus.validFrom,'dd-MMM-yyyy')}" >Modal title</h5>
-                            <h5 style="font-family: 'Fira Sans', sans-serif;font-size: 1em;"  th:text="#{label.modal.to} + ' ' +  ${#dates.format(bonus.validTo,'dd-MMM-yyyy')}" >Modal title</h5>
-                        </div>
-                        <div class="modal-footer">
-<!--                            <button type="button" th:text="#{label.modal.close}" class="btn btn-primary" data-dismiss="modal">Close</button>-->
-                            <a type="button" th:href="@{'/info/' + ${bonus.getOrgId()}}" th:text="#{label.modal.toOrg}" class="btn btn-secondary">Save changes</a>
-                        </div>
-                    </div>
+
+        </div>
+    </div>
+    <div th:each="bonus : ${bonuses.getContent()}" th:id="'bonus' + ${bonus.id}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="bonusModel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img th:src="${bonus.getImage()}" width="64"
+                         height="64" alt="default">
+                    <h5 style="position: absolute;left: 100px;top:0;font-size: 2em" class="modal-title" th:text="${bonus.getOrgName()}">Modal title</h5>
+                    <h5 style="position: absolute;left: 101px;top:40px;font-family: 'Fira Sans', sans-serif" th:text="${bonus.getOrgDesc()}" >Modal title</h5>
+                </div>
+                <div class="modal-body">
+                    <h5 style="font-family: 'Fira Sans', sans-serif;font-size: 1.3em;" th:text="${bonus.getDesc()}" >Modal title</h5>
+                    <h5 style="font-family: 'Fira Sans', sans-serif;font-size: 1em;"  th:text="#{label.modal.from} + ' ' +  ${#dates.format(bonus.validFrom,'dd-MMM-yyyy')}" >Modal title</h5>
+                    <h5 style="font-family: 'Fira Sans', sans-serif;font-size: 1em;"  th:text="#{label.modal.to} + ' ' +  ${#dates.format(bonus.validTo,'dd-MMM-yyyy')}" >Modal title</h5>
+                </div>
+                <div class="modal-footer">
+                    <!--                            <button type="button" th:text="#{label.modal.close}" class="btn btn-primary" data-dismiss="modal">Close</button>-->
+                    <a type="button" th:href="@{'/info/' + ${bonus.getOrgId()}}" th:text="#{label.modal.toOrg}" class="btn btn-secondary">Save changes</a>
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        $(".btn btn-block").click(function () {
-            var idcheck = $(this).attr('id');
-            var window = '#'+idcheck+'bonuses';
-            $(window).modal('show');
-        });
-    </script>
-<!--&lt;!&ndash;    <script>&ndash;&gt;-->
-<!--        // $(document).ready(function () {-->
-<!--        //     load_data();-->
-<!--        //     function load_data(page)-->
-<!--        //     {-->
-<!--        //         $.ajax({-->
-<!--        //             url: "http://localhost:4445/api/orgBonus/all?page=%d&size=%d",-->
-<!--        //             method:"GET",-->
-<!--        //             data:{page:page,size:3},-->
-<!--        //             success:function (data) {-->
-<!--        //                 $('#pagination_data').html(data);-->
-<!--        //             }-->
-<!--        //         })-->
-<!--        //     }-->
-<!--        // }-->
-<!--        // $(document).on('click','.pagination_link',function () {-->
-<!--        //     var page = $(this).attr("id");-->
-<!--        //     load_data(page);-->
-<!--        // })-->
-
-<!--        // document.onload = () => {-->
-
-<!--        }-->
-<!--    // </script>-->
 </div>
 </body>
 </html>
